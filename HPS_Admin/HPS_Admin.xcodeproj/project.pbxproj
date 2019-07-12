@@ -66,6 +66,8 @@
 		A39AF69F22CE0A340049F1B2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39AF69122CE0A340049F1B2 /* String.swift */; };
 		A3AB2AB222D747CA004F8D69 /* BookSeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AB2AB022D747CA004F8D69 /* BookSeatTableViewCell.swift */; };
 		A3AB2AB322D747CA004F8D69 /* BookSeatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3AB2AB122D747CA004F8D69 /* BookSeatTableViewCell.xib */; };
+		A3FC1C9B22D867CA00719561 /* EventsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FC1C9A22D867CA00719561 /* EventsListModel.swift */; };
+		A3FC1C9D22D87CC100719561 /* UsersListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FC1C9C22D87CC100719561 /* UsersListModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +139,8 @@
 		A39AF6A122CE0A4D0049F1B2 /* HPS_Admin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HPS_Admin-Bridging-Header.h"; sourceTree = "<group>"; };
 		A3AB2AB022D747CA004F8D69 /* BookSeatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSeatTableViewCell.swift; sourceTree = "<group>"; };
 		A3AB2AB122D747CA004F8D69 /* BookSeatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookSeatTableViewCell.xib; sourceTree = "<group>"; };
+		A3FC1C9A22D867CA00719561 /* EventsListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListModel.swift; sourceTree = "<group>"; };
+		A3FC1C9C22D87CC100719561 /* UsersListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListModel.swift; sourceTree = "<group>"; };
 		D90617D46BDE89DB48C783D7 /* Pods-HPS_Admin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HPS_Admin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HPS_Admin/Pods-HPS_Admin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -382,6 +386,8 @@
 				A39AF68F22CE0A340049F1B2 /* SingleTonClass.swift */,
 				A33D765722CE211C00F0A6DC /* AdminLoginModel.swift */,
 				A33D765922CE252100F0A6DC /* TAdminLoginModel.swift */,
+				A3FC1C9A22D867CA00719561 /* EventsListModel.swift */,
+				A3FC1C9C22D87CC100719561 /* UsersListModel.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -558,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A354CAE722D73FCE001CC94A /* BookASeatViewController.swift in Sources */,
+				A3FC1C9D22D87CC100719561 /* UsersListModel.swift in Sources */,
 				A39AF67A22CE09F50049F1B2 /* AppDelegate.swift in Sources */,
 				A354CADE22D70CB0001CC94A /* BookingHistoryVC.swift in Sources */,
 				A354CADC22D705FF001CC94A /* AddEventViewController.swift in Sources */,
@@ -591,6 +598,7 @@
 				A33D766F22D31CF200F0A6DC /* EventTableViewCell.swift in Sources */,
 				A39AF69522CE0A340049F1B2 /* ToastView.swift in Sources */,
 				A33D763E22CE0BB200F0A6DC /* MBProgressHUD.m in Sources */,
+				A3FC1C9B22D867CA00719561 /* EventsListModel.swift in Sources */,
 				A33D767622D3495F00F0A6DC /* SettingsViewController.swift in Sources */,
 				A32981D222D35A7F0023EA9F /* UsersCell.swift in Sources */,
 				A32981D722D5C4B20023EA9F /* UserDetailsViewController.swift in Sources */,

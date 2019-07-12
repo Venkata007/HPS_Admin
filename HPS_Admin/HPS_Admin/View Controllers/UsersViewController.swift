@@ -8,6 +8,7 @@
 
 import UIKit
 import EZSwiftExtensions
+import SwiftyJSON
 
 class UsersViewController: UIViewController {
 
@@ -27,7 +28,7 @@ class UsersViewController: UIViewController {
     func updateUI(){
         self.addUserBtn.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : addUserBtn.h / 2)
         tableView.tableFooterView = UIView()
-        //self.getAllUsersApiHitting()
+        self.getAllUsersApiHitting()
     }
     //MARK:- Pushing To Add User VC
     func pushingToAddUserVC(){
@@ -43,7 +44,10 @@ class UsersViewController: UIViewController {
             TheGlobalPoolManager.hideProgess(self.view)
             if dataResponse.json.exists(){
                 let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                print("Response==",dict)
+                ModelClassManager.usersListModel  = UsersListModel(fromJson: JSON(dict))
+                if ModelClassManager.usersListModel.success{
+                    self.tableView.reloadData()
+                }
             }else{
                 TheGlobalPoolManager.showToastView("No data available")
             }
@@ -56,7 +60,7 @@ class UsersViewController: UIViewController {
 }
 extension UsersViewController : UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sections.count
+        return 2
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
@@ -72,12 +76,15 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource{
         return 30
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 4
+        return ModelClassManager.usersListModel == nil ? 0 : ModelClassManager.usersListModel.users.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let user = ModelClassManager.usersListModel.users[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.UsersCell) as! UsersCell
         cell.referalSendBtn.isHidden = true
         cell.referalCodeTitleLbl.isHidden = true
+        cell.nameLbl.text = user.name!
+        cell.numberLbl.text =  user.mobileNumber!
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

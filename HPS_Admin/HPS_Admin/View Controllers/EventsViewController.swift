@@ -8,6 +8,7 @@
 
 import UIKit
 import EZSwiftExtensions
+import SwiftyJSON
 
 class EventsViewController: UIViewController {
 
@@ -35,7 +36,10 @@ class EventsViewController: UIViewController {
             TheGlobalPoolManager.hideProgess(self.view)
             if dataResponse.json.exists(){
                 let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                print("Response==",dict)
+                ModelClassManager.eventsListModel  = EventsListModel(fromJson: JSON(dict))
+                if ModelClassManager.eventsListModel.success{
+                    self.tableView.reloadData()
+                }
             }else{
                 TheGlobalPoolManager.showToastView("No data available")
             }
@@ -51,7 +55,7 @@ class EventsViewController: UIViewController {
 }
 extension EventsViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 4
+        return ModelClassManager.eventsListModel == nil ? 0 : ModelClassManager.eventsListModel.events.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.EventTableViewCell) as! EventTableViewCell
