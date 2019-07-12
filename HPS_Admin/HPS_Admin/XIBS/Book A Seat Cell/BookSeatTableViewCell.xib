@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BookSeatTableViewCell" id="KGk-i7-Jjw" customClass="BookSeatTableViewCell" customModule="HPS_Admin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZF-g4-1Pe">
+                        <rect key="frame" x="8" y="5" width="304" height="89.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="4Ay-pS-Kuq">
+                                <rect key="frame" x="45" y="15" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="NnB-GG-FXV"/>
+                                    <constraint firstAttribute="height" constant="60" id="b82-bs-rrW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vamsi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMk-6q-Etz">
+                                <rect key="frame" x="115" y="15" width="43" height="19"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
+                                <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9533565007" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4S-yZ-kTx">
+                                <rect key="frame" x="115" y="57" width="87.5" height="18"/>
+                                <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="15"/>
+                                <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Checkbox_Off" highlightedImage="Checkbox_Fill" translatesAutoresizingMaskIntoConstraints="NO" id="zIP-yG-kkF">
+                                <rect key="frame" x="10" y="35" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="crV-LS-UWc"/>
+                                    <constraint firstAttribute="height" constant="20" id="nGK-r6-oz1"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wMk-6q-Etz" firstAttribute="leading" secondItem="4Ay-pS-Kuq" secondAttribute="trailing" constant="10" id="517-Tl-gdF"/>
+                            <constraint firstItem="4Ay-pS-Kuq" firstAttribute="centerY" secondItem="LZF-g4-1Pe" secondAttribute="centerY" id="5Kw-lv-jUI"/>
+                            <constraint firstItem="C4S-yZ-kTx" firstAttribute="bottom" secondItem="4Ay-pS-Kuq" secondAttribute="bottom" id="Hyf-dn-QRx"/>
+                            <constraint firstItem="zIP-yG-kkF" firstAttribute="centerY" secondItem="LZF-g4-1Pe" secondAttribute="centerY" id="RQn-oe-Onl"/>
+                            <constraint firstItem="wMk-6q-Etz" firstAttribute="top" secondItem="4Ay-pS-Kuq" secondAttribute="top" id="YNv-cW-H3u"/>
+                            <constraint firstItem="4Ay-pS-Kuq" firstAttribute="leading" secondItem="zIP-yG-kkF" secondAttribute="trailing" constant="15" id="dq9-bw-qBT"/>
+                            <constraint firstItem="C4S-yZ-kTx" firstAttribute="leading" secondItem="wMk-6q-Etz" secondAttribute="leading" id="go1-R6-ohc"/>
+                            <constraint firstItem="zIP-yG-kkF" firstAttribute="leading" secondItem="LZF-g4-1Pe" secondAttribute="leading" constant="10" id="jvq-Zt-dnY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LZF-g4-1Pe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Lgj-LG-o8H"/>
+                    <constraint firstAttribute="bottom" secondItem="LZF-g4-1Pe" secondAttribute="bottom" constant="5" id="P40-t1-6SN"/>
+                    <constraint firstAttribute="trailing" secondItem="LZF-g4-1Pe" secondAttribute="trailing" constant="8" id="U4C-yc-8XJ"/>
+                    <constraint firstItem="LZF-g4-1Pe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Zbo-W2-f0d"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="check_unchekImgView" destination="zIP-yG-kkF" id="Gzw-On-3Dg"/>
+                <outlet property="imgView" destination="4Ay-pS-Kuq" id="pp2-8l-Ujp"/>
+                <outlet property="nameLbl" destination="wMk-6q-Etz" id="iDu-OL-TO8"/>
+                <outlet property="numberLbl" destination="C4S-yZ-kTx" id="Rvq-6l-X9u"/>
+                <outlet property="viewInView" destination="LZF-g4-1Pe" id="7td-ov-0ai"/>
+            </connections>
+            <point key="canvasLocation" x="52.799999999999997" y="48.575712143928037"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Checkbox_Fill" width="18" height="18"/>
+        <image name="Checkbox_Off" width="18" height="18"/>
+        <image name="ProfilePlaceholder" width="76" height="76"/>
+    </resources>
+</document>

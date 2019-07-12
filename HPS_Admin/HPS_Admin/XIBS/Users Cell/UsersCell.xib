@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UsersCell" rowHeight="100" id="KGk-i7-Jjw" customClass="UsersCell" customModule="HPS_Admin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="324" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="324" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7c-Rg-i7r">
+                        <rect key="frame" x="10" y="5" width="304" height="89.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Dq7-dZ-iXj">
+                                <rect key="frame" x="8" y="15" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="4hf-nG-Q8k"/>
+                                    <constraint firstAttribute="height" constant="60" id="EfH-pK-e2K"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vamsi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqt-Kz-3QE">
+                                <rect key="frame" x="78" y="15" width="119" height="19.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
+                                <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9533565007" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7S-PC-2a5">
+                                <rect key="frame" x="78" y="57" width="87.5" height="18"/>
+                                <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="15"/>
+                                <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Referal Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDu-rd-rKt">
+                                <rect key="frame" x="205" y="15.5" width="91" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="91" id="0km-qu-dSf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                <color key="textColor" red="0.0039215686269999999" green="0.25490196079999999" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqm-rs-eo7">
+                                <rect key="frame" x="215.5" y="51" width="70" height="30"/>
+                                <color key="backgroundColor" red="0.047058823530000002" green="0.71372549019999998" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="fyH-2Y-Mwe"/>
+                                    <constraint firstAttribute="width" constant="70" id="k8k-fu-SgV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="16"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Hqm-rs-eo7" firstAttribute="centerY" secondItem="s7S-PC-2a5" secondAttribute="centerY" id="2NL-O9-0vP"/>
+                            <constraint firstItem="Dq7-dZ-iXj" firstAttribute="centerY" secondItem="Y7c-Rg-i7r" secondAttribute="centerY" id="3hp-hZ-CVr"/>
+                            <constraint firstItem="Mqt-Kz-3QE" firstAttribute="top" secondItem="Dq7-dZ-iXj" secondAttribute="top" id="4S7-PH-1cz"/>
+                            <constraint firstItem="s7S-PC-2a5" firstAttribute="leading" secondItem="Mqt-Kz-3QE" secondAttribute="leading" id="5bx-h8-xS3"/>
+                            <constraint firstAttribute="trailing" secondItem="SDu-rd-rKt" secondAttribute="trailing" constant="8" id="ChD-87-lXq"/>
+                            <constraint firstItem="SDu-rd-rKt" firstAttribute="centerY" secondItem="Mqt-Kz-3QE" secondAttribute="centerY" id="IRF-BV-89e"/>
+                            <constraint firstItem="Hqm-rs-eo7" firstAttribute="centerX" secondItem="SDu-rd-rKt" secondAttribute="centerX" id="Wxk-x4-5F0"/>
+                            <constraint firstItem="Mqt-Kz-3QE" firstAttribute="leading" secondItem="Dq7-dZ-iXj" secondAttribute="trailing" constant="10" id="aPO-XY-ul4"/>
+                            <constraint firstItem="Dq7-dZ-iXj" firstAttribute="leading" secondItem="Y7c-Rg-i7r" secondAttribute="leading" constant="8" id="aSE-Tw-s4E"/>
+                            <constraint firstItem="SDu-rd-rKt" firstAttribute="leading" secondItem="Mqt-Kz-3QE" secondAttribute="trailing" constant="8" id="rbf-yu-dFX"/>
+                            <constraint firstItem="s7S-PC-2a5" firstAttribute="bottom" secondItem="Dq7-dZ-iXj" secondAttribute="bottom" id="udz-7W-v5c"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Y7c-Rg-i7r" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="0DP-R6-E0r"/>
+                    <constraint firstItem="Y7c-Rg-i7r" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="pev-iU-OII"/>
+                    <constraint firstAttribute="bottom" secondItem="Y7c-Rg-i7r" secondAttribute="bottom" constant="5" id="ywT-W0-EhW"/>
+                    <constraint firstAttribute="trailing" secondItem="Y7c-Rg-i7r" secondAttribute="trailing" constant="10" id="z7r-oL-cK3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imgView" destination="Dq7-dZ-iXj" id="5Bg-gU-H7a"/>
+                <outlet property="nameLbl" destination="Mqt-Kz-3QE" id="WSK-pk-OI4"/>
+                <outlet property="numberLbl" destination="s7S-PC-2a5" id="YL8-qq-lNM"/>
+                <outlet property="referalCodeTitleLbl" destination="SDu-rd-rKt" id="zJV-Zc-lL0"/>
+                <outlet property="referalSendBtn" destination="Hqm-rs-eo7" id="te6-9E-dpX"/>
+                <outlet property="viewInView" destination="Y7c-Rg-i7r" id="wDR-2O-T8j"/>
+            </connections>
+            <point key="canvasLocation" x="140.80000000000001" y="179.01049475262371"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ProfilePlaceholder" width="76" height="76"/>
+    </resources>
+</document>
