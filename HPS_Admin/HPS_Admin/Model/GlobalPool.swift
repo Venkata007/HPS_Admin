@@ -175,7 +175,19 @@ class GlobalPool: NSObject {
         let date24 = dateFormatter.string(from: date)
         return date24
     }
-
+    func adding(hours: Int) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        let convertedDate: String = dateFormatter.string(from: Calendar.current.date(byAdding: .hour, value: hours, to: Date())!)
+        return convertedDate
+    }
+    func getFormattedDate(string: String) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm" //This formate is input formated .
+        let formateDate = dateFormatter.date(from:string)!
+        dateFormatter.dateFormat = "dd EEE MMMM\n hh:mm a" //Output Formated
+        return dateFormatter.string(from: formateDate)
+    }
     //MARK: - Email Validation
     func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

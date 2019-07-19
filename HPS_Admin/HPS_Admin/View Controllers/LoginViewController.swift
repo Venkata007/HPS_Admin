@@ -30,6 +30,7 @@ class LoginViewController: UIViewController {
     func updateUI(){
          TheGlobalPoolManager.selectedUserType = ADMIN
         for view in viewInViews{
+            TheGlobalPoolManager.cornerAndBorder(view, cornerRadius: 5, borderWidth: 1, borderColor: .borderColor)
             view.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : 5)
         }
         self.loginBtn.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : 5)
@@ -58,8 +59,8 @@ class LoginViewController: UIViewController {
             TheGlobalPoolManager.hideProgess(self.view)
             if dataResponse.json.exists(){
                 let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: "status") as! String
-                let message = dict.object(forKey: "message") as! String
+                let status = dict.object(forKey: STATUS) as! String
+                let message = dict.object(forKey: MESSAGE) as! String
                 if status == Constants.SUCCESS{
                     TheGlobalPoolManager.showToastView(message)
                     if TheGlobalPoolManager.selectedUserType == ADMIN{

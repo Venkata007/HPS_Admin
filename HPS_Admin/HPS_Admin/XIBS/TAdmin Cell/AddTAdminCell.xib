@@ -26,13 +26,14 @@
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RM-zC-F33">
                         <rect key="frame" x="5" y="5" width="310" height="49.5"/>
-                        <color key="backgroundColor" red="0.0039215686269999999" green="0.25490196079999999" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.78039215689999997" green="0.62352941179999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="17"/>
-                        <state key="normal" title="Add TAdmin">
+                        <state key="normal" title="Add Table Admin">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="7RM-zC-F33" secondAttribute="bottom" constant="5" id="9rB-np-Yd7"/>
                     <constraint firstAttribute="trailing" secondItem="7RM-zC-F33" secondAttribute="trailing" constant="5" id="OEK-zN-udH"/>
@@ -40,6 +41,7 @@
                     <constraint firstItem="7RM-zC-F33" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="jkV-Qd-sex"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addTAdminBtn" destination="7RM-zC-F33" id="8CE-WV-eAn"/>

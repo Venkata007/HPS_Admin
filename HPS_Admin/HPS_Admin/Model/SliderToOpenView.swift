@@ -68,7 +68,7 @@ public class SlideToOpenView: UIView {
             draggedView.layer.cornerRadius = sliderCornerRadious
         }
     }
-    public var defaultSliderBackgroundColor: UIColor = .restBGColor {
+    public var defaultSliderBackgroundColor: UIColor = #colorLiteral(red: 0.9199201465, green: 0.9765976071, blue: 0.9851337075, alpha: 1) {
         didSet {
             sliderHolderView.backgroundColor = defaultSliderBackgroundColor
         }

@@ -11,11 +11,13 @@ import SwiftyJSON
 
 class UsersListModel {
 
+     // (created/registered/pending/approved/disapproved)
+    
     var success : Bool = false
     var users = [UsersData]()
+    var registeredUsers = [UsersData]()
     var pendingUsers = [UsersData]()
     var blockedUsers = [UsersData]()
-    var newUsers = [UsersData]()
     var approvedUsers = [UsersData]()
     init(fromJson json: JSON!){
         if json.isEmpty{
@@ -27,14 +29,17 @@ class UsersListModel {
                 for data in dataJson{
                     users.append(UsersData(fromJson: (data.key, data.value)))
                 }
-                pendingUsers = users.filter({ (userData) -> Bool in
+                users = users.sorted { (data1, data2) -> Bool in
+                    return data1.name < data2.name
+                }
+                registeredUsers = users.filter({ (userData) -> Bool in
                     return userData.status == "registered"
+                })
+                pendingUsers = users.filter({ (userData) -> Bool in
+                    return userData.status == "created"
                 })
                 blockedUsers = users.filter({ (userData) -> Bool in
                     return userData.status == "blocked"
-                })
-                newUsers = users.filter({ (userData) -> Bool in
-                    return userData.status == "new"
                 })
                 approvedUsers = users.filter({ (userData) -> Bool in
                     return userData.status == "approved"
@@ -68,24 +73,24 @@ class UsersData{
     
     init(fromJson json: (String,JSON)){
         userNumber = json.0
-        createdOn = json.1["createdOn"].stringValue
-        createdOnNum = json.1["createdOnNum"].stringValue
-        deviceId = json.1["deviceId"].stringValue
-        emailId = json.1["emailId"].stringValue
-        message = json.1["message"].stringValue
-        messageId = json.1["messageId"].stringValue
-        mobileNumber = json.1["mobileNumber"].stringValue
-        name = json.1["name"].stringValue
-        password = json.1["password"].stringValue
-        photoIdUrl = json.1["photoIdUrl"].stringValue
-        profilePicUrl = json.1["profilePicUrl"].stringValue
-        referralCode = json.1["referralCode"].stringValue
-        status = json.1["status"].stringValue
-        totalGamesPlayed = json.1["totalGamesPlayed"].intValue
-        totalHoursPlayed = json.1["totalHoursPlayed"].intValue
-        userBalance = json.1["userBalance"].intValue
-        userId = json.1["userId"].stringValue
-        userRewardPoints = json.1["userRewardPoints"].intValue
+        createdOn = json.1["createdOn"].string ?? ""
+        createdOnNum = json.1["createdOnNum"].string ?? ""
+        deviceId = json.1["deviceId"].string ?? ""
+        emailId = json.1["emailId"].string ?? ""
+        message = json.1["message"].string ?? ""
+        messageId = json.1["messageId"].string ?? ""
+        mobileNumber = json.1["mobileNumber"].string ?? ""
+        name = json.1["name"].string ?? ""
+        password = json.1["password"].string ?? ""
+        photoIdUrl = json.1["photoIdUrl"].string ?? ""
+        profilePicUrl = json.1["profilePicUrl"].string ?? ""
+        referralCode = json.1["referralCode"].string ?? ""
+        status = json.1["status"].string ?? ""
+        totalGamesPlayed = json.1["totalGamesPlayed"].int ?? 0
+        totalHoursPlayed = json.1["totalHoursPlayed"].int ?? 0
+        userBalance = json.1["userBalance"].int ?? 0
+        userId = json.1["userId"].string ?? ""
+        userRewardPoints = json.1["userRewardPoints"].int ?? 0
     }
     
 }

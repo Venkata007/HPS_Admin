@@ -16,6 +16,11 @@ let ADMIN_USER_INFO            = "admin_user_info"
 let TADMIN_USER_INFO          = "tadmin_user_info"
 let ADMIN                   = "admin"
 let TABLE_ADMIN     = "tableAdmin"
+let CLOSED          = "closed"
+let OPEN               = "open"
+let STATUS            = "status"
+let MESSAGE       = "message"
+
 
 
 public struct Constants {
@@ -37,6 +42,7 @@ public  struct ViewControllerIDs {
     static let AddEventViewController            = "AddEventViewController"
     static let BookingHistoryVC                        = "BookingHistoryVC"
     static let BookASeatViewController          = "BookASeatViewController"
+    static let CreateTableAdminVC                  = "CreateTableAdminVC"
 }
 //MARK : - Device INFO
 public struct DeviceInfo {
@@ -50,6 +56,13 @@ public struct ApiURls{
     static let GET_ALL_USERS                = "https://home-poker-squad-hps.firebaseio.com/usersTable/.json?auth=\(Auth_Key)"
     static let GET_ALL_EVENTS             = "https://home-poker-squad-hps.firebaseio.com/eventsTable/.json?auth=\(Auth_Key)"
     static let CREATE_REFERAL             = "\(SERVER_IP)/createNewUserReferral"
+    static let CREATE_EVENT                 = "\(SERVER_IP)/createEvent"
+    static let CREATE_TABLE_ADMIN   = "\(SERVER_IP)/createTAdmin"
+    static let DELETE_TABLE_ADMIN   = "\(SERVER_IP)/deleteTAdmin"
+    static let ADMIN_PROFILE_API        = "\(SERVER_IP)/admin"
+    static let EVENT_STATUS_API           = "\(SERVER_IP)/changeEventBookingStatus"
+    static let GET_ALL_BOOKINGS        = "https://home-poker-squad-hps.firebaseio.com/bookingsTable/.json?auth=\(Auth_Key)"
+    static let BOOK_SEATS                       = "\(SERVER_IP)/bookSeats"
 }
 // MARK : - Toast Messages
 public struct ToastMessages {
@@ -91,6 +104,7 @@ public struct XIBNames{
     static let AdminProfileCell                            = "AdminProfileCell"
     static let SwitchTableViewCell                     = "SwitchTableViewCell"
     static let BookSeatTableViewCell               = "BookSeatTableViewCell"
+    static let UsersListCell                                   = "UsersListCell"
 }
 //MARK:- Api Paramaters
 public struct ApiParams  {
@@ -106,4 +120,14 @@ public struct ApiParams  {
     static let CreatedOn = "createdOn"
     static let CreatedByID = "createdById"
     static let CreatedByName = "createdByName"
+    static let EventStartTime = "eventStartTime"
+    static let EventEndTime = "eventEndTime"
+    static let EventRewardsPoints = "eventRewardPoints"
+    static let TotalSeatsAvailable = "totalSeatsAvailable"
+    static let BookingStatus = "bookingStatus"
+    static let TAdminId = "tAdminId"
+    static let AdminType = "adminType"
+    static let EventId = "eventId"
+    static let UserIds = "userIds"
+    static let BookFromBlockedSeats = "bookFromBlockedSeats"
 }

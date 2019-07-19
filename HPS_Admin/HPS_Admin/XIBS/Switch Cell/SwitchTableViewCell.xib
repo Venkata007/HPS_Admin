@@ -21,18 +21,20 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GAn-al-VSY">
                         <rect key="frame" x="48" y="10" width="224" height="50"/>
-                        <color key="backgroundColor" red="0.91992014649999998" green="0.97659760709999999" blue="0.98513370749999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="gRs-Ys-4s5"/>
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="GAn-al-VSY" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="5dQ-q5-BFY"/>
                     <constraint firstItem="GAn-al-VSY" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.7" id="kfL-qM-ZtD"/>
                     <constraint firstItem="GAn-al-VSY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yOl-Dp-Pzy"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="slideToOpenView" destination="GAn-al-VSY" id="UQR-xW-8Dp"/>

@@ -19,8 +19,8 @@ class BookSeatTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.viewInView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : 5)
-        TheGlobalPoolManager.cornerAndBorder(self.imgView, cornerRadius: 5, borderWidth: 0.5, borderColor: #colorLiteral(red: 0.8781132102, green: 0.8862884641, blue: 0.8903418183, alpha: 1))
+        TheGlobalPoolManager.cornerAndBorder(self.imgView, cornerRadius: 5, borderWidth: 0.5, borderColor: #colorLiteral(red: 0.4745098039, green: 0.9803921569, blue: 1, alpha: 0.6032748288))
+        TheGlobalPoolManager.cornerAndBorder(self.viewInView, cornerRadius: 5, borderWidth: 1, borderColor: #colorLiteral(red: 0.4745098039, green: 0.9803921569, blue: 1, alpha: 0.6032748288))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,8 +31,10 @@ class BookSeatTableViewCell: UITableViewCell {
     
     func cellSelected(_ isSelectedValue:Bool){
         if isSelectedValue{
+            check_unchekImgView.highlightedImage = #imageLiteral(resourceName: "Checkbox_Fill").withColor(.white)
             check_unchekImgView.isHighlighted = true
         }else{
+            check_unchekImgView.image = #imageLiteral(resourceName: "Checkbox_Off").withColor(.white)
             check_unchekImgView.isHighlighted = false
         }
     }

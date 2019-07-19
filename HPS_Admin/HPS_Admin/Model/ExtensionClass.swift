@@ -82,18 +82,34 @@ extension UITextField{
         view.addSubview(imageView)
         self.rightView = view
     }
-    
+}
+//MARK:- Date
+extension Date {
+    var convertedDate:Date {
+        let dateFormatter = DateFormatter();
+        let dateFormat = "dd-MM-yyyy HH:mm";
+        dateFormatter.dateFormat = dateFormat;
+        let formattedDate = dateFormatter.string(from: self);
+        dateFormatter.locale = NSLocale.current;
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00");
+        dateFormatter.dateFormat = dateFormat as String;
+        let sourceDate = dateFormatter.date(from: formattedDate as String);
+        return sourceDate!;
+    }
+    func adding(hours: Int) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        let convertedDate: String = dateFormatter.string(from: Calendar.current.date(byAdding: .hour, value: hours, to: self)!)
+        return convertedDate
+    }
 }
 //MARK:- UIColor
 extension UIColor{
     static var themeColor:UIColor{
-        return #colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1) //F3C02F
+        return #colorLiteral(red: 0.04705882353, green: 0.7137254902, blue: 0.8470588235, alpha: 1) //F3C02F
     }
-    static var greenColor:UIColor{
-        return #colorLiteral(red: 0, green: 0.7333333333, blue: 0.3176470588, alpha: 1) //00BB51
-    }
-    static var themeDisableColor:UIColor{
-        return #colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 0.5) //F3C02F Opacity 50%
+    static var blueColor:UIColor{
+        return #colorLiteral(red: 0.003921568627, green: 0.2549019608, blue: 0.3725490196, alpha: 1) //00BB51
     }
     static var placeholderColor:UIColor{
         return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7980789812) //FFFFFF Opacity 80%
@@ -101,8 +117,8 @@ extension UIColor{
     static var textFieldTintColor:UIColor{
         return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) //FFFFFF
     }
-    static var restBGColor:UIColor{
-        return #colorLiteral(red: 0.9647058824, green: 0.9725490196, blue: 0.9960784314, alpha: 1) //F6F8FE
+    static var borderColor:UIColor{
+        return #colorLiteral(red: 0.4745098039, green: 0.9803921569, blue: 1, alpha: 0.6032748288)
     }
 }
 //MARK:- UIFont
@@ -285,4 +301,13 @@ extension UIDevice {
         }
     }
 }
-
+extension UITextField{
+    @IBInspectable var placeHolderColor: UIColor? {
+        get {
+            return self.placeHolderColor
+        }
+        set {
+            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSAttributedString.Key.foregroundColor: newValue!])
+        }
+    }
+}

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5ED0D33A3491CD1E3228A2F0 /* Pods_HPS_Admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41015D0DA9F3338A67806F48 /* Pods_HPS_Admin.framework */; };
+		A31EF39422D8AA650089D223 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31EF39222D8AA650089D223 /* PickerView.swift */; };
+		A31EF39522D8AA650089D223 /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A31EF39322D8AA650089D223 /* PickerView.xib */; };
 		A32981D222D35A7F0023EA9F /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32981D022D35A7F0023EA9F /* UsersCell.swift */; };
 		A32981D322D35A7F0023EA9F /* UsersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A32981D122D35A7F0023EA9F /* UsersCell.xib */; };
 		A32981D522D4A3F90023EA9F /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32981D422D4A3F90023EA9F /* AddUserViewController.swift */; };
@@ -66,13 +68,20 @@
 		A39AF69F22CE0A340049F1B2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39AF69122CE0A340049F1B2 /* String.swift */; };
 		A3AB2AB222D747CA004F8D69 /* BookSeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AB2AB022D747CA004F8D69 /* BookSeatTableViewCell.swift */; };
 		A3AB2AB322D747CA004F8D69 /* BookSeatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3AB2AB122D747CA004F8D69 /* BookSeatTableViewCell.xib */; };
+		A3FB977322DEE46A00CE802C /* UsersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FB977122DEE46A00CE802C /* UsersListCell.swift */; };
+		A3FB977422DEE46A00CE802C /* UsersListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3FB977222DEE46A00CE802C /* UsersListCell.xib */; };
+		A3FB977622DF177600CE802C /* GetAllBookingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FB977522DF177600CE802C /* GetAllBookingsModel.swift */; };
 		A3FC1C9B22D867CA00719561 /* EventsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FC1C9A22D867CA00719561 /* EventsListModel.swift */; };
 		A3FC1C9D22D87CC100719561 /* UsersListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FC1C9C22D87CC100719561 /* UsersListModel.swift */; };
+		A3FD061322DC4C720049E061 /* CreateTableAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FD061222DC4C720049E061 /* CreateTableAdminVC.swift */; };
+		A3FD061522DD9E790049E061 /* AdminProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FD061422DD9E780049E061 /* AdminProfileModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		41015D0DA9F3338A67806F48 /* Pods_HPS_Admin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HPS_Admin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A05F3184415B2DD752397F9A /* Pods-HPS_Admin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HPS_Admin.release.xcconfig"; path = "Pods/Target Support Files/Pods-HPS_Admin/Pods-HPS_Admin.release.xcconfig"; sourceTree = "<group>"; };
+		A31EF39222D8AA650089D223 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		A31EF39322D8AA650089D223 /* PickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
 		A32981D022D35A7F0023EA9F /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
 		A32981D122D35A7F0023EA9F /* UsersCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersCell.xib; sourceTree = "<group>"; };
 		A32981D422D4A3F90023EA9F /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
@@ -139,8 +148,13 @@
 		A39AF6A122CE0A4D0049F1B2 /* HPS_Admin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HPS_Admin-Bridging-Header.h"; sourceTree = "<group>"; };
 		A3AB2AB022D747CA004F8D69 /* BookSeatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSeatTableViewCell.swift; sourceTree = "<group>"; };
 		A3AB2AB122D747CA004F8D69 /* BookSeatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookSeatTableViewCell.xib; sourceTree = "<group>"; };
+		A3FB977122DEE46A00CE802C /* UsersListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListCell.swift; sourceTree = "<group>"; };
+		A3FB977222DEE46A00CE802C /* UsersListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersListCell.xib; sourceTree = "<group>"; };
+		A3FB977522DF177600CE802C /* GetAllBookingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllBookingsModel.swift; sourceTree = "<group>"; };
 		A3FC1C9A22D867CA00719561 /* EventsListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListModel.swift; sourceTree = "<group>"; };
 		A3FC1C9C22D87CC100719561 /* UsersListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListModel.swift; sourceTree = "<group>"; };
+		A3FD061222DC4C720049E061 /* CreateTableAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTableAdminVC.swift; sourceTree = "<group>"; };
+		A3FD061422DD9E780049E061 /* AdminProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminProfileModel.swift; sourceTree = "<group>"; };
 		D90617D46BDE89DB48C783D7 /* Pods-HPS_Admin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HPS_Admin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HPS_Admin/Pods-HPS_Admin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +177,15 @@
 				A05F3184415B2DD752397F9A /* Pods-HPS_Admin.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A31EF39122D8AA650089D223 /* Picker View */ = {
+			isa = PBXGroup;
+			children = (
+				A31EF39222D8AA650089D223 /* PickerView.swift */,
+				A31EF39322D8AA650089D223 /* PickerView.xib */,
+			);
+			path = "Picker View";
 			sourceTree = "<group>";
 		};
 		A32981CF22D35A500023EA9F /* Users Cell */ = {
@@ -210,6 +233,7 @@
 		A33D766B22D31CC500F0A6DC /* XIBS */ = {
 			isa = PBXGroup;
 			children = (
+				A3FB977022DEE41F00CE802C /* Users List Cell */,
 				A3AB2AAF22D747AB004F8D69 /* Book A Seat Cell */,
 				A354CADF22D73064001CC94A /* Switch Cell */,
 				A354CAD622D700B8001CC94A /* Admin Profile Cell */,
@@ -217,6 +241,7 @@
 				A32981CF22D35A500023EA9F /* Users Cell */,
 				A33D766C22D31CCF00F0A6DC /* Event Cell */,
 				A354CAC822D5EDE4001CC94A /* Redeem View */,
+				A31EF39122D8AA650089D223 /* Picker View */,
 			);
 			path = XIBS;
 			sourceTree = "<group>";
@@ -318,6 +343,7 @@
 				A354CADB22D705FF001CC94A /* AddEventViewController.swift */,
 				A354CADD22D70CB0001CC94A /* BookingHistoryVC.swift */,
 				A354CAE622D73FCE001CC94A /* BookASeatViewController.swift */,
+				A3FD061222DC4C720049E061 /* CreateTableAdminVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -388,6 +414,8 @@
 				A33D765922CE252100F0A6DC /* TAdminLoginModel.swift */,
 				A3FC1C9A22D867CA00719561 /* EventsListModel.swift */,
 				A3FC1C9C22D87CC100719561 /* UsersListModel.swift */,
+				A3FD061422DD9E780049E061 /* AdminProfileModel.swift */,
+				A3FB977522DF177600CE802C /* GetAllBookingsModel.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -399,6 +427,15 @@
 				A3AB2AB122D747CA004F8D69 /* BookSeatTableViewCell.xib */,
 			);
 			path = "Book A Seat Cell";
+			sourceTree = "<group>";
+		};
+		A3FB977022DEE41F00CE802C /* Users List Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A3FB977122DEE46A00CE802C /* UsersListCell.swift */,
+				A3FB977222DEE46A00CE802C /* UsersListCell.xib */,
+			);
+			path = "Users List Cell";
 			sourceTree = "<group>";
 		};
 		B50FFAB7EADC8C91786AE046 /* Frameworks */ = {
@@ -479,7 +516,9 @@
 				A33D765122CE0F4E00F0A6DC /* Lato-Semibold.ttf in Resources */,
 				A33D764D22CE0F4E00F0A6DC /* Lato-Bold.ttf in Resources */,
 				A3AB2AB322D747CA004F8D69 /* BookSeatTableViewCell.xib in Resources */,
+				A31EF39522D8AA650089D223 /* PickerView.xib in Resources */,
 				A32981D322D35A7F0023EA9F /* UsersCell.xib in Resources */,
+				A3FB977422DEE46A00CE802C /* UsersListCell.xib in Resources */,
 				A33D767022D31CF200F0A6DC /* EventTableViewCell.xib in Resources */,
 				A33D765322CE0F4E00F0A6DC /* Lato-BoldItalic.ttf in Resources */,
 				A354CAD522D622B1001CC94A /* AddTAdminCell.xib in Resources */,
@@ -572,6 +611,7 @@
 				A39AF69B22CE0A340049F1B2 /* Constants.swift in Sources */,
 				A3AB2AB222D747CA004F8D69 /* BookSeatTableViewCell.swift in Sources */,
 				A354CAD422D622B1001CC94A /* AddTAdminCell.swift in Sources */,
+				A3FB977322DEE46A00CE802C /* UsersListCell.swift in Sources */,
 				A39AF69C22CE0A340049F1B2 /* APIServices.swift in Sources */,
 				A33D767222D3489B00F0A6DC /* UsersViewController.swift in Sources */,
 				A39AF69D22CE0A340049F1B2 /* SingleTonClass.swift in Sources */,
@@ -582,15 +622,19 @@
 				A33D765822CE211C00F0A6DC /* AdminLoginModel.swift in Sources */,
 				A39AF67922CE09F50049F1B2 /* ViewController.swift in Sources */,
 				A354CAD022D61342001CC94A /* TAdminCell.swift in Sources */,
+				A3FD061522DD9E790049E061 /* AdminProfileModel.swift in Sources */,
 				A33D767422D348E700F0A6DC /* EventsViewController.swift in Sources */,
 				A33D765A22CE252100F0A6DC /* TAdminLoginModel.swift in Sources */,
 				A354CAD922D700D3001CC94A /* AdminProfileCell.swift in Sources */,
 				A39AF69922CE0A340049F1B2 /* MJPopupBackgroundView.m in Sources */,
 				A39AF69822CE0A340049F1B2 /* UIViewController+MJPopupViewController.m in Sources */,
+				A3FB977622DF177600CE802C /* GetAllBookingsModel.swift in Sources */,
 				A39AF69E22CE0A340049F1B2 /* ExtensionClass.swift in Sources */,
 				A354CACB22D5EE01001CC94A /* RedeemView.swift in Sources */,
 				A33D765C22CF1BD500F0A6DC /* TabBarController.swift in Sources */,
 				A354CAE222D730C7001CC94A /* SwitchTableViewCell.swift in Sources */,
+				A31EF39422D8AA650089D223 /* PickerView.swift in Sources */,
+				A3FD061322DC4C720049E061 /* CreateTableAdminVC.swift in Sources */,
 				A39AF69422CE0A340049F1B2 /* ToastWindow.swift in Sources */,
 				A39AF69F22CE0A340049F1B2 /* String.swift in Sources */,
 				A33D764022CE0DB300F0A6DC /* LoginViewController.swift in Sources */,

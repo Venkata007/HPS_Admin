@@ -8,10 +8,10 @@ class TabBarController: UITabBarController {
 
     override open func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().tintColor = #colorLiteral(red: 0.04705882353, green: 0.7137254902, blue: 0.8470588235, alpha: 1)
-        UITabBar.appearance().unselectedItemTintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        UITabBar.appearance().barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        UITabBar.appearance().isTranslucent = false
+        UITabBar.appearance().tintColor = #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1)
+        UITabBar.appearance().unselectedItemTintColor = #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 0.6032748288)
+        UITabBar.appearance().barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2022153253)
+        UITabBar.appearance().isTranslucent = true
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont.appFont(.Bold, size: UIDevice.isPhone() ? 10:15)], for: .normal)
 
         self.tabBar.layer.shadowOffset = CGSize(width: 0, height: -2)
