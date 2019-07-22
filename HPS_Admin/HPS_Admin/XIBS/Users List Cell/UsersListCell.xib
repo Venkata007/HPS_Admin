@@ -106,7 +106,7 @@
                                             <constraint firstAttribute="height" constant="30" id="wj6-N1-6jb"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0R-me-BQL">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0R-me-BQL">
                                         <rect key="frame" x="67" y="35" width="108" height="18"/>
                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -165,10 +165,12 @@
                 <outlet property="balanceLbl" destination="Bl8-IO-Kx7" id="NbM-zd-LWk"/>
                 <outlet property="bookingIDLbl" destination="anx-nS-gce" id="Ys8-2P-5w1"/>
                 <outlet property="buyInsLbl" destination="Qp4-i0-J0b" id="kR6-NG-WR5"/>
+                <outlet property="coinsImgView" destination="eaU-ce-2ym" id="M8Z-nA-lOD"/>
                 <outlet property="dateLbl" destination="GIz-GM-bdm" id="Vxx-4N-5j6"/>
                 <outlet property="headerView" destination="2nz-o3-sgD" id="yx1-UC-FeQ"/>
                 <outlet property="rewardPointsLbl" destination="HJd-re-UQ1" id="tsN-j7-Isk"/>
                 <outlet property="statusImgView" destination="G2A-Ed-67E" id="KLH-dE-mhV"/>
+                <outlet property="userImgView" destination="pSl-Uw-PrJ" id="kuU-B4-pc7"/>
                 <outlet property="userNameLbl" destination="E0R-me-BQL" id="po1-UK-T7U"/>
                 <outlet property="userPrifilePicImgView" destination="pSl-Uw-PrJ" id="Hd1-pF-YO3"/>
                 <outlet property="viewInView" destination="BiD-9j-HEL" id="Umi-SV-aOa"/>

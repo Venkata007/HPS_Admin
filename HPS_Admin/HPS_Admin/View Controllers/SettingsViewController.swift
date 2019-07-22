@@ -12,13 +12,15 @@ import EZSwiftExtensions
 class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var sections = ["","","","Table Admins"]
+    var sections = ["","","","Table Admins",""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.register(UINib(nibName: XIBNames.EventTableViewCell, bundle: nil), forCellReuseIdentifier: XIBNames.EventTableViewCell)
+        tableView.register(UINib(nibName: XIBNames.UsersListCell, bundle: nil), forCellReuseIdentifier: XIBNames.UsersListCell)
         tableView.register(UINib(nibName: XIBNames.TAdminCell, bundle: nil), forCellReuseIdentifier: XIBNames.TAdminCell)
+        tableView.register(UINib(nibName: XIBNames.LogoutCell, bundle: nil), forCellReuseIdentifier: XIBNames.LogoutCell)
         tableView.register(UINib(nibName: XIBNames.AddTAdminCell, bundle: nil), forCellReuseIdentifier: XIBNames.AddTAdminCell)
         tableView.register(UINib(nibName: XIBNames.AdminProfileCell, bundle: nil), forCellReuseIdentifier: XIBNames.AdminProfileCell)
     }
@@ -35,6 +37,15 @@ class SettingsViewController: UIViewController {
         if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.CreateTableAdminVC) as? CreateTableAdminVC{
             viewCon.hidesBottomBarWhenPushed = true
             ez.topMostVC?.presentVC(viewCon)
+        }
+    }
+    @objc func logoutMethod(_ btn : UIButton){
+        TheGlobalPoolManager.showAlertWith(title: "Are you sure", message: "Do you want to Logout?", singleAction: false, okTitle:"Confirm") { (sucess) in
+            if sucess!{
+                if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.LoginViewController) as? LoginViewController{
+                    self.navigationController?.pushViewController(viewCon, animated: true)
+                }
+            }
         }
     }
     //MARK:- Adimn Profile Api
@@ -132,20 +143,30 @@ extension SettingsViewController : UITableViewDelegate,UITableViewDataSource{
             cell.switch.isHidden = true
             cell.coinsLbl.isHidden = true
             cell.eventNameLbl.text = "Events"
-            cell.eventNameLbl.font = UIFont.appFont(AppFonts.Medium)
-            cell.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "₹ \(data.totalUsersBalance!)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
+            cell.userImgView.isHidden = true
+            cell.usersLbl.isHidden = true
+            cell.statusImgView.isHidden = true
+            cell.eventNameLbl.font = UIFont.appFont(AppFonts.Bold)
+            cell.lbl4.isHidden = false
+            cell.lbl4.text = "New Events : \(data.created!)"
+            cell.lbl1.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.finished!.toString)\n", attr2Text: "Finished", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.9137254902, green: 0.9254901961, blue: 0.9058823529, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
+            cell.lbl2.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.closed!.toString)\n", attr2Text: "Closed", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.2784313725, green: 0.7490196078, blue: 0.4705882353, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
+            cell.lbl3.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.total!.toString)\n", attr2Text: "Total", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.7725490196, green: 0.3607843137, blue: 0.3607843137, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
+            cell.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Running \n", attr2Text: "₹ \(data.running!)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
             return cell
         case 2:
             let data = ModelClassManager.adminProfileModel.eventsInfo!
-            let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.EventTableViewCell) as! EventTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.UsersListCell) as! UsersListCell
             cell.coinsImgView.isHidden = true
-            cell.timeLbl.isHidden = true
-            cell.bookBtn.isHidden = true
-            cell.bookStsLbl.isHidden = true
-            cell.switch.isHidden = true
-            cell.coinsLbl.isHidden = true
-            cell.eventNameLbl.text = "Buy In's & Cash Out"
-            cell.eventNameLbl.font = UIFont.appFont(AppFonts.Medium)
+            cell.dateLbl.isHidden = true
+            cell.rewardPointsLbl.isHidden = true
+            cell.userImgView.isHidden = true
+            cell.buyInsLbl.isHidden = true
+            cell.bookingIDLbl.text = "Buy In's & Cash Out"
+            cell.bookingIDLbl.font = UIFont.appFont(AppFonts.Bold)
+            cell.statusImgView.isHidden = true
+            cell.userNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Buy In's & Cash Out \n", attr2Text: "\(data.totalBuyIns!)/\(data.totalCashout!)", attr1Color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), attr2Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr1Font: 14, attr2Font: 18, attr1FontName: .Medium, attr2FontName: .Bold)
+            cell.userNameLbl.textAlignment = .center
             cell.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "₹ \(data.totalUsersBalance!)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
             return cell
         case 3:
@@ -172,6 +193,10 @@ extension SettingsViewController : UITableViewDelegate,UITableViewDataSource{
             cell.emailIDLbl.text = data.emailId!
             cell.mobileNumLbl.isHidden = true
             return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.LogoutCell) as! LogoutCell
+            cell.logoutBtn.addTarget(self, action: #selector(self.logoutMethod(_:)), for: .touchUpInside)
+            return cell
         default:
             break
         }
@@ -181,6 +206,10 @@ extension SettingsViewController : UITableViewDelegate,UITableViewDataSource{
         switch indexPath.section {
         case 0:
             return 120
+        case 2:
+            return 150
+        case 4:
+            return 50
         case 3:
             if ModelClassManager.adminProfileModel.tableAdmins.count == 0{
                 return 50

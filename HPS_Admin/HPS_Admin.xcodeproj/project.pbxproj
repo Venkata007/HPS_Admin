@@ -68,6 +68,15 @@
 		A39AF69F22CE0A340049F1B2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39AF69122CE0A340049F1B2 /* String.swift */; };
 		A3AB2AB222D747CA004F8D69 /* BookSeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AB2AB022D747CA004F8D69 /* BookSeatTableViewCell.swift */; };
 		A3AB2AB322D747CA004F8D69 /* BookSeatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3AB2AB122D747CA004F8D69 /* BookSeatTableViewCell.xib */; };
+		A3F8BEA422E5719D00593CE6 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8BEA222E5719D00593CE6 /* LogoutCell.swift */; };
+		A3F8BEA522E5719D00593CE6 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3F8BEA322E5719D00593CE6 /* LogoutCell.xib */; };
+		A3F8BEA922E588C800593CE6 /* BlockUnblockPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8BEA722E588C800593CE6 /* BlockUnblockPopUp.swift */; };
+		A3F8BEAA22E588C800593CE6 /* BlockUnblockPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3F8BEA822E588C800593CE6 /* BlockUnblockPopUp.xib */; };
+		A3F8BEAC22E5BF3A00593CE6 /* GetBuyInsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8BEAB22E5BF3A00593CE6 /* GetBuyInsViewController.swift */; };
+		A3F8BEB022E5CFA800593CE6 /* BuyInsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8BEAE22E5CFA800593CE6 /* BuyInsCell.swift */; };
+		A3F8BEB122E5CFA800593CE6 /* BuyInsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3F8BEAF22E5CFA800593CE6 /* BuyInsCell.xib */; };
+		A3F8BEB422E5D33A00593CE6 /* BuyInsDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8BEB222E5D33A00593CE6 /* BuyInsDetailCell.swift */; };
+		A3F8BEB522E5D33A00593CE6 /* BuyInsDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3F8BEB322E5D33A00593CE6 /* BuyInsDetailCell.xib */; };
 		A3FB977322DEE46A00CE802C /* UsersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FB977122DEE46A00CE802C /* UsersListCell.swift */; };
 		A3FB977422DEE46A00CE802C /* UsersListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3FB977222DEE46A00CE802C /* UsersListCell.xib */; };
 		A3FB977622DF177600CE802C /* GetAllBookingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FB977522DF177600CE802C /* GetAllBookingsModel.swift */; };
@@ -148,6 +157,15 @@
 		A39AF6A122CE0A4D0049F1B2 /* HPS_Admin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HPS_Admin-Bridging-Header.h"; sourceTree = "<group>"; };
 		A3AB2AB022D747CA004F8D69 /* BookSeatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSeatTableViewCell.swift; sourceTree = "<group>"; };
 		A3AB2AB122D747CA004F8D69 /* BookSeatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookSeatTableViewCell.xib; sourceTree = "<group>"; };
+		A3F8BEA222E5719D00593CE6 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
+		A3F8BEA322E5719D00593CE6 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
+		A3F8BEA722E588C800593CE6 /* BlockUnblockPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUnblockPopUp.swift; sourceTree = "<group>"; };
+		A3F8BEA822E588C800593CE6 /* BlockUnblockPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlockUnblockPopUp.xib; sourceTree = "<group>"; };
+		A3F8BEAB22E5BF3A00593CE6 /* GetBuyInsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBuyInsViewController.swift; sourceTree = "<group>"; };
+		A3F8BEAE22E5CFA800593CE6 /* BuyInsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyInsCell.swift; sourceTree = "<group>"; };
+		A3F8BEAF22E5CFA800593CE6 /* BuyInsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyInsCell.xib; sourceTree = "<group>"; };
+		A3F8BEB222E5D33A00593CE6 /* BuyInsDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyInsDetailCell.swift; sourceTree = "<group>"; };
+		A3F8BEB322E5D33A00593CE6 /* BuyInsDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyInsDetailCell.xib; sourceTree = "<group>"; };
 		A3FB977122DEE46A00CE802C /* UsersListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListCell.swift; sourceTree = "<group>"; };
 		A3FB977222DEE46A00CE802C /* UsersListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersListCell.xib; sourceTree = "<group>"; };
 		A3FB977522DF177600CE802C /* GetAllBookingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllBookingsModel.swift; sourceTree = "<group>"; };
@@ -233,6 +251,8 @@
 		A33D766B22D31CC500F0A6DC /* XIBS */ = {
 			isa = PBXGroup;
 			children = (
+				A3F8BEAD22E5CDAF00593CE6 /* Buy In's Cell */,
+				A3F8BEA122E5714500593CE6 /* Logout Cell */,
 				A3FB977022DEE41F00CE802C /* Users List Cell */,
 				A3AB2AAF22D747AB004F8D69 /* Book A Seat Cell */,
 				A354CADF22D73064001CC94A /* Switch Cell */,
@@ -242,6 +262,7 @@
 				A33D766C22D31CCF00F0A6DC /* Event Cell */,
 				A354CAC822D5EDE4001CC94A /* Redeem View */,
 				A31EF39122D8AA650089D223 /* Picker View */,
+				A3F8BEA622E5888D00593CE6 /* Block_UnBlock Pop Up */,
 			);
 			path = XIBS;
 			sourceTree = "<group>";
@@ -344,6 +365,7 @@
 				A354CADD22D70CB0001CC94A /* BookingHistoryVC.swift */,
 				A354CAE622D73FCE001CC94A /* BookASeatViewController.swift */,
 				A3FD061222DC4C720049E061 /* CreateTableAdminVC.swift */,
+				A3F8BEAB22E5BF3A00593CE6 /* GetBuyInsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -429,6 +451,35 @@
 			path = "Book A Seat Cell";
 			sourceTree = "<group>";
 		};
+		A3F8BEA122E5714500593CE6 /* Logout Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A3F8BEA222E5719D00593CE6 /* LogoutCell.swift */,
+				A3F8BEA322E5719D00593CE6 /* LogoutCell.xib */,
+			);
+			path = "Logout Cell";
+			sourceTree = "<group>";
+		};
+		A3F8BEA622E5888D00593CE6 /* Block_UnBlock Pop Up */ = {
+			isa = PBXGroup;
+			children = (
+				A3F8BEA722E588C800593CE6 /* BlockUnblockPopUp.swift */,
+				A3F8BEA822E588C800593CE6 /* BlockUnblockPopUp.xib */,
+			);
+			path = "Block_UnBlock Pop Up";
+			sourceTree = "<group>";
+		};
+		A3F8BEAD22E5CDAF00593CE6 /* Buy In's Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A3F8BEAE22E5CFA800593CE6 /* BuyInsCell.swift */,
+				A3F8BEAF22E5CFA800593CE6 /* BuyInsCell.xib */,
+				A3F8BEB222E5D33A00593CE6 /* BuyInsDetailCell.swift */,
+				A3F8BEB322E5D33A00593CE6 /* BuyInsDetailCell.xib */,
+			);
+			path = "Buy In's Cell";
+			sourceTree = "<group>";
+		};
 		A3FB977022DEE41F00CE802C /* Users List Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,12 +561,14 @@
 				A354CAE322D730C7001CC94A /* SwitchTableViewCell.xib in Resources */,
 				A354CADA22D700D3001CC94A /* AdminProfileCell.xib in Resources */,
 				A354CAD122D61342001CC94A /* TAdminCell.xib in Resources */,
+				A3F8BEAA22E588C800593CE6 /* BlockUnblockPopUp.xib in Resources */,
 				A33D765022CE0F4E00F0A6DC /* Lato-BlackItalic.ttf in Resources */,
 				A33D765422CE0F4E00F0A6DC /* Lato-Medium.ttf in Resources */,
 				A39AF66E22CE09A60049F1B2 /* LaunchScreen.storyboard in Resources */,
 				A33D765122CE0F4E00F0A6DC /* Lato-Semibold.ttf in Resources */,
 				A33D764D22CE0F4E00F0A6DC /* Lato-Bold.ttf in Resources */,
 				A3AB2AB322D747CA004F8D69 /* BookSeatTableViewCell.xib in Resources */,
+				A3F8BEB522E5D33A00593CE6 /* BuyInsDetailCell.xib in Resources */,
 				A31EF39522D8AA650089D223 /* PickerView.xib in Resources */,
 				A32981D322D35A7F0023EA9F /* UsersCell.xib in Resources */,
 				A3FB977422DEE46A00CE802C /* UsersListCell.xib in Resources */,
@@ -523,12 +576,14 @@
 				A33D765322CE0F4E00F0A6DC /* Lato-BoldItalic.ttf in Resources */,
 				A354CAD522D622B1001CC94A /* AddTAdminCell.xib in Resources */,
 				A39AF66B22CE09A60049F1B2 /* Assets.xcassets in Resources */,
+				A3F8BEA522E5719D00593CE6 /* LogoutCell.xib in Resources */,
 				A33D764C22CE0F4E00F0A6DC /* Lato-Italic.ttf in Resources */,
 				A33D764F22CE0F4E00F0A6DC /* Lato-Regular.ttf in Resources */,
 				A354CACC22D5EE01001CC94A /* RedeemView.xib in Resources */,
 				A39AF66922CE09A60049F1B2 /* Main.storyboard in Resources */,
 				A33D764E22CE0F4E00F0A6DC /* Lato-SemiboldItalic.ttf in Resources */,
 				A33D765222CE0F4E00F0A6DC /* Lato-MediumItalic.ttf in Resources */,
+				A3F8BEB122E5CFA800593CE6 /* BuyInsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,8 +662,10 @@
 				A39AF67A22CE09F50049F1B2 /* AppDelegate.swift in Sources */,
 				A354CADE22D70CB0001CC94A /* BookingHistoryVC.swift in Sources */,
 				A354CADC22D705FF001CC94A /* AddEventViewController.swift in Sources */,
+				A3F8BEB022E5CFA800593CE6 /* BuyInsCell.swift in Sources */,
 				A354CAE522D73364001CC94A /* SliderToOpenView.swift in Sources */,
 				A39AF69B22CE0A340049F1B2 /* Constants.swift in Sources */,
+				A3F8BEA922E588C800593CE6 /* BlockUnblockPopUp.swift in Sources */,
 				A3AB2AB222D747CA004F8D69 /* BookSeatTableViewCell.swift in Sources */,
 				A354CAD422D622B1001CC94A /* AddTAdminCell.swift in Sources */,
 				A3FB977322DEE46A00CE802C /* UsersListCell.swift in Sources */,
@@ -622,6 +679,7 @@
 				A33D765822CE211C00F0A6DC /* AdminLoginModel.swift in Sources */,
 				A39AF67922CE09F50049F1B2 /* ViewController.swift in Sources */,
 				A354CAD022D61342001CC94A /* TAdminCell.swift in Sources */,
+				A3F8BEAC22E5BF3A00593CE6 /* GetBuyInsViewController.swift in Sources */,
 				A3FD061522DD9E790049E061 /* AdminProfileModel.swift in Sources */,
 				A33D767422D348E700F0A6DC /* EventsViewController.swift in Sources */,
 				A33D765A22CE252100F0A6DC /* TAdminLoginModel.swift in Sources */,
@@ -630,6 +688,7 @@
 				A39AF69822CE0A340049F1B2 /* UIViewController+MJPopupViewController.m in Sources */,
 				A3FB977622DF177600CE802C /* GetAllBookingsModel.swift in Sources */,
 				A39AF69E22CE0A340049F1B2 /* ExtensionClass.swift in Sources */,
+				A3F8BEB422E5D33A00593CE6 /* BuyInsDetailCell.swift in Sources */,
 				A354CACB22D5EE01001CC94A /* RedeemView.swift in Sources */,
 				A33D765C22CF1BD500F0A6DC /* TabBarController.swift in Sources */,
 				A354CAE222D730C7001CC94A /* SwitchTableViewCell.swift in Sources */,
@@ -645,6 +704,7 @@
 				A3FC1C9B22D867CA00719561 /* EventsListModel.swift in Sources */,
 				A33D767622D3495F00F0A6DC /* SettingsViewController.swift in Sources */,
 				A32981D222D35A7F0023EA9F /* UsersCell.swift in Sources */,
+				A3F8BEA422E5719D00593CE6 /* LogoutCell.swift in Sources */,
 				A32981D722D5C4B20023EA9F /* UserDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

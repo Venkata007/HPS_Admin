@@ -1,19 +1,18 @@
 //
-//  BookingHistoryVC.swift
+//  GetBuyInsViewController.swift
 //  HPS_Admin
 //
-//  Created by Vamsi on 11/07/19.
+//  Created by Vamsi on 22/07/19.
 //  Copyright © 2019 iOSDevelopers. All rights reserved.
 //
 
 import UIKit
 import EZSwiftExtensions
 
-class BookingHistoryVC: UIViewController {
+class GetBuyInsViewController: UIViewController {
 
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var statusImgView: UIImageView!
     @IBOutlet weak var coinsLbl: UILabel!
@@ -28,40 +27,22 @@ class BookingHistoryVC: UIViewController {
     @IBOutlet weak var bookBtn: UIButton!
     @IBOutlet weak var noOFUsersLbl: UILabel!
     @IBOutlet weak var bookStsLbl: UILabel!
-    @IBOutlet var popUpImgs: [UIImageView]!
-    @IBOutlet weak var blockSeatsView: UIView!
-    @IBOutlet var popUpLbls: [UILabel]!
-    @IBOutlet weak var popUpView: UIView!
-    @IBOutlet weak var blockSeatsViewHeight: NSLayoutConstraint!
-    @IBOutlet var popUpBtns: [UIButton]!
+    @IBOutlet weak var addBuyInsBtn: UIButton!
+    @IBOutlet weak var cashOutBtn: UIButton!
     var selectedEvent : EventsData!
-    
+    var selectedUser : GetAllBookings!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        NotificationCenter.default.addObserver(self, selector: #selector(UserDetailsViewController.methodOfReceivedNotification(notification:)), name: Notification.Name("CloseClicked"), object: nil)
-        tableView.register(UINib(nibName: XIBNames.UsersListCell, bundle: nil), forCellReuseIdentifier: XIBNames.UsersListCell)
-        tableView.register(UINib(nibName: XIBNames.SwitchTableViewCell, bundle: nil), forCellReuseIdentifier: XIBNames.SwitchTableViewCell)
+        tableView.register(UINib(nibName: XIBNames.BuyInsCell, bundle: nil), forCellReuseIdentifier: XIBNames.BuyInsCell)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         self.updateUI()
     }
-    @objc func methodOfReceivedNotification(notification: Notification){
-        self.dismissPopupViewControllerWithanimationType(MJPopupViewAnimationSlideTopTop)
-    }
     //MARK:- Update UI
     func updateUI(){
-        self.popUpView.isHidden = true
-        for lbl in popUpLbls{
-            TheGlobalPoolManager.cornerAndBorder(lbl, cornerRadius: 5, borderWidth: 0, borderColor: .clear)
-        }
-        for imgView in popUpImgs{
-            TheGlobalPoolManager.cornerAndBorder(imgView, cornerRadius: imgView.h / 2, borderWidth: 0, borderColor: .clear)
-           imgView.image = imgView.image?.imageWithInset(insets: UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8))
-        }
-        self.editBtn.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : editBtn.h / 2)
         ez.runThisInMainThread {
             TheGlobalPoolManager.cornerAndBorder(self.viewInView, cornerRadius: 0, borderWidth: 2, borderColor: #colorLiteral(red: 0.4745098039, green: 0.9803921569, blue: 1, alpha: 0.6032748288))
             TheGlobalPoolManager.cornerRadiusForParticularCornerr(self.viewInView, corners: [.bottomLeft,.bottomRight], size: CGSize.init(width: 5, height: 0))
@@ -71,12 +52,21 @@ class BookingHistoryVC: UIViewController {
             self.eventNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.name!)\n", attr2Text: data.eventId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
             self.coinsLbl.text = "\(data.eventRewardPoints!.toString)\n points"
             self.noOFUsersLbl.text = "\(data.seats.booked!.toString) users"
-            if data.seats.available! > 0 {
-                self.blockSeatsViewHeight.constant = 40
-                self.blockSeatsView.isHidden = false
+            if data.eventStatus! == "running"{
+                if self.selectedUser.status == "confirmed"{
+                    self.addBuyInsBtn.isHidden = false
+                    self.cashOutBtn.isEnabled = false
+                    self.cashOutBtn.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                }else if self.selectedUser.status == "playing"{
+                    self.addBuyInsBtn.isHidden = false
+                    self.cashOutBtn.isHidden = false
+                }else{
+                    self.addBuyInsBtn.isHidden = true
+                    self.cashOutBtn.isHidden = true
+                }
             }else{
-                self.blockSeatsViewHeight.constant = 0
-                self.blockSeatsView.isHidden = true
+                self.addBuyInsBtn.isHidden = true
+                self.cashOutBtn.isHidden = true
             }
             switch data.eventStatus! {
             case "created":
@@ -118,15 +108,10 @@ class BookingHistoryVC: UIViewController {
             default:
                 break
             }
-            ModelClassManager.getAllBookingsApiHitting(self, eventID: data.eventId!) { (success, response) -> (Void) in
-                if success{
-                    self.tableView.reloadData()
-                }
-            }
         }
     }
     @objc func switchChanged(_ sender : UISwitch){
-         if let data = self.selectedEvent{
+        if let data = self.selectedEvent{
             if data.bookingStatus == OPEN{
                 ModelClassManager.changeEventStatuslApiHitting(data.eventId!, bookingStatus: CLOSED, viewCon: self) { (success, response) -> (Void) in
                     if success{
@@ -138,7 +123,8 @@ class BookingHistoryVC: UIViewController {
                     }
                 }
             }else{
-                ModelClassManager.changeEventStatuslApiHitting(data.eventId!, bookingStatus: OPEN, viewCon: self) { (success, response) -> (Void) in
+                ModelClassManager.changeEventStatuslApiHitting(data.eventId!, bookingStatus: OPEN, viewCon: self) { (success,
+                    response) -> (Void) in
                     if success{
                         ModelClassManager.getAllEventsApiHitting(self) { (success, response) -> (Void) in
                             if success{
@@ -151,96 +137,58 @@ class BookingHistoryVC: UIViewController {
         }
     }
     //MARK:- IB Action Outlets
+    @IBAction func addBuyInsBtn(_ sender: UIButton) {
+    }
+    @IBAction func cashOutBtn(_ sender: UIButton) {
+    }
     @IBAction func backBtn(_ sender: UIButton) {
         ez.topMostVC?.dismissVC(completion: nil)
     }
-    @IBAction func editBtn(_ sender: UIButton) {
-        if sender.tag == 0{
-            sender.setImage(#imageLiteral(resourceName: "Close"), for: .normal)
-            self.popUpView.isHidden = false
-            sender.tag = 1
-        }else{
-            sender.setImage(#imageLiteral(resourceName: "Pencil"), for: .normal)
-            self.popUpView.isHidden = true
-            sender.tag = 0
-        }
-    }
-    @IBAction func popUpBtns(_ sender: UIButton) {
-        for btn in popUpBtns{
-            if btn == sender{
-                if btn.tag == 0{
-                    self.popUpView.isHidden = true
-                    self.editBtn.tag = 0
-                    self.editBtn.setImage(#imageLiteral(resourceName: "Pencil"), for: .normal)
-                    if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BookASeatViewController) as? BookASeatViewController{
-                        viewCon.hidesBottomBarWhenPushed = true
-                        viewCon.selectedEvent = self.selectedEvent
-                        ez.topMostVC?.presentVC(viewCon)
-                    }
-                }else if btn.tag == 1{
-                    self.popUpView.isHidden = true
-                    self.blockUnblockPopUpView(false)
-                    self.editBtn.tag = 0
-                    self.editBtn.setImage(#imageLiteral(resourceName: "Pencil"), for: .normal)
-                }else{
-                    self.popUpView.isHidden = true
-                    self.blockUnblockPopUpView(true)
-                    self.editBtn.tag = 0
-                    self.editBtn.setImage(#imageLiteral(resourceName: "Pencil"), for: .normal)
-                }
-            }
-        }
-    }
 }
-extension BookingHistoryVC : UITableViewDelegate,UITableViewDataSource{
+extension GetBuyInsViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return ModelClassManager.getAllBookingsModel == nil ? 0 : ModelClassManager.getAllBookingsModel.bookings.count + 1
+        return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        if (ModelClassManager.getAllBookingsModel.bookings.count) == indexPath.row{
-             let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.SwitchTableViewCell) as! SwitchTableViewCell
-            return cell
-        }
-        let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.UsersListCell) as! UsersListCell
-        let data = ModelClassManager.getAllBookingsModel.bookings[indexPath.row]
+        let data = self.selectedUser!
+        let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.BuyInsCell) as! BuyInsCell
         cell.rewardPointsLbl.text = "\(data.userEventRewardPoints!.toString)\n points"
-        cell.bookingIDLbl.text = data.bookingId!
-        cell.userNameLbl.text = data.userName!
+        cell.bookingIDLbl.text = "\(data.userName!)\n \(data.bookingId!)"
         if data.status == "confirmed"{
             cell.dateLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.userJoinsAt!)
         }else{
             cell.dateLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.userJoinedAt!)
         }
         cell.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "₹   \(data.balance!.toString)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
-        if ((data.status == "playing") && (data.status == "completed")){
-            cell.buyInsLbl.isHidden = false
-            cell.buyInsLbl.text = "\(data.totalBuyIns!) Buy In's & \(data.cashout!) Cash Out"
-        }else{
-            cell.buyInsLbl.isHidden = true
-        }
+        cell.collectionView.delegate = self
+        cell.collectionView.dataSource = self
+        cell.collectionView.reloadData()
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (ModelClassManager.getAllBookingsModel.bookings.count) == indexPath.row {
-            return 80
+        if self.selectedUser.buyIns.count <= 2{
+            return 150
         }
-        return 150
+        return CGFloat(100 +  (self.selectedUser.buyIns.count * 25))
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.GetBuyInsViewController) as? GetBuyInsViewController{
-            viewCon.hidesBottomBarWhenPushed = true
-            viewCon.selectedEvent = self.selectedEvent
-            viewCon.selectedUser = ModelClassManager.getAllBookingsModel.bookings[indexPath.row]
-            ez.topMostVC?.presentVC(viewCon)
-        }
+        
     }
 }
-extension BookingHistoryVC{
-    //MARK: -  BlockUnblock Pop Up View
-    func blockUnblockPopUpView(_ value : Bool){
-        let viewCon = BlockUnblockPopUp(nibName: "BlockUnblockPopUp", bundle: nil)
-        viewCon.isBlockBtnClicked = value
-        viewCon.selectedEvent = self.selectedEvent
-        self.presentPopupViewController(viewCon, animationType: MJPopupViewAnimationFade)
+//MARK:- Collection View Delegate Methods
+extension GetBuyInsViewController : UICollectionViewDataSource,UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.selectedUser.buyIns.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: XIBNames.BuyInsDetailCell, for: indexPath as IndexPath) as! BuyInsDetailCell
+        cell.lbl1.text = TheGlobalPoolManager.getFormattedDate2(string: self.selectedUser.buyIns[indexPath.row].createdOn!)
+        cell.lbl2.text = "₹" + self.selectedUser.buyIns[indexPath.row].amount!.toString
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 25)
     }
 }

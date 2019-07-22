@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="285" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4T-Qp-yI9">
-                                        <rect key="frame" x="86" y="5" width="113" height="30.5"/>
+                                        <rect key="frame" x="86" y="4.5" width="113" height="31.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Nightlife Party">
                                                 <attributes>
@@ -61,7 +61,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11th Tue Jul 12:00pm" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Bo-OZ-2db">
-                                        <rect key="frame" x="207" y="6" width="70" height="28"/>
+                                        <rect key="frame" x="207" y="5.5" width="70" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="Kmu-hq-if4"/>
                                         </constraints>
@@ -77,7 +77,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2112" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7J-2S-zYH">
-                                        <rect key="frame" x="22" y="13" width="27" height="14"/>
+                                        <rect key="frame" x="22" y="13" width="28" height="14.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -109,13 +109,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance 50,000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yc-qL-fJC">
-                                        <rect key="frame" x="216.5" y="35" width="43.5" height="28"/>
+                                        <rect key="frame" x="217.5" y="34.5" width="41.5" height="29"/>
                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ze7-da-h1h">
-                                        <rect key="frame" x="38" y="47.5" width="69" height="12"/>
+                                        <rect key="frame" x="40.5" y="47.5" width="66.5" height="12"/>
                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -147,7 +147,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9/10 Seats  Available" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpB-OU-EVR">
-                                                                <rect key="frame" x="30" y="9.5" width="49.5" height="23.5"/>
+                                                                <rect key="frame" x="30" y="9" width="49.5" height="24"/>
                                                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="10"/>
                                                                 <color key="textColor" red="0.78823529411764703" green="0.78823529411764703" blue="0.78823529411764703" alpha="0.60327482880000005" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -173,7 +173,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2/10 Seats  Booked" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzq-Iu-bOA">
-                                                                <rect key="frame" x="30" y="9.5" width="49" height="23.5"/>
+                                                                <rect key="frame" x="30" y="9" width="49" height="24"/>
                                                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="10"/>
                                                                 <color key="textColor" red="0.78823529411764703" green="0.78823529411764703" blue="0.78823529411764703" alpha="0.60327482880000005" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -199,7 +199,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4/10 Seats  Blocked" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8l8-0T-80x">
-                                                                <rect key="frame" x="30" y="9.5" width="49.5" height="23.5"/>
+                                                                <rect key="frame" x="30" y="9" width="49.5" height="24"/>
                                                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="10"/>
                                                                 <color key="textColor" red="0.78823529411764703" green="0.78823529411764703" blue="0.78823529411764703" alpha="0.60327482880000005" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -243,8 +243,14 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 Users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8H-25-MY5">
-                                        <rect key="frame" x="67" y="15.5" width="45" height="15.5"/>
+                                        <rect key="frame" x="67" y="15" width="43.5" height="16"/>
                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Events : 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1B-Dp-wTg">
+                                        <rect key="frame" x="10" y="38.5" width="163" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -252,6 +258,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="kC3-13-CF5" firstAttribute="centerX" secondItem="vHB-mU-obx" secondAttribute="centerX" id="0MO-gr-jGo"/>
+                                    <constraint firstItem="w1B-Dp-wTg" firstAttribute="leading" secondItem="vHB-mU-obx" secondAttribute="leading" constant="10" id="0WY-YL-xtH"/>
                                     <constraint firstItem="QFb-XB-Jei" firstAttribute="top" secondItem="2Nn-Yi-0Nj" secondAttribute="top" id="1ZY-X8-wz3"/>
                                     <constraint firstItem="C8H-25-MY5" firstAttribute="leading" secondItem="oj3-ue-5xr" secondAttribute="trailing" constant="8" id="2uV-eF-GIs"/>
                                     <constraint firstItem="kC3-13-CF5" firstAttribute="leading" secondItem="Ze7-da-h1h" secondAttribute="trailing" constant="10" id="3j9-bb-7XR"/>
@@ -262,12 +269,14 @@
                                     <constraint firstAttribute="trailing" secondItem="2Nn-Yi-0Nj" secondAttribute="trailing" id="FtI-ca-J5j"/>
                                     <constraint firstAttribute="trailing" secondItem="tx8-ea-vi8" secondAttribute="trailing" constant="10" id="G71-iF-Dbf"/>
                                     <constraint firstItem="tx8-ea-vi8" firstAttribute="leading" secondItem="vHB-mU-obx" secondAttribute="leading" constant="10" id="KvI-6g-n7l"/>
+                                    <constraint firstItem="w1B-Dp-wTg" firstAttribute="centerY" secondItem="QFb-XB-Jei" secondAttribute="centerY" id="Mbj-kM-wxO"/>
                                     <constraint firstItem="C8H-25-MY5" firstAttribute="centerY" secondItem="oj3-ue-5xr" secondAttribute="centerY" id="N7j-Cy-k8D"/>
                                     <constraint firstItem="tx8-ea-vi8" firstAttribute="top" secondItem="2Nn-Yi-0Nj" secondAttribute="bottom" constant="10" id="Obe-yt-CrE"/>
                                     <constraint firstAttribute="trailing" secondItem="Kkx-08-fpY" secondAttribute="trailing" constant="10" id="RHc-rV-wgo"/>
                                     <constraint firstItem="QFb-XB-Jei" firstAttribute="leading" secondItem="2Nn-Yi-0Nj" secondAttribute="leading" id="STP-At-oKc"/>
                                     <constraint firstItem="Kkx-08-fpY" firstAttribute="leading" secondItem="vHB-mU-obx" secondAttribute="leading" constant="10" id="VlS-Xe-dg0"/>
                                     <constraint firstItem="6yc-qL-fJC" firstAttribute="centerX" secondItem="2Nn-Yi-0Nj" secondAttribute="centerX" constant="5" id="cyK-RJ-Sch"/>
+                                    <constraint firstItem="2Nn-Yi-0Nj" firstAttribute="leading" secondItem="w1B-Dp-wTg" secondAttribute="trailing" constant="10" id="gUw-qJ-rJv"/>
                                     <constraint firstItem="QFb-XB-Jei" firstAttribute="bottom" secondItem="2Nn-Yi-0Nj" secondAttribute="bottom" id="hbv-1a-O3u"/>
                                     <constraint firstItem="oj3-ue-5xr" firstAttribute="top" secondItem="vHB-mU-obx" secondAttribute="top" constant="8" id="kI3-S9-DBr"/>
                                     <constraint firstAttribute="bottom" secondItem="Kkx-08-fpY" secondAttribute="bottom" constant="5" id="vH4-Wr-ZyJ"/>
@@ -318,10 +327,13 @@
                 <outlet property="lbl1" destination="HpB-OU-EVR" id="4CV-vh-nuW"/>
                 <outlet property="lbl2" destination="Lzq-Iu-bOA" id="kwn-ap-7md"/>
                 <outlet property="lbl3" destination="8l8-0T-80x" id="vab-xG-M2N"/>
+                <outlet property="lbl4" destination="w1B-Dp-wTg" id="arN-G3-0r5"/>
                 <outlet property="noOFUsersLbl" destination="C8H-25-MY5" id="MBP-4C-ft5"/>
                 <outlet property="statusImgView" destination="IxG-u2-lIT" id="jxm-62-gK4"/>
                 <outlet property="switch" destination="kC3-13-CF5" id="6eL-Sw-RCd"/>
                 <outlet property="timeLbl" destination="8Bo-OZ-2db" id="THZ-4B-u9H"/>
+                <outlet property="userImgView" destination="oj3-ue-5xr" id="5Sc-gk-Qzs"/>
+                <outlet property="usersLbl" destination="C8H-25-MY5" id="ReF-RY-U1d"/>
                 <outlet property="viewInView" destination="vHB-mU-obx" id="N8B-xI-y0E"/>
             </connections>
             <point key="canvasLocation" x="13" y="47"/>

@@ -8,9 +8,8 @@
 
 import UIKit
 import EZSwiftExtensions
-import PopOverMenu
 
-class UserDetailsViewController: UIViewController,UIAdaptivePresentationControllerDelegate,UIPopoverPresentationControllerDelegate {
+class UserDetailsViewController: UIViewController {
 
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
@@ -24,10 +23,8 @@ class UserDetailsViewController: UIViewController,UIAdaptivePresentationControll
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet var viewsInView: [UIView]!
     @IBOutlet weak var photoIDView: UIView!
-    @IBOutlet weak var menuBtn: UIButton!
+    @IBOutlet weak var redeemBtn: UIButton!
     
-    let popOverViewController = PopOverViewController.instantiate()
-    var optionsArray = ["Redeem","Block"]
     var selectedUser : UsersData!
     
     override func viewDidLoad() {
@@ -50,6 +47,13 @@ class UserDetailsViewController: UIViewController,UIAdaptivePresentationControll
         TheGlobalPoolManager.cornerAndBorder(self.profileImgView, cornerRadius:5, borderWidth: 0.5, borderColor: #colorLiteral(red: 0.8781132102, green: 0.8862884641, blue: 0.8903418183, alpha: 1))
         TheGlobalPoolManager.cornerAndBorder(self.photoIDImgView, cornerRadius:5, borderWidth: 0.5, borderColor: #colorLiteral(red: 0.8781132102, green: 0.8862884641, blue: 0.8903418183, alpha: 1))
         if let data  = selectedUser{
+            if data.status == "approved"{
+                self.redeemBtn.isHidden = false
+                self.approveBtn.setTitle("Block", for: .normal)
+            }else{
+                self.redeemBtn.isHidden = true
+                self.approveBtn.setTitle("Approve", for: .normal)
+            }
             self.nameLbl.text = data.name!
             let imgUrl = NSURL(string:data.profilePicUrl)!
             self.profileImgView.sd_setImage(with: imgUrl as URL, placeholderImage: #imageLiteral(resourceName: "ProfilePlaceholder"), options: .cacheMemoryOnly, completed: nil)
@@ -63,39 +67,51 @@ class UserDetailsViewController: UIViewController,UIAdaptivePresentationControll
             self.photoIDImgView.contentMode = .scaleAspectFit
         }
     }
+    //MARK:- Approve Or Block Api
+    func approveOrBlockApiHitting(_ status : String){
+        TheGlobalPoolManager.showProgress(self.view, title:ToastMessages.Please_Wait)
+        let param = [ ApiParams.UserId: self.selectedUser.userId!,
+                                ApiParams.NewStatus: status,
+                                ApiParams.CreatedOn: TheGlobalPoolManager.getTodayString(),
+                                ApiParams.CreatedByName: ModelClassManager.adminLoginModel.data.name!,
+                                ApiParams.CreatedByID: ModelClassManager.adminLoginModel.data.id!] as [String : Any]
+        APIServices.patchUrlSession(urlString: ApiURls.CHANGE_USER_STATUS, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
+            TheGlobalPoolManager.hideProgess(self.view)
+            if dataResponse.json.exists(){
+                let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                let status = dict.object(forKey: STATUS) as! String
+                let message = dict.object(forKey: MESSAGE) as! String
+                if status == Constants.SUCCESS{
+                    TheGlobalPoolManager.showToastView(message)
+                    ez.topMostVC?.dismissVC(completion: nil)
+                }else{
+                    TheGlobalPoolManager.showToastView(message)
+                }
+            }
+        }
+    }
     //MARK:- IB Action Outlets
     @IBAction func approveBtn(_ sender: UIButton) {
+        if let data = self.selectedUser{
+            if data.status == "approved"{
+                self.approveOrBlockApiHitting("blocked") 
+            }else{
+                self.approveOrBlockApiHitting("approved")
+            }
+        }
     }
     @IBAction func backBtn(_ sender: UIButton) {
         ez.topMostVC?.dismissVC(completion: nil)
     }
-    @IBAction func menuBtn(_ sender: UIButton) {
-        //POP MENU
-        self.popOverViewController.set(titles: optionsArray)
-        self.popOverViewController.set(separatorStyle: .singleLine)
-        self.popOverViewController.popoverPresentationController?.sourceView = sender
-        self.popOverViewController.popoverPresentationController?.sourceRect = sender.bounds
-        self.popOverViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-        self.popOverViewController.preferredContentSize = CGSize(width: 120, height:self.optionsArray.count * 50)
-        self.popOverViewController.presentationController?.delegate = self
-        self.popOverViewController.completionHandler = { selectRow in
-            if selectRow == 0{
-                self.redeemPopUpView()
-            }
-        }
-        self.present(self.popOverViewController, animated: true, completion: nil)
+    @IBAction func redeemBtn(_ sender: UIButton) {
+        self.redeemPopUpView()
     }
 }
 extension UserDetailsViewController{
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
-    }
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
-    }
     //MARK: -  Redeem Pop Up View
     func redeemPopUpView(){
         let viewCon = RedeemView(nibName: "RedeemView", bundle: nil)
+        viewCon.mobileNumber = self.selectedUser.mobileNumber!
         self.presentPopupViewController(viewCon, animationType: MJPopupViewAnimationFade)
     }
 }

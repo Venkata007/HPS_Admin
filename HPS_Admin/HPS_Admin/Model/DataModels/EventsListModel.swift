@@ -111,6 +111,7 @@ class EventsData{
         startedById = json.1["startedAt"].string ?? ""
         startedAtNum = json.1["startedAtNum"].string ?? ""
         startsAt = json.1["startsAt"].string ?? ""
+        startedAt = json.1["startedAt"].string ?? ""
         totalEventDurationHrs = json.1["totalEventDurationHrs"].int ?? 0
     }
 }

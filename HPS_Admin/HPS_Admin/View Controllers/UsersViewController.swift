@@ -14,7 +14,7 @@ class UsersViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addUserBtn: UIButton!
-    var sections = ["Registered Users","Pending Users","Blocked Users","Approved Users"]
+    var sections = ["Approved Users","Registered Users","Pending Users","New Users","Blocked Users"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +33,6 @@ class UsersViewController: UIViewController {
     }
     //MARK:- Update UI
     func updateUI(){
-        self.addUserBtn.setImage(#imageLiteral(resourceName: "Add").withColor(#colorLiteral(red: 0.9199201465, green: 0.9765976071, blue: 0.9851337075, alpha: 1)), for: .normal)
-        self.addUserBtn.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : addUserBtn.h / 2)
         tableView.tableFooterView = UIView()
     }
     //MARK:- Pushing To Add User VC
@@ -67,13 +65,15 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource{
         let data = ModelClassManager.usersListModel
         switch section {
         case 0:
-            return data?.registeredUsers.count == 0 ? 0 : 30
-        case 1:
-            return data?.pendingUsers.count == 0 ? 0 : 30
-        case 2:
-            return data?.blockedUsers.count == 0 ? 0 : 30
-        case 3:
             return data?.approvedUsers.count == 0 ? 0 : 30
+        case 1:
+            return data?.registeredUsers.count == 0 ? 0 : 30
+        case 2:
+            return data?.pendingUsers.count == 0 ? 0 : 30
+        case 3:
+            return data?.newUsers.count == 0 ? 0 : 30
+        case 4:
+            return data?.blockedUsers.count == 0 ? 0 : 30
         default:
             break
         }
@@ -82,13 +82,15 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         switch section {
         case 0:
-            return ModelClassManager.usersListModel == nil ? 0 : ModelClassManager.usersListModel.registeredUsers.count
-        case 1:
-            return ModelClassManager.usersListModel == nil ? 0 : ModelClassManager.usersListModel.pendingUsers.count
-        case 2:
-            return ModelClassManager.usersListModel == nil ? 0 : ModelClassManager.usersListModel.blockedUsers.count
-        case 3:
             return ModelClassManager.usersListModel == nil ? 0 : ModelClassManager.usersListModel.approvedUsers.count
+        case 1:
+            return ModelClassManager.usersListModel == nil ? 0 : ModelClassManager.usersListModel.registeredUsers.count
+        case 2:
+            return ModelClassManager.usersListModel == nil ? 0 : ModelClassManager.usersListModel.pendingUsers.count
+        case 3:
+            return ModelClassManager.usersListModel == nil ? 0 : ModelClassManager.usersListModel.newUsers.count
+        case 4:
+            return ModelClassManager.usersListModel == nil ? 0 : ModelClassManager.usersListModel.blockedUsers.count
         default:
             break
         }
@@ -96,21 +98,31 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         var user : UsersData!
+        let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.UsersCell) as! UsersCell
         switch indexPath.section {
         case 0:
-             user =  ModelClassManager.usersListModel.registeredUsers[indexPath.row]
+             user =  ModelClassManager.usersListModel.approvedUsers[indexPath.row]
+             cell.referalSendBtn.isHidden = true
+             cell.referalCodeTitleLbl.isHidden = true
         case 1:
-            user =  ModelClassManager.usersListModel.pendingUsers[indexPath.row]
+            user =  ModelClassManager.usersListModel.registeredUsers[indexPath.row]
+            cell.referalSendBtn.isHidden = true
+            cell.referalCodeTitleLbl.isHidden = true
         case 2:
-            user =  ModelClassManager.usersListModel.blockedUsers[indexPath.row]
+            user =  ModelClassManager.usersListModel.pendingUsers[indexPath.row]
+            cell.referalSendBtn.isHidden = true
+            cell.referalCodeTitleLbl.isHidden = true
         case 3:
-            user =  ModelClassManager.usersListModel.approvedUsers[indexPath.row]
+            user =  ModelClassManager.usersListModel.newUsers[indexPath.row]
+            cell.referalSendBtn.isHidden = false
+            cell.referalCodeTitleLbl.isHidden = false
+        case 4:
+            user =  ModelClassManager.usersListModel.blockedUsers[indexPath.row]
+            cell.referalSendBtn.isHidden = true
+            cell.referalCodeTitleLbl.isHidden = true
         default:
             break
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.UsersCell) as! UsersCell
-        cell.referalSendBtn.isHidden = true
-        cell.referalCodeTitleLbl.isHidden = true
         cell.nameLbl.text = user.name!
         cell.numberLbl.text =  user.mobileNumber!
         let imgUrl = NSURL(string:user.profilePicUrl)!
@@ -124,13 +136,15 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource{
         if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.UserDetailsViewController) as? UserDetailsViewController{
             viewCon.hidesBottomBarWhenPushed = true
             if indexPath.section == 0{
-                viewCon.selectedUser = ModelClassManager.usersListModel.registeredUsers[indexPath.row]
-            }else if indexPath.section == 1{
-                viewCon.selectedUser = ModelClassManager.usersListModel.pendingUsers[indexPath.row]
-            }else if indexPath.section == 2{
-                viewCon.selectedUser = ModelClassManager.usersListModel.blockedUsers[indexPath.row]
-            }else if indexPath.section == 3{
                 viewCon.selectedUser = ModelClassManager.usersListModel.approvedUsers[indexPath.row]
+            }else if indexPath.section == 1{
+                viewCon.selectedUser = ModelClassManager.usersListModel.registeredUsers[indexPath.row]
+            }else if indexPath.section == 2{
+                viewCon.selectedUser = ModelClassManager.usersListModel.pendingUsers[indexPath.row]
+            }else if indexPath.section == 3{
+                viewCon.selectedUser = ModelClassManager.usersListModel.newUsers[indexPath.row]
+            }else if indexPath.section == 4{
+                viewCon.selectedUser = ModelClassManager.usersListModel.blockedUsers[indexPath.row]
             }
             ez.topMostVC?.presentVC(viewCon) 
         }

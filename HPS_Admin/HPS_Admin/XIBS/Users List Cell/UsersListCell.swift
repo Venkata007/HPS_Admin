@@ -18,8 +18,10 @@ class UsersListCell: UITableViewCell {
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var balanceLbl: UILabel!
     @IBOutlet weak var buyInsLbl: UILabel!
-        @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var viewInView: UIView!
+    @IBOutlet weak var coinsImgView: UIImageView!
+    @IBOutlet weak var userImgView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

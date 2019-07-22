@@ -25,8 +25,6 @@ class EventsViewController: UIViewController {
     }
     //MARK:- Update UI
     func updateUI(){
-        self.addEventBtn.setImage(#imageLiteral(resourceName: "Add").withColor(#colorLiteral(red: 0.9199201465, green: 0.9765976071, blue: 0.9851337075, alpha: 1)), for: .normal)
-        self.addEventBtn.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : addEventBtn.h / 2)
         tableView.tableFooterView = UIView()
         ModelClassManager.getAllEventsApiHitting(self) { (success, response) -> (Void) in
             if success{

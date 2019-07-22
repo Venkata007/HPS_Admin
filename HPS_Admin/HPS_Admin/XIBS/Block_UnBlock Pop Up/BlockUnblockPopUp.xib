@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BlockUnblockPopUp" customModule="HPS_Admin" customModuleProvider="target">
+            <connections>
+                <outlet property="addBtn" destination="7Dv-18-mIn" id="bYm-SC-eR1"/>
+                <outlet property="blockUnBlockBtn" destination="Lzz-Tl-kwT" id="2Do-Gb-UKZ"/>
+                <outlet property="cancelBtn" destination="IRH-p1-t7c" id="aae-iU-QPE"/>
+                <outlet property="noOfSeatsTF" destination="2LZ-GC-uR3" id="W9E-cr-V7U"/>
+                <outlet property="reduceBtn" destination="Tnj-YC-fHT" id="qkY-Ui-5sW"/>
+                <outlet property="titleLbl" destination="HYA-xt-EIA" id="BXk-1J-dr1"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="270" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to Block Seats ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYA-xt-EIA">
+                    <rect key="frame" x="58.5" y="10" width="153.5" height="20"/>
+                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="16"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sx-PB-qUp">
+                    <rect key="frame" x="30" y="35" width="210" height="1"/>
+                    <color key="backgroundColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="i5M-bx-swK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2LZ-GC-uR3">
+                    <rect key="frame" x="100" y="66" width="70" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="eMT-Kd-32h"/>
+                        <constraint firstAttribute="width" constant="70" id="pb5-Pl-PSJ"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="17"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Of Seats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFm-q6-7bx">
+                    <rect key="frame" x="103" y="46.5" width="64" height="14.5"/>
+                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="12"/>
+                    <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dv-18-mIn">
+                    <rect key="frame" x="190" y="66" width="60" height="40"/>
+                    <color key="backgroundColor" red="0.0039215686269999999" green="0.25490196079999999" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="knF-WX-2Au"/>
+                        <constraint firstAttribute="height" constant="40" id="vUy-Xu-IZJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
+                    <state key="normal" title="+1">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="addBtn:" destination="-1" eventType="touchUpInside" id="dJ2-WT-TJa"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tnj-YC-fHT">
+                    <rect key="frame" x="20" y="66" width="60" height="40"/>
+                    <color key="backgroundColor" red="0.0039215686269999999" green="0.25490196079999999" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="eUJ-NF-GNK"/>
+                        <constraint firstAttribute="height" constant="40" id="lv1-ga-ocC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
+                    <state key="normal" title="-1">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="reduceBtn:" destination="-1" eventType="touchUpInside" id="xOK-oO-PDS"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRH-p1-t7c">
+                    <rect key="frame" x="20" y="141" width="90" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="18J-zW-vVW"/>
+                        <constraint firstAttribute="width" constant="90" id="C7R-kx-0ph"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="16"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" red="0.047058823530000002" green="0.71372549019999998" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelBtn:" destination="-1" eventType="touchUpInside" id="NLX-mN-xCV"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzz-Tl-kwT">
+                    <rect key="frame" x="160" y="141" width="90" height="40"/>
+                    <color key="backgroundColor" red="0.047058823530000002" green="0.71372549019999998" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="90" id="1vc-Kt-R0t"/>
+                        <constraint firstAttribute="height" constant="40" id="mIn-gc-u6e"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="16"/>
+                    <state key="normal" title="Unblock">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="blockUnBlockBtn:" destination="-1" eventType="touchUpInside" id="yme-gs-Dj3"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="2LZ-GC-uR3" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="1v7-DJ-JIL"/>
+                <constraint firstItem="IRH-p1-t7c" firstAttribute="leading" secondItem="Tnj-YC-fHT" secondAttribute="leading" id="2xU-H6-rll"/>
+                <constraint firstItem="7Dv-18-mIn" firstAttribute="centerY" secondItem="2LZ-GC-uR3" secondAttribute="centerY" id="3Of-GI-B2y"/>
+                <constraint firstItem="Lzz-Tl-kwT" firstAttribute="trailing" secondItem="7Dv-18-mIn" secondAttribute="trailing" id="3bX-kn-eSp"/>
+                <constraint firstItem="2LZ-GC-uR3" firstAttribute="top" secondItem="fFm-q6-7bx" secondAttribute="bottom" constant="5" id="3wG-9L-4QN"/>
+                <constraint firstItem="Tnj-YC-fHT" firstAttribute="centerY" secondItem="2LZ-GC-uR3" secondAttribute="centerY" id="AI0-Up-sPM"/>
+                <constraint firstItem="9Sx-PB-qUp" firstAttribute="top" secondItem="HYA-xt-EIA" secondAttribute="bottom" constant="5" id="Fpe-de-IhK"/>
+                <constraint firstItem="HYA-xt-EIA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="Fpq-Ek-9mS"/>
+                <constraint firstItem="7Dv-18-mIn" firstAttribute="leading" secondItem="2LZ-GC-uR3" secondAttribute="trailing" constant="20" id="JtI-UE-GkE"/>
+                <constraint firstItem="IRH-p1-t7c" firstAttribute="top" secondItem="Tnj-YC-fHT" secondAttribute="bottom" constant="35" id="LbB-zR-xF2"/>
+                <constraint firstItem="2LZ-GC-uR3" firstAttribute="top" secondItem="9Sx-PB-qUp" secondAttribute="bottom" constant="30" id="Sea-Xh-Kxd"/>
+                <constraint firstItem="2LZ-GC-uR3" firstAttribute="leading" secondItem="Tnj-YC-fHT" secondAttribute="trailing" constant="20" id="aD9-hF-jI3"/>
+                <constraint firstItem="HYA-xt-EIA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bNZ-VN-fVr"/>
+                <constraint firstItem="Lzz-Tl-kwT" firstAttribute="centerY" secondItem="IRH-p1-t7c" secondAttribute="centerY" id="lAK-1P-X84"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9Sx-PB-qUp" secondAttribute="trailing" constant="30" id="sZ1-3P-zWp"/>
+                <constraint firstItem="fFm-q6-7bx" firstAttribute="centerX" secondItem="2LZ-GC-uR3" secondAttribute="centerX" id="wep-mN-D2H"/>
+                <constraint firstItem="9Sx-PB-qUp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="zLR-bY-3d2"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="100.8" y="-21.589205397301352"/>
+        </view>
+    </objects>
+</document>

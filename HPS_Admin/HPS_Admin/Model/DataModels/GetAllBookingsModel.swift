@@ -37,6 +37,8 @@ class GetAllBookings{
     var bookingID:String!
     var balance : Int!
     var bookingId : String!
+    var buyIns = [GetAllBuyIns]()
+    var cashoutInfo : CashoutInfo!
     var cashout : Int!
     var createdOn : String!
     var createdOnNum : String!
@@ -61,6 +63,17 @@ class GetAllBookings{
         bookingId = json.0
         balance = json.1["balance"].int ?? 0
         bookingId = json.1["bookingId"].string ?? ""
+        if let dataJson = json.1["buyIns"].dictionary{
+            if !dataJson.isEmpty{
+                buyIns = []
+                for data in dataJson{
+                    buyIns.append(GetAllBuyIns(fromJson: (data.key, data.value)))
+                }
+                buyIns = buyIns.sorted { (data1, data2) -> Bool in
+                    return data1.buyInId < data2.buyInId
+                }
+            }
+        }
         cashout = json.1["cashout"].int ?? 0
         createdOn = json.1["createdOn"].string ?? ""
         createdOnNum = json.1["createdOnNum"].string ?? ""
@@ -82,4 +95,40 @@ class GetAllBookings{
         userPlayedHrs = json.1["userPlayedHrs"].int ?? 0
     }
     
+}
+
+class GetAllBuyIns {
+    
+    var amount : Int!
+    var buyInId : String!
+    var createdById : String!
+    var createdByName : String!
+    var createdOn : String!
+
+    init(fromJson json: (String,JSON)){
+        amount = json.1["amount"].int ?? 0
+        buyInId = json.1["buyInId"].string ?? ""
+        createdById = json.1["createdById"].string ?? ""
+        createdByName = json.1["createdByName"].string ?? ""
+        createdOn = json.1["createdOn"].string ?? ""
+    }
+}
+
+
+class CashoutInfo{
+    
+    var amount : Int!
+    var createdById : String!
+    var createdByName : String!
+    var createdOn : String!
+    
+    init(fromJson json: JSON!){
+        if json.isEmpty{
+            return
+        }
+        amount = json["amount"].int ?? 0
+        createdById = json["createdById"].string ?? ""
+        createdByName = json["createdByName"].string ?? ""
+        createdOn = json["createdOn"].string ?? ""
+    }
 }

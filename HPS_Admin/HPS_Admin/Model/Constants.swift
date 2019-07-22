@@ -43,6 +43,7 @@ public  struct ViewControllerIDs {
     static let BookingHistoryVC                        = "BookingHistoryVC"
     static let BookASeatViewController          = "BookASeatViewController"
     static let CreateTableAdminVC                  = "CreateTableAdminVC"
+    static let GetBuyInsViewController           = "GetBuyInsViewController"
 }
 //MARK : - Device INFO
 public struct DeviceInfo {
@@ -63,6 +64,10 @@ public struct ApiURls{
     static let EVENT_STATUS_API           = "\(SERVER_IP)/changeEventBookingStatus"
     static let GET_ALL_BOOKINGS        = "https://home-poker-squad-hps.firebaseio.com/bookingsTable/.json?auth=\(Auth_Key)"
     static let BOOK_SEATS                       = "\(SERVER_IP)/bookSeats"
+    static let CHANGE_USER_STATUS   = "\(SERVER_IP)/changeUserStatus"
+    static let REDEEM_REWARD_POINTS   = "\(SERVER_IP)/redeemRewardPoints"
+    static let BLOCK_SEATS                           = "\(SERVER_IP)/blockSeat"
+    static let UNBLOCK_SEATS                     = "\(SERVER_IP)/unBlockSeat"
 }
 // MARK : - Toast Messages
 public struct ToastMessages {
@@ -105,6 +110,9 @@ public struct XIBNames{
     static let SwitchTableViewCell                     = "SwitchTableViewCell"
     static let BookSeatTableViewCell               = "BookSeatTableViewCell"
     static let UsersListCell                                   = "UsersListCell"
+    static let LogoutCell                                      = "LogoutCell"
+    static let BuyInsCell                                       = "BuyInsCell"
+    static let BuyInsDetailCell                            = "BuyInsDetailCell"
 }
 //MARK:- Api Paramaters
 public struct ApiParams  {
@@ -129,5 +137,12 @@ public struct ApiParams  {
     static let AdminType = "adminType"
     static let EventId = "eventId"
     static let UserIds = "userIds"
+    static let UserId = "userId"
     static let BookFromBlockedSeats = "bookFromBlockedSeats"
+    static let NewStatus = "newStatus"
+    static let EnteredRewardPoints = "enteredRewardPoints"
+    static let EnteredOtpValue = "enteredOtpValue"
+    static let NoOfSeatsRequestedToUnBlock = "noOfSeatsRequestedToUnBlock"
+    static let NoOfSeatsRequestedToBlock = "noOfSeatsRequestedToBlock"
 }
+

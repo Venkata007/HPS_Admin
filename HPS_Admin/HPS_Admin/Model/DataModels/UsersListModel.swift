@@ -19,6 +19,7 @@ class UsersListModel {
     var pendingUsers = [UsersData]()
     var blockedUsers = [UsersData]()
     var approvedUsers = [UsersData]()
+    var newUsers = [UsersData]()
     init(fromJson json: JSON!){
         if json.isEmpty{
             return
@@ -36,6 +37,9 @@ class UsersListModel {
                     return userData.status == "registered"
                 })
                 pendingUsers = users.filter({ (userData) -> Bool in
+                    return userData.status == "pending"
+                })
+                newUsers = users.filter({ (userData) -> Bool in
                     return userData.status == "created"
                 })
                 blockedUsers = users.filter({ (userData) -> Bool in
