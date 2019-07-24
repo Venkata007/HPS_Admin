@@ -75,6 +75,7 @@ public struct ApiURls{
     static let START_EVENT                           = "\(SERVER_IP)/startEvent"
     static let END_EVENT                              = "\(SERVER_IP)/endEvent"
     static let CLOSE_EVENT                          = "\(SERVER_IP)/closeEvent"
+    static let MODIFY_REWARD_POINTS  = "\(SERVER_IP)/changeEventsRewardPointsPerHour"
 }
 // MARK : - Toast Messages
 public struct ToastMessages {
@@ -166,6 +167,8 @@ public struct ApiParams  {
     static let RakeAndTips  = "rakeAndTips"
     static let OtherExpenses = "otherExpenses"
     static let ConfirmStatus = "confirmStatus"
-    static let ValidateAndConfirm = "validateAndConfirm"
+    static let ValidateAndConfirm = "confirmed"
+    static let Adjustments = "adjustments"
+    static let newEventsRewardPointsPerHour = "newEventsRewardPointsPerHour"
+    static let ID = "id"
 }
-

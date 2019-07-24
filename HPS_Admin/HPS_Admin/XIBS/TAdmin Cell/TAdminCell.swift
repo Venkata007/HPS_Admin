@@ -15,11 +15,12 @@ class TAdminCell: UITableViewCell {
     @IBOutlet weak var emailIDLbl: UILabel!
     @IBOutlet weak var mobileNumLbl: UILabel!
     @IBOutlet weak var viewInView: UIView!
+    @IBOutlet weak var deleteBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.viewInView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : 5)
+        TheGlobalPoolManager.cornerAndBorder(self.viewInView, cornerRadius: 5, borderWidth: 1, borderColor: .borderColor)
         TheGlobalPoolManager.cornerAndBorder(self.profileImgView, cornerRadius: 10, borderWidth: 0.5, borderColor: #colorLiteral(red: 0.5411764706, green: 0.5411764706, blue: 0.5411764706, alpha: 1))
     }
 

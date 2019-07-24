@@ -236,14 +236,14 @@
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User" translatesAutoresizingMaskIntoConstraints="NO" id="oj3-ue-5xr">
-                                        <rect key="frame" x="29" y="8" width="30" height="30"/>
+                                        <rect key="frame" x="29" y="8" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Yer-D1-eJk"/>
-                                            <constraint firstAttribute="width" constant="30" id="nFg-Yl-nOW"/>
+                                            <constraint firstAttribute="height" constant="20" id="Yer-D1-eJk"/>
+                                            <constraint firstAttribute="width" constant="20" id="nFg-Yl-nOW"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 Users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8H-25-MY5">
-                                        <rect key="frame" x="67" y="15" width="43.5" height="16"/>
+                                        <rect key="frame" x="57" y="10" width="43.5" height="16"/>
                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>

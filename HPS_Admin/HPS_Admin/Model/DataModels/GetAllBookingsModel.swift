@@ -106,7 +106,7 @@ class GetAllBuyIns {
     var createdOn : String!
 
     init(fromJson json: (String,JSON)){
-        amount = json.1["amount"].intValue
+        amount = json.1["amount"].int ?? 0
         buyInId = json.1["buyInId"].string ?? ""
         createdById = json.1["createdById"].string ?? ""
         createdByName = json.1["createdByName"].string ?? ""

@@ -48,7 +48,7 @@ class AddBuyInsAndCashOutVC: UIViewController {
     func addBuyInsApiHitting(){
         TheGlobalPoolManager.showProgress(self.view, title:ToastMessages.Please_Wait)
         let param = [ ApiParams.BookingId: self.selectedUser.bookingId!,
-                      ApiParams.BuyInValue: self.buyIns_CashOutTF.text!,
+                      ApiParams.BuyInValue: self.buyIns_CashOutTF.text!.toInt() ?? 0,
                       ApiParams.CreatedOn: self.dateTF.text!,
                       ApiParams.CreatedByName: ModelClassManager.adminLoginModel.data.name!,
                       ApiParams.CreatedByID: ModelClassManager.adminLoginModel.data.id!] as [String : Any]
@@ -71,7 +71,7 @@ class AddBuyInsAndCashOutVC: UIViewController {
     func addCashOutApiHitting(){
         TheGlobalPoolManager.showProgress(self.view, title:ToastMessages.Please_Wait)
         let param = [ ApiParams.BookingId: self.selectedUser.bookingID!,
-                      ApiParams.CashoutValue: self.buyIns_CashOutTF.text!,
+                      ApiParams.CashoutValue: self.buyIns_CashOutTF.text!.toInt() ?? 0,
                       ApiParams.CreatedOn: self.dateTF.text!,
                       ApiParams.CreatedByName: ModelClassManager.adminLoginModel.data.name!,
                       ApiParams.CreatedByID: ModelClassManager.adminLoginModel.data.id!] as [String : Any]
@@ -104,6 +104,7 @@ class AddBuyInsAndCashOutVC: UIViewController {
         ez.topMostVC?.dismissVC(completion: nil)
     }
     @IBAction func selectDateBtn(_ sender: UIButton) {
+        self.view.endEditing(true)
         self.datePickerView("Select Date and Time")
     }
 }

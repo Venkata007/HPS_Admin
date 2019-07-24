@@ -120,6 +120,9 @@ extension UIColor{
     static var borderColor:UIColor{
         return #colorLiteral(red: 0.4745098039, green: 0.9803921569, blue: 1, alpha: 0.6032748288)
     }
+    static var yellowColor:UIColor{
+        return #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1)
+    }
 }
 //MARK:- UIFont
 extension UIFont{

@@ -14,10 +14,13 @@ class AdminProfileCell: UITableViewCell {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var emailIDLbl: UILabel!
     @IBOutlet weak var mobileNumLbl: UILabel!
-
+    @IBOutlet weak var rewardsPoints: UILabel!
+    @IBOutlet weak var editBtn: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.editBtn.setImage(#imageLiteral(resourceName: "Edit").withColor(.white), for: .normal)
         TheGlobalPoolManager.cornerAndBorder(self.profileImgView, cornerRadius: 10, borderWidth: 0.5, borderColor: #colorLiteral(red: 0.5411764706, green: 0.5411764706, blue: 0.5411764706, alpha: 1))
     }
 

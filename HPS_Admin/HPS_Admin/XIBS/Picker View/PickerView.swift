@@ -32,7 +32,7 @@ class PickerView: UIView, UIGestureRecognizerDelegate {
     open var showShadow = true //Optional
     open var showCornerRadius = true // Optional
     
-    @IBInspectable var btnFontColour: UIColor = .white {
+    @IBInspectable var btnFontColour: UIColor = #colorLiteral(red: 0.3294117647, green: 0.3294117647, blue: 0.3294117647, alpha: 1) {
         didSet {
             self.updateProperties()
         }
@@ -50,7 +50,7 @@ class PickerView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    @IBInspectable var btnColour: UIColor = .themeColor {
+    @IBInspectable var btnColour: UIColor = #colorLiteral(red: 0.9199201465, green: 0.9765976071, blue: 0.9851337075, alpha: 1){
         didSet {
             self.updateProperties()
         }

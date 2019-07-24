@@ -207,7 +207,7 @@
             </objects>
             <point key="canvasLocation" x="1317.5999999999999" y="126.38680659670166"/>
         </scene>
-        <!--EVENTS-->
+        <!--Events-->
         <scene sceneID="SsE-qg-mWq">
             <objects>
                 <viewController storyboardIdentifier="EventsViewController" id="omq-zJ-iZ1" customClass="EventsViewController" customModule="HPS_Admin" customModuleProvider="target" sceneMemberID="viewController">
@@ -271,7 +271,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5b6-nD-zMd"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="EVENTS" id="RSg-8P-WPJ"/>
+                    <tabBarItem key="tabBarItem" title="Events" id="RSg-8P-WPJ"/>
                     <connections>
                         <outlet property="addEventBtn" destination="g4K-Zp-avb" id="1Kg-i8-5hV"/>
                         <outlet property="tableView" destination="cwM-jD-iNC" id="2li-bF-CEO"/>
@@ -1604,7 +1604,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dOa-px-XBR">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dOa-px-XBR">
                                 <rect key="frame" x="265" y="164" width="80" height="30"/>
                                 <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="16"/>
@@ -1616,7 +1616,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qNI-kk-keZ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qNI-kk-keZ">
                                 <rect key="frame" x="265" y="214" width="80" height="30"/>
                                 <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="16"/>
@@ -1632,8 +1632,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Et-SF-Rvl">
-                                <rect key="frame" x="30" y="275" width="34.5" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Et-SF-Rvl">
+                                <rect key="frame" x="30" y="275" width="44" height="20"/>
                                 <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -3011,11 +3011,11 @@
             </objects>
             <point key="canvasLocation" x="607" y="127"/>
         </scene>
-        <!--USERS-->
+        <!--Users-->
         <scene sceneID="KyN-aq-KIr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="FeZ-75-Uie" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="USERS" image="Users_deactive" selectedImage="Users_active" id="hUk-tI-peC"/>
+                    <tabBarItem key="tabBarItem" title="Users" image="Users_deactive" selectedImage="Users_active" id="hUk-tI-peC"/>
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="18F-nr-8Pt">
@@ -3298,11 +3298,11 @@
             </objects>
             <point key="canvasLocation" x="6508" y="127"/>
         </scene>
-        <!--SETTINGS-->
+        <!--Settings-->
         <scene sceneID="bfW-vs-1lP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Vu5-1A-B1k" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="SETTINGS" image="Settings_deactive" selectedImage="Settings_active" id="ldd-Va-hhP"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings_deactive" selectedImage="Settings_active" id="ldd-Va-hhP"/>
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gts-cY-MOX">

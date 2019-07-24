@@ -41,7 +41,8 @@ class CreateTableAdminVC: UIViewController {
                       ApiParams.MobileNumber: self.mobileNumTF.text!,
                       ApiParams.EmailId: self.emailTF.text!,
                       ApiParams.CreatedOn: TheGlobalPoolManager.getTodayString(),
-                      ApiParams.Password: self.passwordTF.text!] as [String : Any]
+                      ApiParams.Password: self.passwordTF.text!,
+                      ApiParams.DeviceId : TheGlobalPoolManager.instanceIDTokenMessage] as [String : Any]
         APIServices.patchUrlSession(urlString: ApiURls.CREATE_TABLE_ADMIN, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
             TheGlobalPoolManager.hideProgess(self.view)
             if dataResponse.json.exists(){

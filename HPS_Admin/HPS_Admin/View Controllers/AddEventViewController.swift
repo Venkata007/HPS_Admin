@@ -43,7 +43,7 @@ class AddEventViewController: UIViewController {
         let param = [ ApiParams.Name: self.eventNameTF.text!,
                       ApiParams.EventStartTime: self.startTimeTF.text!,
                       ApiParams.EventEndTime: endTime,
-                      ApiParams.EventRewardsPoints: ModelClassManager.adminLoginModel.data.eventsRewardPointsPerHour!,
+                      ApiParams.EventRewardsPoints: ModelClassManager.adminProfileModel.eventsRewardPointsPerHour!,
                       ApiParams.TotalSeatsAvailable: self.provideSeatsTF.text!,
                       ApiParams.BookingStatus: self.eventStatus,
                       ApiParams.CreatedOn: TheGlobalPoolManager.getTodayString(),
@@ -116,8 +116,8 @@ extension AddEventViewController : PickerViewDelegate {
         self.datePicker.datePickerMode = .dateAndTime
         self.datePicker.showBlur = true
         self.datePicker.datePickerStartDate = self.date
-        self.datePicker.btnFontColour = UIColor.white
-        self.datePicker.btnColour = .blueColor
+        self.datePicker.btnFontColour = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.datePicker.btnColour = #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1)
         self.datePicker.showCornerRadius = false
         self.datePicker.delegate = self
         self.datePicker.nameLbl = btnName

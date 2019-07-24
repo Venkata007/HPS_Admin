@@ -13,6 +13,8 @@ class AdminProfileModel{
 	var message : String!
 	var status : String!
 	var tableAdmins : [AdminTableAdmin]!
+    var eventsRewardPointsPerHour : Int!
+    
 
 	init(fromJson json: JSON!){
 		if json.isEmpty{
@@ -29,6 +31,7 @@ class AdminProfileModel{
 		}
 		message = json["message"].string ?? ""
 		status = json["status"].string ?? ""
+        eventsRewardPointsPerHour = json["eventsRewardPointsPerHour"].int ?? 0
 		tableAdmins = [AdminTableAdmin]()
 		let tableAdminsArray = json["tableAdmins"].arrayValue
 		for tableAdminsJson in tableAdminsArray{
@@ -80,7 +83,7 @@ class AdminEventsInfo{
         finished = json["finished"].int ?? 0
         running = json["running"].int ?? 0
         total = json["total"].int ?? 0
-        totalBuyIns = json["totalBuyIns"].int ?? 0
+        totalBuyIns = json["totalBuyIns"].intValue
         totalCashout = json["totalCashout"].int ?? 0
         totalUsersBalance = json["totalUsersBalance"].int ?? 0
     }

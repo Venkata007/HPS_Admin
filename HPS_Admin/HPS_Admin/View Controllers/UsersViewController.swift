@@ -55,7 +55,7 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource{
         let headerView = UIView()
         headerView.backgroundColor = #colorLiteral(red: 0.9199201465, green: 0.9765976071, blue: 0.9851337075, alpha: 1)
         let headerLabel = UILabel(frame: CGRect(x: 10, y: 0, width:self.tableView.frame.size.width, height: 30))
-        headerLabel.font = UIFont.appFont(.Bold, size: 20)
+        headerLabel.font = UIFont.appFont(.Bold, size: 18)
         headerLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         headerLabel.text = self.sections[section]
         headerView.addSubview(headerLabel)
@@ -116,6 +116,7 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource{
             user =  ModelClassManager.usersListModel.newUsers[indexPath.row]
             cell.referalSendBtn.isHidden = false
             cell.referalCodeTitleLbl.isHidden = false
+            cell.referalCodeTitleLbl.text = user.referralCode!
         case 4:
             user =  ModelClassManager.usersListModel.blockedUsers[indexPath.row]
             cell.referalSendBtn.isHidden = true

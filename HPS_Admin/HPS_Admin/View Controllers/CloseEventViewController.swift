@@ -34,7 +34,9 @@ class CloseEventViewController: UIViewController {
         if let data = self.selectedEvent{
             self.totalButInsLbl.text = data.audit.totalBuyIns!.toString
             self.totalCashOutLbl.text = data.audit.totalcashout!.toString
-            //self.totalCashOutLbl.text = (data.audit.totalBuyIns! - (data.audit.totalcashout!.toString + self.rakesAndTipsTF.text! + self.otherExpensesTF.text!))
+            let rakesAndTips  = self.rakesAndTipsTF.text?.toInt() ?? 0
+            let otherExpenses = self.otherExpensesTF.text?.toInt() ?? 0
+            self.totalLbl.text = "\( data.audit.totalBuyIns - (data.audit.totalcashout + rakesAndTips + otherExpenses))"
         }
     }
     //MARK:- Close Event Api
@@ -43,10 +45,11 @@ class CloseEventViewController: UIViewController {
         let param = [ ApiParams.EventId: self.selectedEvent.eventId!,
                       ApiParams.ClosedOn:  TheGlobalPoolManager.getTodayString(),
                       ApiParams.ClosedById: ModelClassManager.adminLoginModel.data.id!,
-                      ApiParams.CreatedByName: ModelClassManager.adminLoginModel.data.name!,
+                      ApiParams.ClosedByName: ModelClassManager.adminLoginModel.data.name!,
                       ApiParams.RakeAndTips: self.rakesAndTipsTF.text!,
                       ApiParams.OtherExpenses: self.otherExpensesTF.text!,
-                      ApiParams.ConfirmStatus: ApiParams.ValidateAndConfirm] as [String : Any]
+                      ApiParams.ConfirmStatus: ApiParams.ValidateAndConfirm,
+                      ApiParams.Adjustments : self.totalLbl.text!] as [String : Any]
         APIServices.patchUrlSession(urlString: ApiURls.CLOSE_EVENT, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
             TheGlobalPoolManager.hideProgess(self.view)
             if dataResponse.json.exists(){
@@ -67,10 +70,19 @@ class CloseEventViewController: UIViewController {
         ez.topMostVC?.dismissVC(completion: nil)
     }
     @IBAction func closeEventBtn(_ sender: UIButton) {
-        TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Are you sure\n You want to Close Game?", singleAction: false, okTitle: "Close", cancelTitle: "Cancel") { (success) in
-            if success!{
-                if self.validate(){
-                    self.closeEventApiHitting()
+        if validate(){
+            let total = self.totalLbl.text?.toInt() ?? 0
+            if total > 0 || total < 0{
+                TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Confirm differences of ₹ \(total)", singleAction: false, okTitle: "Close", cancelTitle: "Cancel") { (success) in
+                    if success!{
+                        self.closeEventApiHitting()
+                    }
+                }
+            }else{
+                TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Are you sure\n You want to Close Game?", singleAction: false, okTitle: "Close", cancelTitle: "Cancel") { (success) in
+                    if success!{
+                        self.closeEventApiHitting()
+                    }
                 }
             }
         }
@@ -90,7 +102,17 @@ extension CloseEventViewController{
 }
 extension CloseEventViewController : UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let newString = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
+        let newString = NSString(string: textField.text!).replacingCharacters(in: range, with: string).toInt() ?? 0
+        let rakesAndTips  = textField == self.rakesAndTipsTF ? newString : (self.rakesAndTipsTF.text?.toInt() ?? 0)
+        let otherExpenses = textField == self.otherExpensesTF ? newString : (self.otherExpensesTF.text?.toInt() ?? 0)
+        if let data = self.selectedEvent{
+            let total = ( data.audit.totalBuyIns - (data.audit.totalcashout + rakesAndTips + otherExpenses))
+            if total >= 0{
+                self.totalLbl.text = "\( data.audit.totalBuyIns - (data.audit.totalcashout + rakesAndTips + otherExpenses))"
+            }else{
+                return false
+            }
+        }
         return true
     }
 }

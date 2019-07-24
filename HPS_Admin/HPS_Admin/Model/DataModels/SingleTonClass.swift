@@ -115,6 +115,28 @@ class SingleTonClass: NSObject {
             }
         }
     }
+    
+    //MARK:- Adimn Profile Api
+    func adminProfileApiHitting(_ viewCon : UIViewController, completionHandler : @escaping (_ granted:Bool, _ response:AnyObject?) -> (Void)){
+        TheGlobalPoolManager.showProgress(viewCon.view, title:ToastMessages.Please_Wait)
+        let param = [ ApiParams.AdminType: ModelClassManager.adminLoginModel.data.id!,
+                      ApiParams.MobileNumber: ModelClassManager.adminLoginModel.data.id!] as [String : Any]
+        APIServices.patchUrlSession(urlString: ApiURls.ADMIN_PROFILE_API, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
+            TheGlobalPoolManager.hideProgess(viewCon.view)
+            if dataResponse.json.exists(){
+                let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                let status = dict.object(forKey: STATUS) as! String
+                let message = dict.object(forKey: MESSAGE) as! String
+                if status == Constants.SUCCESS{
+                    ModelClassManager.adminProfileModel = AdminProfileModel.init(fromJson: dataResponse.json)
+                    completionHandler(true,dict as AnyObject)
+                }else{
+                    TheGlobalPoolManager.showToastView(message)
+                    completionHandler(false,nil)
+                }
+            }
+        }
+    }
 }
 
 extension SingleTonClass{
