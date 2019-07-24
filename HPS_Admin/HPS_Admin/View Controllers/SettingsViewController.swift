@@ -43,6 +43,7 @@ class SettingsViewController: UIViewController {
         TheGlobalPoolManager.showAlertWith(title: "Are you sure", message: "Do you want to Logout?", singleAction: false, okTitle:"Confirm") { (sucess) in
             if sucess!{
                 if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.LoginViewController) as? LoginViewController{
+                    TheGlobalPoolManager.logout()
                     self.navigationController?.pushViewController(viewCon, animated: true)
                 }
             }
@@ -129,9 +130,15 @@ extension SettingsViewController : UITableViewDelegate,UITableViewDataSource{
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.AdminProfileCell) as! AdminProfileCell
-            cell.mobileNumLbl.isHidden = true
-            cell.nameLbl.isHidden = true
-            cell.emailIDLbl.text = ModelClassManager.adminProfileModel.adminInfo.name!
+            if ModelClassManager.adminLoginModel.data.type == ADMIN{
+                cell.mobileNumLbl.isHidden = true
+                cell.nameLbl.isHidden = true
+                cell.emailIDLbl.text = ModelClassManager.adminLoginModel.data.name!
+            }else{
+                cell.mobileNumLbl.text = ModelClassManager.adminLoginModel.data.mobileNumber!
+                cell.nameLbl.text = ModelClassManager.adminLoginModel.data.name!
+                cell.emailIDLbl.text = ModelClassManager.adminLoginModel.data.emailId!
+            }
             return cell
         case 1:
             let data = ModelClassManager.adminProfileModel.eventsInfo!

@@ -68,7 +68,7 @@ class PickerView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    @IBInspectable var datePickerTimeInterval: Int = 1 {
+    @IBInspectable var datePickerTimeInterval: Int = 30 {
         didSet {
             self.updateProperties()
         }
@@ -90,9 +90,9 @@ class PickerView: UIView, UIGestureRecognizerDelegate {
         self.datePickerView.minuteInterval = self.datePickerTimeInterval
         ez.runThisInMainThread {
             let dateFormatter: DateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "EEEE dd'th' MMMM,  hh:mm a"
-            let selectedDate: String = dateFormatter.string(from: Date())
-            self.headerdateLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont(self.nameLbl + "\n", attr2Text: selectedDate, attr1Color: .white, attr2Color: .white, attr1Font: UIDevice.isPhone() ? 16 : 18, attr2Font: UIDevice.isPhone() ? 14 : 16, attr1FontName: AppFonts.Medium, attr2FontName: AppFonts.Regular)
+            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+            let _: String = dateFormatter.string(from: Date())
+            self.headerdateLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont(self.nameLbl + "\n", attr2Text: "", attr1Color: .white, attr2Color: .white, attr1Font: UIDevice.isPhone() ? 16 : 18, attr2Font: UIDevice.isPhone() ? 14 : 16, attr1FontName: AppFonts.Medium, attr2FontName: AppFonts.Regular)
         }
     }
     
@@ -182,14 +182,4 @@ class PickerView: UIView, UIGestureRecognizerDelegate {
         })
     }
 }
-extension PickerView{
-    func datePickerValueChanged(_ sender: UIDatePicker){
-        let dateFormatter: DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE dd'th' MMMM,  hh:mm a"
-        let selectedDate: String = dateFormatter.string(from: sender.date)
-        print("Selected value \(selectedDate)")
-        ez.runThisInMainThread {
-            self.headerdateLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont(self.nameLbl + "\n", attr2Text: selectedDate, attr1Color: .white, attr2Color: .white, attr1Font: UIDevice.isPhone() ? 16 : 18, attr2Font: UIDevice.isPhone() ? 14 : 16, attr1FontName: AppFonts.Medium, attr2FontName: AppFonts.Regular)
-        }
-    }
-}
+

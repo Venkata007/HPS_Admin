@@ -17,7 +17,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var userNameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
-    @IBOutlet weak var selectTypeSegControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +27,6 @@ class LoginViewController: UIViewController {
     }
     //MARK:- Update UI
     func updateUI(){
-         TheGlobalPoolManager.selectedUserType = ADMIN
         for view in viewInViews{
             TheGlobalPoolManager.cornerAndBorder(view, cornerRadius: 5, borderWidth: 1, borderColor: .borderColor)
             view.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : 5)
@@ -49,11 +47,11 @@ class LoginViewController: UIViewController {
         self.navigationController?.pushViewController(controller, animated: true)
     }
     //MARK:- Login Api Hitting
-    func loginApiHitting(){
+    func loginApiHitting(_ userType : String){
         TheGlobalPoolManager.showProgress(self.view, title:ToastMessages.Please_Wait)
         let param = [ ApiParams.MobileNumber: self.userNameTF.text!,
                       ApiParams.Password: self.passwordTF.text!,
-                      ApiParams.UserType: TheGlobalPoolManager.selectedUserType,
+                      ApiParams.UserType: userType,
                       ApiParams.DeviceId: TheGlobalPoolManager.instanceIDTokenMessage] as [String : Any]
         APIServices.patchUrlSession(urlString: ApiURls.LOGIN_USER, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
             TheGlobalPoolManager.hideProgess(self.view)
@@ -63,14 +61,9 @@ class LoginViewController: UIViewController {
                 let message = dict.object(forKey: MESSAGE) as! String
                 if status == Constants.SUCCESS{
                     TheGlobalPoolManager.showToastView(message)
-                    if TheGlobalPoolManager.selectedUserType == ADMIN{
-                      ModelClassManager.adminLoginModel = AdminLoginModel.init(fromJson: dataResponse.json)
-                        UserDefaults.standard.set(dataResponse.dictionaryFromJson, forKey: ADMIN_USER_INFO)
-                        self.pushingToHomeVC()
-                    }else{
-                        ModelClassManager.tAdminLoginModel = TAdminLoginModel.init(fromJson: dataResponse.json)
-                        UserDefaults.standard.set(dataResponse.dictionaryFromJson, forKey: TADMIN_USER_INFO)
-                    }
+                    ModelClassManager.adminLoginModel = AdminLoginModel.init(fromJson: dataResponse.json)
+                    UserDefaults.standard.set(dataResponse.dictionaryFromJson, forKey: ADMIN_USER_INFO)
+                    self.pushingToHomeVC()
                 }else{
                     TheGlobalPoolManager.showToastView(message)
                 }
@@ -80,15 +73,15 @@ class LoginViewController: UIViewController {
     //MARK:- IB Action Outlets
     @IBAction func loginBtn(_ sender: UIButton) {
         if loginValidate(){
-            self.loginApiHitting()
-        }
-    }
-    @IBAction func selectTypeSegControl(_ sender: UISegmentedControl) {
-        if self.selectTypeSegControl.selectedSegmentIndex == 0{
-            TheGlobalPoolManager.selectedUserType = ADMIN
-        }else{
-            TheGlobalPoolManager.selectedUserType = TABLE_ADMIN
-            self.userNameTF.keyboardType = .numberPad
+            if TheGlobalPoolManager.isValidEmail(testStr: userNameTF.text!){
+                print("Email")
+                TheGlobalPoolManager.selectedUserType = TABLE_ADMIN
+                self.loginApiHitting(TheGlobalPoolManager.selectedUserType)
+            }else{
+                print("Number")
+                TheGlobalPoolManager.selectedUserType = ADMIN
+                self.loginApiHitting(TheGlobalPoolManager.selectedUserType)
+            }
         }
     }
 }

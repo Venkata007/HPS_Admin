@@ -44,6 +44,8 @@ public  struct ViewControllerIDs {
     static let BookASeatViewController          = "BookASeatViewController"
     static let CreateTableAdminVC                  = "CreateTableAdminVC"
     static let GetBuyInsViewController           = "GetBuyInsViewController"
+    static let AddBuyInsAndCashOutVC        = "AddBuyInsAndCashOutVC"
+    static let CloseEventViewController         = "CloseEventViewController"
 }
 //MARK : - Device INFO
 public struct DeviceInfo {
@@ -68,6 +70,11 @@ public struct ApiURls{
     static let REDEEM_REWARD_POINTS   = "\(SERVER_IP)/redeemRewardPoints"
     static let BLOCK_SEATS                           = "\(SERVER_IP)/blockSeat"
     static let UNBLOCK_SEATS                     = "\(SERVER_IP)/unBlockSeat"
+    static let ADD_BUYIN                               = "\(SERVER_IP)/addBuyIn"
+    static let CASH_OUT                                = "\(SERVER_IP)/cashout"
+    static let START_EVENT                           = "\(SERVER_IP)/startEvent"
+    static let END_EVENT                              = "\(SERVER_IP)/endEvent"
+    static let CLOSE_EVENT                          = "\(SERVER_IP)/closeEvent"
 }
 // MARK : - Toast Messages
 public struct ToastMessages {
@@ -144,5 +151,21 @@ public struct ApiParams  {
     static let EnteredOtpValue = "enteredOtpValue"
     static let NoOfSeatsRequestedToUnBlock = "noOfSeatsRequestedToUnBlock"
     static let NoOfSeatsRequestedToBlock = "noOfSeatsRequestedToBlock"
+    static let BookingId = "bookingId"
+    static let BuyInValue = "buyInValue"
+    static let CashoutValue = "cashoutValue"
+    static let StartedOn = "startedOn"
+    static let StartedById = "startedById"
+    static let StartedByName = "startedByName"
+    static let EndedOn = "endedOn"
+    static let EndedById = "endedById"
+    static let EndedByName = "endedByName"
+    static let ClosedOn = "closedOn"
+    static let ClosedById = "closedById"
+    static let ClosedByName = "closedByName"
+    static let RakeAndTips  = "rakeAndTips"
+    static let OtherExpenses = "otherExpenses"
+    static let ConfirmStatus = "confirmStatus"
+    static let ValidateAndConfirm = "validateAndConfirm"
 }
 

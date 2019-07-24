@@ -43,7 +43,7 @@ class AddEventViewController: UIViewController {
         let param = [ ApiParams.Name: self.eventNameTF.text!,
                       ApiParams.EventStartTime: self.startTimeTF.text!,
                       ApiParams.EventEndTime: endTime,
-                      ApiParams.EventRewardsPoints: "30", // HARD CODED................
+                      ApiParams.EventRewardsPoints: ModelClassManager.adminLoginModel.data.eventsRewardPointsPerHour!,
                       ApiParams.TotalSeatsAvailable: self.provideSeatsTF.text!,
                       ApiParams.BookingStatus: self.eventStatus,
                       ApiParams.CreatedOn: TheGlobalPoolManager.getTodayString(),

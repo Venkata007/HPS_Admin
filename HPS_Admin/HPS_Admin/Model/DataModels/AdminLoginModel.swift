@@ -30,6 +30,10 @@ class LoginData{
     var deviceId : String!
     var id : String!
     var name : String!
+    var eventsRewardPointsPerHour : Int!
+    var emailId : String!
+    var mobileNumber : String!
+    var type : String!
     
     init(fromJson json: JSON!){
         if json.isEmpty{
@@ -38,6 +42,9 @@ class LoginData{
         deviceId = json["deviceId"].string ?? ""
         id = json["id"].string ?? ""
         name = json["name"].string ?? ""
+        eventsRewardPointsPerHour = json["eventsRewardPointsPerHour"].int ?? 0
+        emailId = json["emailId"].string ?? ""
+        mobileNumber = json["mobileNumber"].string ?? ""
+        type = json["type"].string ?? ""
     }
-    
 }

@@ -66,13 +66,6 @@ extension AppDelegate{
             let dic = TheGlobalPoolManager.retrieveFromDefaultsFor(ADMIN_USER_INFO) as! NSDictionary
             let userDetails = JSON(dic)
             ModelClassManager.adminLoginModel = AdminLoginModel.init(fromJson: userDetails)
-            TheGlobalPoolManager.selectedUserType = ADMIN
-            self.automaticallyLoginAfterSignUp()
-        }else if UserDefaults.standard.value(forKey:TADMIN_USER_INFO) != nil{
-            let dic = TheGlobalPoolManager.retrieveFromDefaultsFor(TADMIN_USER_INFO) as! NSDictionary
-            let userDetails = JSON(dic)
-            ModelClassManager.tAdminLoginModel = TAdminLoginModel.init(fromJson: userDetails)
-            TheGlobalPoolManager.selectedUserType = TABLE_ADMIN
             self.automaticallyLoginAfterSignUp()
         }else{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

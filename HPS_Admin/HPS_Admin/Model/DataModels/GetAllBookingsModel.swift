@@ -65,7 +65,7 @@ class GetAllBookings{
         bookingId = json.1["bookingId"].string ?? ""
         if let dataJson = json.1["buyIns"].dictionary{
             if !dataJson.isEmpty{
-                buyIns = []
+                //buyIns = []
                 for data in dataJson{
                     buyIns.append(GetAllBuyIns(fromJson: (data.key, data.value)))
                 }
@@ -106,7 +106,7 @@ class GetAllBuyIns {
     var createdOn : String!
 
     init(fromJson json: (String,JSON)){
-        amount = json.1["amount"].int ?? 0
+        amount = json.1["amount"].intValue
         buyInId = json.1["buyInId"].string ?? ""
         createdById = json.1["createdById"].string ?? ""
         createdByName = json.1["createdByName"].string ?? ""

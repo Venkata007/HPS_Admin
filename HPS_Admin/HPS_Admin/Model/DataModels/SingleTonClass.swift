@@ -17,7 +17,6 @@ class SingleTonClass: NSObject {
     //Cahce
     let imageCache = SDImageCache.shared()
     var adminLoginModel : AdminLoginModel!
-    var tAdminLoginModel : TAdminLoginModel!
     var eventsListModel : EventsListModel!
     var usersListModel : UsersListModel!
     var adminProfileModel : AdminProfileModel!

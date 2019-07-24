@@ -26,14 +26,14 @@
 		A33D765322CE0F4E00F0A6DC /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A33D764A22CE0F4E00F0A6DC /* Lato-BoldItalic.ttf */; };
 		A33D765422CE0F4E00F0A6DC /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A33D764B22CE0F4E00F0A6DC /* Lato-Medium.ttf */; };
 		A33D765622CE135F00F0A6DC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A33D765522CE135F00F0A6DC /* GoogleService-Info.plist */; };
-		A33D765822CE211C00F0A6DC /* AdminLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D765722CE211C00F0A6DC /* AdminLoginModel.swift */; };
-		A33D765A22CE252100F0A6DC /* TAdminLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D765922CE252100F0A6DC /* TAdminLoginModel.swift */; };
 		A33D765C22CF1BD500F0A6DC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D765B22CF1BD500F0A6DC /* TabBarController.swift */; };
 		A33D766F22D31CF200F0A6DC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D766D22D31CF200F0A6DC /* EventTableViewCell.swift */; };
 		A33D767022D31CF200F0A6DC /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A33D766E22D31CF200F0A6DC /* EventTableViewCell.xib */; };
 		A33D767222D3489B00F0A6DC /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D767122D3489B00F0A6DC /* UsersViewController.swift */; };
 		A33D767422D348E700F0A6DC /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D767322D348E700F0A6DC /* EventsViewController.swift */; };
 		A33D767622D3495F00F0A6DC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D767522D3495F00F0A6DC /* SettingsViewController.swift */; };
+		A33F9A0022E717B500D76E79 /* CloseEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F99FF22E717B500D76E79 /* CloseEventViewController.swift */; };
+		A33F9A0222E738DC00D76E79 /* AdminLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F9A0122E738DC00D76E79 /* AdminLoginModel.swift */; };
 		A354CACB22D5EE01001CC94A /* RedeemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A354CAC922D5EE01001CC94A /* RedeemView.swift */; };
 		A354CACC22D5EE01001CC94A /* RedeemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A354CACA22D5EE01001CC94A /* RedeemView.xib */; };
 		A354CAD022D61342001CC94A /* TAdminCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A354CACE22D61342001CC94A /* TAdminCell.swift */; };
@@ -68,6 +68,7 @@
 		A39AF69F22CE0A340049F1B2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39AF69122CE0A340049F1B2 /* String.swift */; };
 		A3AB2AB222D747CA004F8D69 /* BookSeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AB2AB022D747CA004F8D69 /* BookSeatTableViewCell.swift */; };
 		A3AB2AB322D747CA004F8D69 /* BookSeatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3AB2AB122D747CA004F8D69 /* BookSeatTableViewCell.xib */; };
+		A3C218F522E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C218F422E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift */; };
 		A3F8BEA422E5719D00593CE6 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8BEA222E5719D00593CE6 /* LogoutCell.swift */; };
 		A3F8BEA522E5719D00593CE6 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3F8BEA322E5719D00593CE6 /* LogoutCell.xib */; };
 		A3F8BEA922E588C800593CE6 /* BlockUnblockPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8BEA722E588C800593CE6 /* BlockUnblockPopUp.swift */; };
@@ -108,14 +109,14 @@
 		A33D764A22CE0F4E00F0A6DC /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		A33D764B22CE0F4E00F0A6DC /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		A33D765522CE135F00F0A6DC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A33D765722CE211C00F0A6DC /* AdminLoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminLoginModel.swift; sourceTree = "<group>"; };
-		A33D765922CE252100F0A6DC /* TAdminLoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAdminLoginModel.swift; sourceTree = "<group>"; };
 		A33D765B22CF1BD500F0A6DC /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A33D766D22D31CF200F0A6DC /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		A33D766E22D31CF200F0A6DC /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		A33D767122D3489B00F0A6DC /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		A33D767322D348E700F0A6DC /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		A33D767522D3495F00F0A6DC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A33F99FF22E717B500D76E79 /* CloseEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseEventViewController.swift; sourceTree = "<group>"; };
+		A33F9A0122E738DC00D76E79 /* AdminLoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminLoginModel.swift; sourceTree = "<group>"; };
 		A354CAC922D5EE01001CC94A /* RedeemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemView.swift; sourceTree = "<group>"; };
 		A354CACA22D5EE01001CC94A /* RedeemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RedeemView.xib; sourceTree = "<group>"; };
 		A354CACE22D61342001CC94A /* TAdminCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAdminCell.swift; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 		A39AF6A122CE0A4D0049F1B2 /* HPS_Admin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HPS_Admin-Bridging-Header.h"; sourceTree = "<group>"; };
 		A3AB2AB022D747CA004F8D69 /* BookSeatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSeatTableViewCell.swift; sourceTree = "<group>"; };
 		A3AB2AB122D747CA004F8D69 /* BookSeatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookSeatTableViewCell.xib; sourceTree = "<group>"; };
+		A3C218F422E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBuyInsAndCashOutVC.swift; sourceTree = "<group>"; };
 		A3F8BEA222E5719D00593CE6 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		A3F8BEA322E5719D00593CE6 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
 		A3F8BEA722E588C800593CE6 /* BlockUnblockPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUnblockPopUp.swift; sourceTree = "<group>"; };
@@ -366,6 +368,8 @@
 				A354CAE622D73FCE001CC94A /* BookASeatViewController.swift */,
 				A3FD061222DC4C720049E061 /* CreateTableAdminVC.swift */,
 				A3F8BEAB22E5BF3A00593CE6 /* GetBuyInsViewController.swift */,
+				A3C218F422E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift */,
+				A33F99FF22E717B500D76E79 /* CloseEventViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -432,8 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				A39AF68F22CE0A340049F1B2 /* SingleTonClass.swift */,
-				A33D765722CE211C00F0A6DC /* AdminLoginModel.swift */,
-				A33D765922CE252100F0A6DC /* TAdminLoginModel.swift */,
+				A33F9A0122E738DC00D76E79 /* AdminLoginModel.swift */,
 				A3FC1C9A22D867CA00719561 /* EventsListModel.swift */,
 				A3FC1C9C22D87CC100719561 /* UsersListModel.swift */,
 				A3FD061422DD9E780049E061 /* AdminProfileModel.swift */,
@@ -676,15 +679,16 @@
 				A39AF69722CE0A340049F1B2 /* ToastCenter.swift in Sources */,
 				A32981D522D4A3F90023EA9F /* AddUserViewController.swift in Sources */,
 				A39AF69322CE0A340049F1B2 /* Reachability.m in Sources */,
-				A33D765822CE211C00F0A6DC /* AdminLoginModel.swift in Sources */,
+				A33F9A0222E738DC00D76E79 /* AdminLoginModel.swift in Sources */,
 				A39AF67922CE09F50049F1B2 /* ViewController.swift in Sources */,
 				A354CAD022D61342001CC94A /* TAdminCell.swift in Sources */,
 				A3F8BEAC22E5BF3A00593CE6 /* GetBuyInsViewController.swift in Sources */,
 				A3FD061522DD9E790049E061 /* AdminProfileModel.swift in Sources */,
 				A33D767422D348E700F0A6DC /* EventsViewController.swift in Sources */,
-				A33D765A22CE252100F0A6DC /* TAdminLoginModel.swift in Sources */,
+				A33F9A0022E717B500D76E79 /* CloseEventViewController.swift in Sources */,
 				A354CAD922D700D3001CC94A /* AdminProfileCell.swift in Sources */,
 				A39AF69922CE0A340049F1B2 /* MJPopupBackgroundView.m in Sources */,
+				A3C218F522E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift in Sources */,
 				A39AF69822CE0A340049F1B2 /* UIViewController+MJPopupViewController.m in Sources */,
 				A3FB977622DF177600CE802C /* GetAllBookingsModel.swift in Sources */,
 				A39AF69E22CE0A340049F1B2 /* ExtensionClass.swift in Sources */,

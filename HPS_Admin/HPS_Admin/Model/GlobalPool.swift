@@ -155,7 +155,7 @@ class GlobalPool: NSObject {
             callback(true)
         }
         if !singleAction{
-            let cancelAction: UIAlertAction = UIAlertAction(title: cancelTitle, style: .cancel) { action -> Void in
+            let cancelAction: UIAlertAction = UIAlertAction(title: cancelTitle, style: .default) { action -> Void in
                 //Just dismiss the action sheet
                 self.isAlertDisplaying = false
                 callback(false)
