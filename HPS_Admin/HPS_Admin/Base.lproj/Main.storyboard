@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="97E-Wv-8X2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="97E-Wv-8X2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1001,14 +1001,29 @@
                                             <action selector="backBtn:" destination="Phi-HL-3LW" eventType="touchUpInside" id="Y8Q-EV-PzT"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQN-SF-dKG">
+                                        <rect key="frame" x="338" y="31" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="3N0-bL-qr4"/>
+                                            <constraint firstAttribute="width" secondItem="CQN-SF-dKG" secondAttribute="height" multiplier="1:1" id="TxF-Cy-Rbi"/>
+                                        </constraints>
+                                        <state key="normal" image="Delete">
+                                            <color key="titleColor" red="0.94117647059999998" green="0.37254901959999998" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteEvent:" destination="Phi-HL-3LW" eventType="touchUpInside" id="KXh-CH-vG3"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.60078660102739723" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="CQN-SF-dKG" secondAttribute="trailing" constant="15" id="ALL-Gc-d4I"/>
                                     <constraint firstItem="EEE-eC-Qu8" firstAttribute="leading" secondItem="WKN-3C-2q5" secondAttribute="trailing" id="Jqa-3O-fhp"/>
                                     <constraint firstAttribute="height" constant="64" id="Pwk-oL-1o6"/>
                                     <constraint firstItem="WKN-3C-2q5" firstAttribute="leading" secondItem="oVb-HC-pOF" secondAttribute="leading" constant="8" id="ocl-1N-fnI"/>
                                     <constraint firstItem="WKN-3C-2q5" firstAttribute="centerY" secondItem="EEE-eC-Qu8" secondAttribute="centerY" id="suC-N1-5S8"/>
                                     <constraint firstItem="EEE-eC-Qu8" firstAttribute="centerY" secondItem="oVb-HC-pOF" secondAttribute="centerY" constant="10" id="u6E-lz-Tbm"/>
+                                    <constraint firstItem="CQN-SF-dKG" firstAttribute="centerY" secondItem="EEE-eC-Qu8" secondAttribute="centerY" id="xgX-rl-C8G"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="deU-9D-uDg">
@@ -1027,21 +1042,21 @@
                                                         <fragment content="Nightlife Party">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.7803921568627451" green="0.62352941176470589" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name="Lato-Medium"/>
+                                                                <font key="NSFont" metaFont="system"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment content=" ">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" size="13" name="Lato-Medium"/>
+                                                                <font key="NSFont" metaFont="system"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment content="#0987654321">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name="Lato-Medium"/>
+                                                                <font key="NSFont" metaFont="system"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -1758,21 +1773,21 @@
                                                         <fragment content="Nightlife Party">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.7803921568627451" green="0.62352941176470589" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name="Lato-Medium"/>
+                                                                <font key="NSFont" metaFont="system"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment content=" ">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" size="13" name="Lato-Medium"/>
+                                                                <font key="NSFont" metaFont="system"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment content="#0987654321">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name="Lato-Medium"/>
+                                                                <font key="NSFont" metaFont="system"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -1947,7 +1962,7 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fPo-Ma-yLW">
                                                     <rect key="frame" x="140.5" y="38" width="51" height="31"/>
                                                 </switch>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZwF-Bl-DIy">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZwF-Bl-DIy">
                                                     <rect key="frame" x="265" y="32.5" width="40" height="33"/>
                                                     <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
                                                     <state key="normal" title="Book">
@@ -2332,21 +2347,21 @@
                                                         <fragment content="Nightlife Party">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.7803921568627451" green="0.62352941176470589" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name="Lato-Medium"/>
+                                                                <font key="NSFont" metaFont="system"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment content=" ">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" size="13" name="Lato-Medium"/>
+                                                                <font key="NSFont" metaFont="system"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment content="#0987654321">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name="Lato-Medium"/>
+                                                                <font key="NSFont" metaFont="system"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -2599,7 +2614,7 @@
                                     <constraint firstAttribute="height" constant="50" id="WjX-Hd-x6U"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
-                                <state key="normal" title="Book A Seat">
+                                <state key="normal" title="Book Seat(s)">
                                     <color key="titleColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -2881,13 +2896,13 @@
                                     <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="13" name="Lato-Medium"/>
+                                            <font key="NSFont" metaFont="system"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="Duration should be Min 3 hours to               Max  24 hours">
                                         <attributes>
                                             <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="14" name="Lato-Medium"/>
+                                            <font key="NSFont" metaFont="system" size="14"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -3327,6 +3342,7 @@
         <image name="Book" width="25.5" height="27"/>
         <image name="Booked" width="25" height="25.5"/>
         <image name="Coins" width="171" height="171"/>
+        <image name="Delete" width="171" height="171"/>
         <image name="Group 686" width="87" height="44.5"/>
         <image name="Pencil" width="171" height="171"/>
         <image name="ProfilePlaceholder" width="76" height="76"/>

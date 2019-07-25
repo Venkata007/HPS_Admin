@@ -32,8 +32,8 @@ class CloseEventViewController: UIViewController {
         self.otherExpensesTF.delegate = self
         TheGlobalPoolManager.cornerAndBorder(self.closeEventBtn, cornerRadius: 5, borderWidth: 0, borderColor: .clear)
         if let data = self.selectedEvent{
-            self.totalButInsLbl.text = data.audit.totalBuyIns!.toString
-            self.totalCashOutLbl.text = data.audit.totalcashout!.toString
+            self.totalButInsLbl.text = data.audit.totalBuyIns.toString
+            self.totalCashOutLbl.text = data.audit.totalcashout.toString
             let rakesAndTips  = self.rakesAndTipsTF.text?.toInt() ?? 0
             let otherExpenses = self.otherExpensesTF.text?.toInt() ?? 0
             self.totalLbl.text = "\( data.audit.totalBuyIns - (data.audit.totalcashout + rakesAndTips + otherExpenses))"
@@ -50,17 +50,19 @@ class CloseEventViewController: UIViewController {
                       ApiParams.OtherExpenses: self.otherExpensesTF.text!,
                       ApiParams.ConfirmStatus: ApiParams.ValidateAndConfirm,
                       ApiParams.Adjustments : self.totalLbl.text!] as [String : Any]
-        APIServices.patchUrlSession(urlString: ApiURls.CLOSE_EVENT, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
+        APIServices.patchUrlSession(urlString: ApiURls.CLOSE_EVENT, params: param as [String : AnyObject], header: HEADER) { (dataResponse, success) in
             TheGlobalPoolManager.hideProgess(self.view)
-            if dataResponse.json.exists(){
-                let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: STATUS) as! String
-                let message = dict.object(forKey: MESSAGE) as! String
-                if status == Constants.SUCCESS{
-                    TheGlobalPoolManager.showToastView(message)
-                    ez.topMostVC?.dismissVC(completion: nil)
-                }else{
-                    TheGlobalPoolManager.showToastView(message)
+            if success{
+                if dataResponse.json.exists(){
+                    let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                    let status = dict.object(forKey: STATUS) as! String
+                    let message = dict.object(forKey: MESSAGE) as! String
+                    if status == Constants.SUCCESS{
+                        TheGlobalPoolManager.showToastView(message)
+                        ez.topMostVC?.dismissVC(completion: nil)
+                    }else{
+                        TheGlobalPoolManager.showToastView(message)
+                    }
                 }
             }
         }

@@ -45,18 +45,24 @@ class BlockUnblockPopUp: UIViewController {
     func blockSeatsApiHitting(){
         TheGlobalPoolManager.showProgress(self.view, title:ToastMessages.Please_Wait)
         let param = [ ApiParams.EventId: self.selectedEvent.eventId!,
-                                ApiParams.NoOfSeatsRequestedToBlock: self.noOfSeatsTF.text!] as [String : Any]
-        APIServices.patchUrlSession(urlString: ApiURls.BLOCK_SEATS, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
+                                ApiParams.NoOfSeatsRequestedToBlock: self.noOfSeatsTF.text!.toInt()!] as [String : Any]
+        APIServices.patchUrlSession(urlString: ApiURls.BLOCK_SEATS, params: param as [String : AnyObject], header: HEADER) { (dataResponse,success) in
             TheGlobalPoolManager.hideProgess(self.view)
-            if dataResponse.json.exists(){
-                let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: STATUS) as! String
-                let message = dict.object(forKey: MESSAGE) as! String
-                if status == Constants.SUCCESS{
-                    TheGlobalPoolManager.showToastView(message)
-                    NotificationCenter.default.post(name: Notification.Name("CloseClicked"), object: nil)
-                }else{
-                    TheGlobalPoolManager.showToastView(message)
+            if success{
+                if dataResponse.json.exists(){
+                    let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                    let status = dict.object(forKey: STATUS) as! String
+                    let message = dict.object(forKey: MESSAGE) as! String
+                    if status == Constants.SUCCESS{
+                        self.selectedEvent.seats.available = self.selectedEvent.seats.available - self.noOfSeatsTF.text!.toInt()!
+                        self.selectedEvent.seats.booked = self.selectedEvent.seats.booked
+                        self.selectedEvent.seats.blocked = self.selectedEvent.seats.blocked + self.noOfSeatsTF.text!.toInt()!
+                        TheGlobalPoolManager.showToastView(message)
+                        NotificationCenter.default.post(name: Notification.Name("CloseClicked"), object: nil, userInfo: ["SelectedEvent":self.selectedEvent])
+                    }else{
+                        TheGlobalPoolManager.showToastView(message)
+                        NotificationCenter.default.post(name: Notification.Name("CloseClicked"), object: nil)
+                    }
                 }
             }
         }
@@ -65,18 +71,25 @@ class BlockUnblockPopUp: UIViewController {
     func unBlockSeatsApiHitting(){
         TheGlobalPoolManager.showProgress(self.view, title:ToastMessages.Please_Wait)
         let param = [ ApiParams.EventId: self.selectedEvent.eventId!,
-                      ApiParams.NoOfSeatsRequestedToUnBlock: self.noOfSeatsTF.text!] as [String : Any]
-        APIServices.patchUrlSession(urlString: ApiURls.UNBLOCK_SEATS, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
+                      ApiParams.NoOfSeatsRequestedToUnBlock: self.noOfSeatsTF.text!.toInt()!] as [String : Any]
+        APIServices.patchUrlSession(urlString: ApiURls.UNBLOCK_SEATS, params: param as [String : AnyObject], header: HEADER) { (dataResponse,success) in
             TheGlobalPoolManager.hideProgess(self.view)
-            if dataResponse.json.exists(){
-                let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: STATUS) as! String
-                let message = dict.object(forKey: MESSAGE) as! String
-                if status == Constants.SUCCESS{
-                    TheGlobalPoolManager.showToastView(message)
-                    NotificationCenter.default.post(name: Notification.Name("CloseClicked"), object: nil)
-                }else{
-                    TheGlobalPoolManager.showToastView(message)
+            if success{
+                if dataResponse.json.exists(){
+                    let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                    let status = dict.object(forKey: STATUS) as! String
+                    let message = dict.object(forKey: MESSAGE) as! String
+                    if status == Constants.SUCCESS{
+                        self.selectedEvent.seats.available = self.selectedEvent.seats.available + self.noOfSeatsTF.text!.toInt()!
+                        self.selectedEvent.seats.booked = self.selectedEvent.seats.booked
+                        self.selectedEvent.seats.blocked = self.selectedEvent.seats.blocked - self.noOfSeatsTF.text!.toInt()!
+                        TheGlobalPoolManager.showToastView(message)
+                        NotificationCenter.default.post(name: Notification.Name("CloseClicked"), object: nil, userInfo: ["SelectedEvent":self.selectedEvent])
+                        TheGlobalPoolManager.showToastView(message)
+                    }else{
+                        TheGlobalPoolManager.showToastView(message)
+                        NotificationCenter.default.post(name: Notification.Name("CloseClicked"), object: nil)
+                    }
                 }
             }
         }

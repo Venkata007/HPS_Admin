@@ -43,17 +43,19 @@ class CreateTableAdminVC: UIViewController {
                       ApiParams.CreatedOn: TheGlobalPoolManager.getTodayString(),
                       ApiParams.Password: self.passwordTF.text!,
                       ApiParams.DeviceId : TheGlobalPoolManager.instanceIDTokenMessage] as [String : Any]
-        APIServices.patchUrlSession(urlString: ApiURls.CREATE_TABLE_ADMIN, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
+        APIServices.patchUrlSession(urlString: ApiURls.CREATE_TABLE_ADMIN, params: param as [String : AnyObject], header: HEADER) { (dataResponse, success) in
             TheGlobalPoolManager.hideProgess(self.view)
-            if dataResponse.json.exists(){
-                let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: STATUS) as! String
-                let message = dict.object(forKey: MESSAGE) as! String
-                if status == Constants.SUCCESS{
-                    TheGlobalPoolManager.showToastView(message)
-                    ez.topMostVC?.dismissVC(completion: nil)
-                }else{
-                    TheGlobalPoolManager.showToastView(message)
+            if success{
+                if dataResponse.json.exists(){
+                    let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                    let status = dict.object(forKey: STATUS) as! String
+                    let message = dict.object(forKey: MESSAGE) as! String
+                    if status == Constants.SUCCESS{
+                        TheGlobalPoolManager.showToastView(message)
+                        ez.topMostVC?.dismissVC(completion: nil)
+                    }else{
+                        TheGlobalPoolManager.showToastView(message)
+                    }
                 }
             }
         }

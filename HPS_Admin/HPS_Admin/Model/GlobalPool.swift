@@ -272,6 +272,38 @@ class GlobalPool: NSObject {
         attributedString1.append(attributedString2)
         return attributedString1
     }
+    //MARK:- Currency Format
+    func formatNumber(_ n: CLong) -> String {
+        
+        let num = abs(Double(n))
+        let sign = (n < 0) ? "-" : ""
+        
+        switch num {
+            
+        case 1_0_000_000...:
+            var formatted = num / 1_0_000_000
+            formatted = formatted.truncate(places: 1)
+            return "\(sign)\(formatted)C"
+            
+        case 1_00_000...:
+            var formatted = num / 1_00_000
+            formatted = formatted.truncate(places: 1)
+            return "\(sign)\(formatted)L"
+            
+        case 1_000...:
+            var formatted = num / 1_000
+            formatted = formatted.truncate(places: 1)
+            return "\(sign)\(formatted)K"
+            
+        case 0...:
+            return "\(n)"
+            
+        default:
+            return "\(sign)\(n)"
+            
+        }
+        
+    }
 }
 class UILabelPadded: UILabel {
     override func drawText(in rect: CGRect) {
@@ -341,3 +373,10 @@ class ButtonIconRight: UIButton {
         return titleFrame
     }
 }
+
+extension Double {
+    func truncate(places: Int) -> Double {
+        return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
+    }
+}
+

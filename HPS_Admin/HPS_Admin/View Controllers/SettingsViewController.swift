@@ -31,12 +31,10 @@ class SettingsViewController: UIViewController {
     //MARK:- Update UI
     func updateUI(){
         tableView.tableFooterView = UIView()
-        ModelClassManager.adminProfileApiHitting(self, completionHandler: { (success, response) -> (Void) in
-            if success{
-                self.tableView.delegate = self
-                self.tableView.dataSource = self
-                self.tableView.reloadData()
-            }
+        ModelClassManager.adminProfileApiHitting(self, progress: true, completionHandler: { (success, response) -> (Void) in
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+            self.tableView.reloadData()
         })
     }
     //MARK:- Create Table Admin VC
@@ -63,24 +61,28 @@ class SettingsViewController: UIViewController {
                       ApiParams.CreatedOn: TheGlobalPoolManager.getTodayString(),
                       ApiParams.CreatedByID: ModelClassManager.adminLoginModel.data.id!,
                       ApiParams.CreatedByName: ModelClassManager.adminLoginModel.data.name!] as [String : Any]
-        APIServices.patchUrlSession(urlString: ApiURls.DELETE_TABLE_ADMIN, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
-            TheGlobalPoolManager.hideProgess(self.view)
-            if dataResponse.json.exists(){
-                let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: STATUS) as! String
-                let message = dict.object(forKey: MESSAGE) as! String
-                if status == Constants.SUCCESS{
-                    TheGlobalPoolManager.showToastView(message)
-                    ModelClassManager.adminProfileApiHitting(self, completionHandler: { (success, response) -> (Void) in
-                        if success{
-                            self.tableView.delegate = self
-                            self.tableView.dataSource = self
-                            self.tableView.reloadData()
-                        }
-                    })
-                }else{
+        APIServices.patchUrlSession(urlString: ApiURls.DELETE_TABLE_ADMIN, params: param as [String : AnyObject], header: HEADER) { (dataResponse,success) in
+            //TheGlobalPoolManager.hideProgess(self.view)
+            if success{
+                if dataResponse.json.exists(){
+                    let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                    let status = dict.object(forKey: STATUS) as! String
+                    let message = dict.object(forKey: MESSAGE) as! String
+                    if status == Constants.SUCCESS{
+                        TheGlobalPoolManager.showToastView(message)
+                        ModelClassManager.adminProfileApiHitting(self, progress: false, completionHandler: { (success, response) -> (Void) in
+                            if success{
+                                self.tableView.delegate = self
+                                self.tableView.dataSource = self
+                                self.tableView.reloadData()
+                            }
+                        })
+                    }
                     TheGlobalPoolManager.showToastView(message)
                 }
+                TheGlobalPoolManager.hideProgess(self.view)
+            }else{
+                TheGlobalPoolManager.hideProgess(self.view)
             }
         }
     }
@@ -172,9 +174,9 @@ extension SettingsViewController : UITableViewDelegate,UITableViewDataSource{
                 cell.bookingIDLbl.text = "Buy In's & Cash Out"
                 cell.bookingIDLbl.font = UIFont.appFont(AppFonts.Bold)
                 cell.statusImgView.isHidden = true
-                cell.userNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Buy In's & Cash Out \n", attr2Text: "\(data.totalBuyIns!)/\(data.totalCashout!)", attr1Color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), attr2Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr1Font: 14, attr2Font: 16, attr1FontName: .Medium, attr2FontName: .Medium)
+                cell.userNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Buy In's & Cash Out \n", attr2Text: "\(TheGlobalPoolManager.formatNumber(data.totalBuyIns!))/\(TheGlobalPoolManager.formatNumber(data.totalCashout!))", attr1Color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), attr2Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr1Font: 14, attr2Font: 16, attr1FontName: .Medium, attr2FontName: .Medium)
                 cell.userNameLbl.textAlignment = .center
-                cell.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "₹ \(data.totalUsersBalance!)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Medium)
+                cell.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "₹ \(TheGlobalPoolManager.formatNumber(data.totalUsersBalance!))", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Medium)
                 return cell
             case 3:
                 if ModelClassManager.adminProfileModel.tableAdmins.count == 0{
@@ -256,9 +258,9 @@ extension SettingsViewController : UITableViewDelegate,UITableViewDataSource{
                 cell.bookingIDLbl.text = "Buy In's & Cash Out"
                 cell.bookingIDLbl.font = UIFont.appFont(AppFonts.Bold)
                 cell.statusImgView.isHidden = true
-                cell.userNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Buy In's & Cash Out \n", attr2Text: "\(data.totalBuyIns!)/\(data.totalCashout!)", attr1Color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), attr2Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr1Font: 14, attr2Font: 16, attr1FontName: .Medium, attr2FontName: .Medium)
+                cell.userNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Buy In's & Cash Out \n", attr2Text: "\(TheGlobalPoolManager.formatNumber(data.totalBuyIns!))/\(TheGlobalPoolManager.formatNumber(data.totalCashout!))", attr1Color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), attr2Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr1Font: 14, attr2Font: 16, attr1FontName: .Medium, attr2FontName: .Medium)
                 cell.userNameLbl.textAlignment = .center
-                cell.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "₹ \(data.totalUsersBalance!)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Medium)
+                cell.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "₹ \(TheGlobalPoolManager.formatNumber(data.totalUsersBalance!))", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Medium)
                 return cell
             case 3:
                 let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.LogoutCell) as! LogoutCell
@@ -339,24 +341,28 @@ extension SettingsViewController{
         let param = [ ApiParams.AdminType: ModelClassManager.adminLoginModel.data.type!,
                       ApiParams.ID: ModelClassManager.adminLoginModel.data.id!,
                       ApiParams.newEventsRewardPointsPerHour: points.toInt() ?? 0] as [String : Any]
-        APIServices.patchUrlSession(urlString: ApiURls.MODIFY_REWARD_POINTS, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
-            TheGlobalPoolManager.hideProgess(self.view)
-            if dataResponse.json.exists(){
-                let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: STATUS) as! String
-                let message = dict.object(forKey: MESSAGE) as! String
-                if status == Constants.SUCCESS{
-                    TheGlobalPoolManager.showToastView(message)
-                    ModelClassManager.adminProfileApiHitting(self, completionHandler: { (success, response) -> (Void) in
-                        if success{
-                            self.tableView.delegate = self
-                            self.tableView.dataSource = self
-                            self.tableView.reloadData()
-                        }
-                    })
-                }else{
-                    TheGlobalPoolManager.showToastView(message)
+        APIServices.patchUrlSession(urlString: ApiURls.MODIFY_REWARD_POINTS, params: param as [String : AnyObject], header: HEADER) { (dataResponse,success) in
+            //TheGlobalPoolManager.hideProgess(self.view)
+            if success{
+                if dataResponse.json.exists(){
+                    let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                    let status = dict.object(forKey: STATUS) as! String
+                    let message = dict.object(forKey: MESSAGE) as! String
+                    if status == Constants.SUCCESS{
+                        TheGlobalPoolManager.showToastView(message)
+                        ModelClassManager.adminProfileApiHitting(self, progress: false, completionHandler: { (success, response) -> (Void) in
+                            if success{
+                                self.tableView.delegate = self
+                                self.tableView.dataSource = self
+                                self.tableView.reloadData()
+                            }
+                        })
+                        TheGlobalPoolManager.showToastView(message)
+                    }
+                    TheGlobalPoolManager.hideProgess(self.view)
                 }
+            }else{
+                TheGlobalPoolManager.hideProgess(self.view)
             }
         }
     }

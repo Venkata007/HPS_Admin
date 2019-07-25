@@ -23,24 +23,26 @@ let OBJECT_NOT_FOUND = "Object Not Found"
 
 class APIServices: NSObject {
     // MARK : - Get Api hitting Model
-    class func getUrlSession(urlString: String, params: [String : AnyObject] ,header : [String : String] ,  completion completionHandler:@escaping (_ response: DataResponse<Any>) -> ()) {
+    class func getUrlSession(urlString: String, params: [String : AnyObject] ,header : [String : String] ,  completion completionHandler:@escaping (_ response: DataResponse<Any>, _ success:Bool) -> ()) {
         _ = params.printData
         Alamofire.request(urlString,method: .get, parameters: params, headers: header).responseJSON { (response) in
            // _ = response.printData
             switch(response.result) {
             case .success(_):
-                if response.result.value != nil{
+                if !(response.result.value is NSNull){
                     _        = response.result.value as! [String : AnyObject]
                     let stautsCode = response.response?.statusCode
                     if (stautsCode)! >= 200 && (stautsCode)! < 300{
-                        completionHandler(response)
-                    }else{
-                        TheGlobalPoolManager.showToastView("No Data Available")
-                        TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
+                        completionHandler(response, true)
+                        return
                     }
                 }
+                completionHandler(response, false)
+                TheGlobalPoolManager.showToastView("No Data Available")
+                TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
                 break
             case .failure(_):
+                completionHandler(response, false)
                 TheGlobalPoolManager.showToastView((response.result.error?.localizedDescription)!)
                 TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
                 break
@@ -48,7 +50,7 @@ class APIServices: NSObject {
         }
     }
     // MARK : - Post Api hitting Model
-    class func postUrlSession(urlString: String, params: [String : AnyObject] ,header : [String : String] , hideMessage : Bool = false ,  completion completionHandler:@escaping (_ response: DataResponse<Any>) -> ()) {
+    class func postUrlSession(urlString: String, params: [String : AnyObject] ,header : [String : String] , hideMessage : Bool = false ,  completion completionHandler:@escaping (_ response: DataResponse<Any>, _ success:Bool) -> ()) {
         _ = params.printData
         Alamofire.request(urlString,method: .post, parameters: params, encoding : JSONEncoding.default, headers: header).responseJSON { (response) in
             //_ = response.printData
@@ -59,14 +61,16 @@ class APIServices: NSObject {
                     let stautsCode = response.response?.statusCode
                     let message    = dic[ApiParams.Message] as! String
                     if (stautsCode)! >= 200 && (stautsCode)! < 300{
-                        completionHandler(response)
-                    }else{
-                        TheGlobalPoolManager.showToastView(message)
-                        TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
+                        completionHandler(response,true)
+                        return
                     }
+                    completionHandler(response,false)
+                    TheGlobalPoolManager.showToastView(message)
+                    TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
                 }
                 break
             case .failure(_):
+                completionHandler(response,false)
                 TheGlobalPoolManager.showToastView((response.result.error?.localizedDescription)!)
                 TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
                 break
@@ -74,7 +78,7 @@ class APIServices: NSObject {
         }
     }
     // MARK : - Patch Api hitting Model
-    class func patchUrlSession(urlString: String, params: [String : AnyObject] ,header : [String : String] ,  completion completionHandler:@escaping (_ response: DataResponse<Any>) -> ()) {
+    class func patchUrlSession(urlString: String, params: [String : AnyObject] ,header : [String : String] ,  completion completionHandler:@escaping (_ response: DataResponse<Any>, _ success:Bool) -> ()) {
         _ = params.printData
         Alamofire.request(urlString,method: .patch, parameters: params,encoding : JSONEncoding.default, headers: header).responseJSON { (response) in
             _ = response.printData
@@ -85,14 +89,16 @@ class APIServices: NSObject {
                     let stautsCode = response.response?.statusCode
                     let message    = dic[ApiParams.Message] as! String
                     if (stautsCode)! >= 200 && (stautsCode)! < 300{
-                        completionHandler(response)
-                    }else{
-                        TheGlobalPoolManager.showToastView(message)
-                        TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
+                        completionHandler(response, true)
+                        return
                     }
+                    completionHandler(response,false)
+                    TheGlobalPoolManager.showToastView(message)
+                    TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
                 }
                 break
             case .failure(_):
+                completionHandler(response,false)
                 TheGlobalPoolManager.showToastView((response.result.error?.localizedDescription)!)
                 TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
                 break
@@ -100,7 +106,7 @@ class APIServices: NSObject {
         }
     }
     // MARK : - Put Api hitting Model
-    class func putUrlSession(urlString: String, params: [String : AnyObject] ,header : [String : String] , completion completionHandler:@escaping (_ response: DataResponse<Any>) -> ()) {
+    class func putUrlSession(urlString: String, params: [String : AnyObject] ,header : [String : String] , completion completionHandler:@escaping (_ response: DataResponse<Any>, _ success:Bool) -> ()) {
         _ = params.printData
         Alamofire.request(urlString,method: .put, parameters: params,encoding : JSONEncoding.default, headers: header).responseJSON { (response) in
             _ = response.printData
@@ -111,14 +117,16 @@ class APIServices: NSObject {
                     let stautsCode = response.response?.statusCode
                     let message    = dic[ApiParams.Message] as! String
                     if (stautsCode)! >= 200 && (stautsCode)! < 300{
-                        completionHandler(response)
-                    }else{
-                        TheGlobalPoolManager.showToastView(message)
-                        TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
+                        completionHandler(response, true)
+                        return
                     }
+                    completionHandler(response,false)
+                    TheGlobalPoolManager.showToastView(message)
+                    TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
                 }
                 break
             case .failure(_):
+                completionHandler(response,false)
                 TheGlobalPoolManager.showToastView((response.result.error?.localizedDescription)!)
                 TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
                 break

@@ -118,12 +118,12 @@ class EventsData{
 
 class EventsDataAudit{
     
-    var adjustments : Int!
-    var otherCharges : Int!
-    var rakeAndTips : Int!
-    var totalBuyIns : Int!
-    var totalUsersBalance : Int!
-    var totalcashout : Int!
+    var adjustments : Int = 0
+    var otherCharges : Int = 0
+    var rakeAndTips : Int = 0
+    var totalBuyIns : Int = 0
+    var totalUsersBalance : Int = 0
+    var totalcashout : Int = 0
     
     init(fromJson json: JSON!){
         if json.isEmpty{

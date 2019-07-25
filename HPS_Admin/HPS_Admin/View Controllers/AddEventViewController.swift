@@ -44,22 +44,24 @@ class AddEventViewController: UIViewController {
                       ApiParams.EventStartTime: self.startTimeTF.text!,
                       ApiParams.EventEndTime: endTime,
                       ApiParams.EventRewardsPoints: ModelClassManager.adminProfileModel.eventsRewardPointsPerHour!,
-                      ApiParams.TotalSeatsAvailable: self.provideSeatsTF.text!,
+                      ApiParams.TotalSeatsAvailable: self.provideSeatsTF.text!.toInt()!,
                       ApiParams.BookingStatus: self.eventStatus,
                       ApiParams.CreatedOn: TheGlobalPoolManager.getTodayString(),
                       ApiParams.CreatedByID: ModelClassManager.adminLoginModel.data.id!,
                       ApiParams.CreatedByName: ModelClassManager.adminLoginModel.data.name!] as [String : Any]
-        APIServices.patchUrlSession(urlString: ApiURls.CREATE_EVENT, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
+        APIServices.patchUrlSession(urlString: ApiURls.CREATE_EVENT, params: param as [String : AnyObject], header: HEADER) { (dataResponse,success) in
             TheGlobalPoolManager.hideProgess(self.view)
-            if dataResponse.json.exists(){
-                let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: STATUS) as! String
-                let message = dict.object(forKey: MESSAGE) as! String
-                if status == Constants.SUCCESS{
-                    TheGlobalPoolManager.showToastView(message)
-                    ez.topMostVC?.dismissVC(completion: nil)
-                }else{
-                    TheGlobalPoolManager.showToastView(message)
+            if success{
+                if dataResponse.json.exists(){
+                    let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                    let status = dict.object(forKey: STATUS) as! String
+                    let message = dict.object(forKey: MESSAGE) as! String
+                    if status == Constants.SUCCESS{
+                        TheGlobalPoolManager.showToastView(message)
+                        ez.topMostVC?.dismissVC(completion: nil)
+                    }else{
+                        TheGlobalPoolManager.showToastView(message)
+                    }
                 }
             }
         }

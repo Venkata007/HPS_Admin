@@ -51,8 +51,26 @@ class BookingHistoryVC: UIViewController {
         }
     }
     @objc func methodOfReceivedNotification(notification: Notification){
+        if let userInfo = notification.userInfo{
+            if let event = userInfo["SelectedEvent"] as? EventsData{
+                self.selectedEvent = event
+                self.updateCreatedEventStatus(data: event)
+                if  let _ = userInfo["BookASeat"]{
+                    self.getAllBookedUsers(event)
+                }
+            }
+        }
         self.dismissPopupViewControllerWithanimationType(MJPopupViewAnimationSlideTopTop)
     }
+    
+    //MARK:- Update Created Event
+    func updateCreatedEventStatus(data:EventsData){
+        self.noOFUsersLbl.text = "\(data.seats.booked!.toString) users"
+        self.lbl1.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.seats.available!)/\(data.seats.total!) Seats\n", attr2Text: "Available", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.9137254902, green: 0.9254901961, blue: 0.9058823529, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
+        self.lbl2.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.seats.booked!)/\(data.seats.total!) Seats\n", attr2Text: "Booked", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.2784313725, green: 0.7490196078, blue: 0.4705882353, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
+        self.lbl3.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.seats.blocked!)/\(data.seats.total!) Seats\n", attr2Text: "Blocked", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.7725490196, green: 0.3607843137, blue: 0.3607843137, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
+    }
+    
     //MARK:- Update UI
     func updateUI(){
         self.popUpView.isHidden = true
@@ -73,7 +91,6 @@ class BookingHistoryVC: UIViewController {
         if let data  = selectedEvent{
             self.eventNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.name!)\n", attr2Text: data.eventId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
             self.coinsLbl.text = "\(data.eventRewardPoints!.toString)\n points"
-            self.noOFUsersLbl.text = "\(data.seats.booked!.toString) users"
             if data.seats.available! > 0 {
                 self.blockSeatsViewHeight.constant = 40
                 self.blockSeatsView.isHidden = false
@@ -94,75 +111,84 @@ class BookingHistoryVC: UIViewController {
                 self.bookBtn.isHidden = false
                 self.statusImgView.image = #imageLiteral(resourceName: "created")
                 self.timeLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.startsAt!)
-                self.lbl1.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.seats.available!)/\(data.seats.total!) Seats\n", attr2Text: "Available", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.9137254902, green: 0.9254901961, blue: 0.9058823529, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
-                self.lbl2.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.seats.booked!)/\(data.seats.total!) Seats\n", attr2Text: "Booked", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.2784313725, green: 0.7490196078, blue: 0.4705882353, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
-                self.lbl3.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.seats.blocked!)/\(data.seats.total!) Seats\n", attr2Text: "Blocked", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.7725490196, green: 0.3607843137, blue: 0.3607843137, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
+                self.updateCreatedEventStatus(data: data)
             case "running":
                 self.statusBtn.setTitle("End Game?", for: .normal)
                 self.bookStsLbl.isHidden = true
                 self.switch.isHidden = true
-                self.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "₹ \(data.audit.totalUsersBalance!.toString)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
+                self.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "₹ \(data.audit.totalUsersBalance.toString)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
                 self.balanceLbl.isHidden = false
                 self.bookBtn.isHidden = true
                 self.statusImgView.image = #imageLiteral(resourceName: "running")
                 self.timeLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.startedAt!)
                 self.lbl1.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.seats.playing!)/\(data.seats.booked!)\n", attr2Text: "Players", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.9137254902, green: 0.9254901961, blue: 0.9058823529, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
-                self.lbl2.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("₹ \(data.audit.totalBuyIns!)\n", attr2Text: "Buy In's", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.2784313725, green: 0.7490196078, blue: 0.4705882353, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
-                self.lbl3.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("₹ \(data.audit.totalcashout!)\n", attr2Text: "Cash Out", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.7725490196, green: 0.3607843137, blue: 0.3607843137, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
+                self.lbl2.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("₹ \(data.audit.totalBuyIns)\n", attr2Text: "Buy In's", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.2784313725, green: 0.7490196078, blue: 0.4705882353, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
+                self.lbl3.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("₹ \(data.audit.totalcashout)\n", attr2Text: "Cash Out", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.7725490196, green: 0.3607843137, blue: 0.3607843137, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
             case "finished":
                 self.statusBtn.setTitle("Close Game?", for: .normal)
                 self.bookStsLbl.isHidden = true
                 self.switch.isHidden = true
-                self.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "\(data.audit.totalUsersBalance!.toString)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
+                self.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "\(data.audit.totalUsersBalance.toString)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
                 self.balanceLbl.isHidden = false
                 self.bookBtn.isHidden = true
                 self.statusImgView.image = #imageLiteral(resourceName: "finish")
                 self.timeLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.startedAt!)
                 self.lbl1.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.seats.played!)/\(data.seats.booked!)\n", attr2Text: "Played", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.9137254902, green: 0.9254901961, blue: 0.9058823529, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
-                self.lbl2.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("₹ \(data.audit.totalBuyIns!)\n", attr2Text: "Buy In's", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.2784313725, green: 0.7490196078, blue: 0.4705882353, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
-                self.lbl3.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("₹ \(data.audit.totalcashout!)\n", attr2Text: "Cash Out", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.7725490196, green: 0.3607843137, blue: 0.3607843137, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
+                self.lbl2.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("₹ \(data.audit.totalBuyIns)\n", attr2Text: "Buy In's", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.2784313725, green: 0.7490196078, blue: 0.4705882353, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
+                self.lbl3.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("₹ \(data.audit.totalcashout)\n", attr2Text: "Cash Out", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.7725490196, green: 0.3607843137, blue: 0.3607843137, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
             case "closed":
                 self.statusBtn.isHidden = true
                 self.bookStsLbl.isHidden = true
                 self.switch.isHidden = true
-                self.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "\(data.audit.totalUsersBalance!.toString)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
+                self.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "\(data.audit.totalUsersBalance.toString)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
                 self.balanceLbl.isHidden = false
                 self.bookBtn.isHidden = true
                 self.statusImgView.image = #imageLiteral(resourceName: "closed")
                 self.timeLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.startedAt!)
                 self.lbl1.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.seats.played!)/\(data.seats.booked!)\n", attr2Text: "Played", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.9137254902, green: 0.9254901961, blue: 0.9058823529, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
-                self.lbl2.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("₹ \(data.audit.totalBuyIns!)\n", attr2Text: "Buy In's", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.2784313725, green: 0.7490196078, blue: 0.4705882353, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
-                self.lbl3.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("₹ \(data.audit.totalcashout!)\n", attr2Text: "Cash Out", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.7725490196, green: 0.3607843137, blue: 0.3607843137, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
+                self.lbl2.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("₹ \(data.audit.totalBuyIns)\n", attr2Text: "Buy In's", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.2784313725, green: 0.7490196078, blue: 0.4705882353, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
+                self.lbl3.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("₹ \(data.audit.totalcashout)\n", attr2Text: "Cash Out", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.7725490196, green: 0.3607843137, blue: 0.3607843137, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
             default:
                 break
             }
-            ModelClassManager.getAllBookingsApiHitting(self, eventID: data.eventId!) { (success, response) -> (Void) in
-                if success{
-                    self.tableView.reloadData()
-                }
+            self.getAllBookedUsers(data)
+        }
+    }
+    func getAllBookedUsers(_ data:EventsData){
+        ModelClassManager.getAllBookingsApiHitting(self, progress: true, eventID: data.eventId!) { (success, response) -> (Void) in
+            if success{
+                self.tableView.reloadData()
             }
         }
     }
     @objc func switchChanged(_ sender : UISwitch){
          if let data = self.selectedEvent{
             if data.bookingStatus == OPEN{
-                ModelClassManager.changeEventStatuslApiHitting(data.eventId!, bookingStatus: CLOSED, viewCon: self) { (success, response) -> (Void) in
+                ModelClassManager.changeEventStatuslApiHitting(data.eventId!, progress: true, bookingStatus: CLOSED, viewCon: self) { (success, response) -> (Void) in
                     if success{
-                        ModelClassManager.getAllEventsApiHitting(self) { (success, response) -> (Void) in
+                        self.selectedEvent.bookingStatus = CLOSED
+                        //self.tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
+                        /*
+                        ModelClassManager.getAllEventsApiHitting(self, progress: false) { (success, response) -> (Void) in
                             if success{
                                 self.tableView.reloadData()
                             }
                         }
+                        */
                     }
                 }
             }else{
-                ModelClassManager.changeEventStatuslApiHitting(data.eventId!, bookingStatus: OPEN, viewCon: self) { (success, response) -> (Void) in
+                ModelClassManager.changeEventStatuslApiHitting(data.eventId!, progress: true, bookingStatus: OPEN, viewCon: self) { (success, response) -> (Void) in
                     if success{
-                        ModelClassManager.getAllEventsApiHitting(self) { (success, response) -> (Void) in
+                        self.selectedEvent.bookingStatus = OPEN
+                        //self.tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
+                        /*
+                        ModelClassManager.getAllEventsApiHitting(self, progress: false) { (success, response) -> (Void) in
                             if success{
                                 self.tableView.reloadData()
                             }
                         }
+                        */
                     }
                 }
             }
@@ -242,6 +268,18 @@ class BookingHistoryVC: UIViewController {
             }
         }
     }
+    
+    @IBAction func deleteEvent(_ sender: UIButton) {
+        TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Do you want to delete this event?", singleAction: false, okTitle: "Yes", cancelTitle: "Cancel") { (success) in
+            if success!{
+                ModelClassManager.deleteEventApiHitting(self.selectedEvent.eventId, progress: true, viewCon: self, completionHandler: { (success, dict) -> (Void) in
+                    if success{
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+            }
+        }
+    }
 }
 extension BookingHistoryVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -296,17 +334,19 @@ extension BookingHistoryVC{
                       ApiParams.StartedOn:  TheGlobalPoolManager.getTodayString(),
                       ApiParams.StartedById: ModelClassManager.adminLoginModel.data.id!,
                       ApiParams.StartedByName: ModelClassManager.adminLoginModel.data.name!] as [String : Any]
-        APIServices.patchUrlSession(urlString: ApiURls.START_EVENT, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
+        APIServices.patchUrlSession(urlString: ApiURls.START_EVENT, params: param as [String : AnyObject], header: HEADER) { (dataResponse, success) in
             TheGlobalPoolManager.hideProgess(self.view)
-            if dataResponse.json.exists(){
-                let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: STATUS) as! String
-                let message = dict.object(forKey: MESSAGE) as! String
-                if status == Constants.SUCCESS{
-                    TheGlobalPoolManager.showToastView(message)
-                    ez.topMostVC?.dismissVC(completion: nil)
-                }else{
-                    TheGlobalPoolManager.showToastView(message)
+            if success{
+                if dataResponse.json.exists(){
+                    let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                    let status = dict.object(forKey: STATUS) as! String
+                    let message = dict.object(forKey: MESSAGE) as! String
+                    if status == Constants.SUCCESS{
+                        TheGlobalPoolManager.showToastView(message)
+                        ez.topMostVC?.dismissVC(completion: nil)
+                    }else{
+                        TheGlobalPoolManager.showToastView(message)
+                    }
                 }
             }
         }
@@ -318,17 +358,19 @@ extension BookingHistoryVC{
                       ApiParams.EndedOn:  TheGlobalPoolManager.getTodayString(),
                       ApiParams.EndedById: ModelClassManager.adminLoginModel.data.id!,
                       ApiParams.EndedByName: ModelClassManager.adminLoginModel.data.name!] as [String : Any]
-        APIServices.patchUrlSession(urlString: ApiURls.END_EVENT, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
+        APIServices.patchUrlSession(urlString: ApiURls.END_EVENT, params: param as [String : AnyObject], header: HEADER) { (dataResponse, success) in
             TheGlobalPoolManager.hideProgess(self.view)
-            if dataResponse.json.exists(){
-                let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: STATUS) as! String
-                let message = dict.object(forKey: MESSAGE) as! String
-                if status == Constants.SUCCESS{
-                    TheGlobalPoolManager.showToastView(message)
-                    ez.topMostVC?.dismissVC(completion: nil)
-                }else{
-                    TheGlobalPoolManager.showToastView(message)
+            if success{
+                if dataResponse.json.exists(){
+                    let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                    let status = dict.object(forKey: STATUS) as! String
+                    let message = dict.object(forKey: MESSAGE) as! String
+                    if status == Constants.SUCCESS{
+                        TheGlobalPoolManager.showToastView(message)
+                        ez.topMostVC?.dismissVC(completion: nil)
+                    }else{
+                        TheGlobalPoolManager.showToastView(message)
+                    }
                 }
             }
         }

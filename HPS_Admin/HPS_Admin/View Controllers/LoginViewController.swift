@@ -53,19 +53,21 @@ class LoginViewController: UIViewController {
                       ApiParams.Password: self.passwordTF.text!,
                       ApiParams.UserType: userType,
                       ApiParams.DeviceId: TheGlobalPoolManager.instanceIDTokenMessage] as [String : Any]
-        APIServices.patchUrlSession(urlString: ApiURls.LOGIN_USER, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
+        APIServices.patchUrlSession(urlString: ApiURls.LOGIN_USER, params: param as [String : AnyObject], header: HEADER) { (dataResponse, success) in
             TheGlobalPoolManager.hideProgess(self.view)
-            if dataResponse.json.exists(){
-                let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: STATUS) as! String
-                let message = dict.object(forKey: MESSAGE) as! String
-                if status == Constants.SUCCESS{
-                    TheGlobalPoolManager.showToastView(message)
-                    ModelClassManager.adminLoginModel = AdminLoginModel.init(fromJson: dataResponse.json)
-                    UserDefaults.standard.set(dataResponse.dictionaryFromJson, forKey: ADMIN_USER_INFO)
-                    self.pushingToHomeVC()
-                }else{
-                    TheGlobalPoolManager.showToastView(message)
+            if success{
+                if dataResponse.json.exists(){
+                    let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                    let status = dict.object(forKey: STATUS) as! String
+                    let message = dict.object(forKey: MESSAGE) as! String
+                    if status == Constants.SUCCESS{
+                        TheGlobalPoolManager.showToastView(message)
+                        ModelClassManager.adminLoginModel = AdminLoginModel.init(fromJson: dataResponse.json)
+                        UserDefaults.standard.set(dataResponse.dictionaryFromJson, forKey: ADMIN_USER_INFO)
+                        self.pushingToHomeVC()
+                    }else{
+                        TheGlobalPoolManager.showToastView(message)
+                    }
                 }
             }
         }

@@ -23,12 +23,10 @@ class UsersViewController: UIViewController {
         self.updateUI()
     }
     override func viewWillAppear(_ animated: Bool) {
-        ModelClassManager.getAllUsersApiHitting(self) { (success, response) -> (Void) in
-            if success{
-                self.tableView.delegate = self
-               self.tableView.dataSource = self
-                self.tableView.reloadData()
-            }
+        ModelClassManager.getAllUsersApiHitting(self, progress: true) { (success, response) -> (Void) in
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+            self.tableView.reloadData()
         }
     }
     //MARK:- Update UI
