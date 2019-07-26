@@ -145,6 +145,7 @@ class GlobalPool: NSObject {
         let maskLayer = CAShapeLayer()
         maskLayer.path = path.cgPath
         object.layer.mask = maskLayer
+        let imageV = UIImageView()
     }
     //MARK:- UIAlertController
     func showAlertWith(title:String = "", message:String, singleAction:Bool,  okTitle:String = "Ok", cancelTitle:String = "Cancel", callback:@escaping AlertCallback) {
@@ -303,6 +304,18 @@ class GlobalPool: NSObject {
             
         }
         
+    }
+    
+    //MARK:- Get Image For User Status
+    func getUserStatusImageBasedOnStatus(_ status:String) -> UIImage{
+        switch status {
+        case "confirmed"         : return #imageLiteral(resourceName: "UserConfirmed")
+        case "playing"           : return #imageLiteral(resourceName: "UserPlaying")
+        case "completed"         : return #imageLiteral(resourceName: "UserCompleted")
+        case "blocked"           : return #imageLiteral(resourceName: "UserBlocked")
+        default                  :
+            return #imageLiteral(resourceName: "UserConfirmed")
+        }
     }
 }
 class UILabelPadded: UILabel {

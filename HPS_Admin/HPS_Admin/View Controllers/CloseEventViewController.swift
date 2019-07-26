@@ -75,7 +75,7 @@ class CloseEventViewController: UIViewController {
         if validate(){
             let total = self.totalLbl.text?.toInt() ?? 0
             if total > 0 || total < 0{
-                TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Confirm differences of ₹ \(total)", singleAction: false, okTitle: "Close", cancelTitle: "Cancel") { (success) in
+                TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Confirm differences of ₹ \(TheGlobalPoolManager.formatNumber(total))", singleAction: false, okTitle: "Close", cancelTitle: "Cancel") { (success) in
                     if success!{
                         self.closeEventApiHitting()
                     }
