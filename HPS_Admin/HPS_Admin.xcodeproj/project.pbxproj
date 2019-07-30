@@ -48,6 +48,7 @@
 		A354CAE322D730C7001CC94A /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A354CAE122D730C7001CC94A /* SwitchTableViewCell.xib */; };
 		A354CAE522D73364001CC94A /* SliderToOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A354CAE422D73364001CC94A /* SliderToOpenView.swift */; };
 		A354CAE722D73FCE001CC94A /* BookASeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A354CAE622D73FCE001CC94A /* BookASeatViewController.swift */; };
+		A38C2A6A22F0694E0069DDCA /* ConfirmViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38C2A6922F0694E0069DDCA /* ConfirmViewContoller.swift */; };
 		A39AF66922CE09A60049F1B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A39AF66722CE09A60049F1B2 /* Main.storyboard */; };
 		A39AF66B22CE09A60049F1B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A39AF66A22CE09A60049F1B2 /* Assets.xcassets */; };
 		A39AF66E22CE09A60049F1B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A39AF66C22CE09A60049F1B2 /* LaunchScreen.storyboard */; };
@@ -131,6 +132,7 @@
 		A354CAE122D730C7001CC94A /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		A354CAE422D73364001CC94A /* SliderToOpenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderToOpenView.swift; sourceTree = "<group>"; };
 		A354CAE622D73FCE001CC94A /* BookASeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookASeatViewController.swift; sourceTree = "<group>"; };
+		A38C2A6922F0694E0069DDCA /* ConfirmViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewContoller.swift; sourceTree = "<group>"; };
 		A39AF66022CE09A60049F1B2 /* HPS_Admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HPS_Admin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A39AF66822CE09A60049F1B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A39AF66A22CE09A60049F1B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				A3F8BEAB22E5BF3A00593CE6 /* GetBuyInsViewController.swift */,
 				A3C218F422E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift */,
 				A33F99FF22E717B500D76E79 /* CloseEventViewController.swift */,
+				A38C2A6922F0694E0069DDCA /* ConfirmViewContoller.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				A32981D222D35A7F0023EA9F /* UsersCell.swift in Sources */,
 				A3F8BEA422E5719D00593CE6 /* LogoutCell.swift in Sources */,
 				A32981D722D5C4B20023EA9F /* UserDetailsViewController.swift in Sources */,
+				A38C2A6A22F0694E0069DDCA /* ConfirmViewContoller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

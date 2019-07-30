@@ -35,8 +35,8 @@ class BookingHistoryVC: UIViewController {
     @IBOutlet weak var blockSeatsViewHeight: NSLayoutConstraint!
     @IBOutlet var popUpBtns: [UIButton]!
     @IBOutlet weak var statusBtn: UIButton!
+    @IBOutlet weak var ribbonImageView: UIImageView!
     var selectedEvent : EventsData!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +71,12 @@ class BookingHistoryVC: UIViewController {
         self.lbl3.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.seats.blocked!)/\(data.seats.total!) Seats\n", attr2Text: "Blocked", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.7725490196, green: 0.3607843137, blue: 0.3607843137, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
     }
     
+    func isBookingButtonHigh(_ isHigh:Bool){
+        self.ribbonImageView.isHidden = isHigh
+        self.balanceLbl.isHidden = isHigh
+        self.bookBtn.isHidden = !isHigh
+    }
+    
     //MARK:- Update UI
     func updateUI(){
         self.popUpView.isHidden = true
@@ -81,6 +87,7 @@ class BookingHistoryVC: UIViewController {
             TheGlobalPoolManager.cornerAndBorder(imgView, cornerRadius: imgView.h / 2, borderWidth: 0, borderColor: .clear)
            imgView.image = imgView.image?.imageWithInset(insets: UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8))
         }
+        TheGlobalPoolManager.cornerAndBorder(self.bookBtn, cornerRadius: 20, borderWidth: 0, borderColor: .clear)
         self.editBtn.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : editBtn.h / 2)
         TheGlobalPoolManager.cornerAndBorder(statusBtn, cornerRadius: 5, borderWidth: 0, borderColor: .clear)
         ez.runThisInMainThread {
@@ -107,8 +114,7 @@ class BookingHistoryVC: UIViewController {
                     self.switch.isOn = false
                 }
                 self.switch.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
-                self.balanceLbl.isHidden = true
-                self.bookBtn.isHidden = false
+                self.isBookingButtonHigh(true)
                 self.statusImgView.image = #imageLiteral(resourceName: "created")
                 self.timeLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.startsAt!)
                 self.updateCreatedEventStatus(data: data)
@@ -117,8 +123,7 @@ class BookingHistoryVC: UIViewController {
                 self.bookStsLbl.isHidden = true
                 self.switch.isHidden = true
                 self.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "₹ \(TheGlobalPoolManager.formatNumber(data.audit.totalUsersBalance))", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
-                self.balanceLbl.isHidden = false
-                self.bookBtn.isHidden = true
+                self.isBookingButtonHigh(false)
                 self.statusImgView.image = #imageLiteral(resourceName: "running")
                 self.timeLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.startedAt!)
                 self.lbl1.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.seats.playing!)/\(data.seats.booked!)\n", attr2Text: "Players", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.9137254902, green: 0.9254901961, blue: 0.9058823529, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
@@ -129,8 +134,7 @@ class BookingHistoryVC: UIViewController {
                 self.bookStsLbl.isHidden = true
                 self.switch.isHidden = true
                 self.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "\(TheGlobalPoolManager.formatNumber(data.audit.totalUsersBalance))", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
-                self.balanceLbl.isHidden = false
-                self.bookBtn.isHidden = true
+                self.isBookingButtonHigh(false)
                 self.statusImgView.image = #imageLiteral(resourceName: "finish")
                 self.timeLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.startedAt!)
                 self.lbl1.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.seats.played!)/\(data.seats.booked!)\n", attr2Text: "Played", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.9137254902, green: 0.9254901961, blue: 0.9058823529, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
@@ -141,8 +145,7 @@ class BookingHistoryVC: UIViewController {
                 self.bookStsLbl.isHidden = true
                 self.switch.isHidden = true
                 self.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "\(TheGlobalPoolManager.formatNumber(data.audit.totalUsersBalance))", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
-                self.balanceLbl.isHidden = false
-                self.bookBtn.isHidden = true
+                self.isBookingButtonHigh(false)
                 self.statusImgView.image = #imageLiteral(resourceName: "closed")
                 self.timeLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.startedAt!)
                 self.lbl1.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.seats.played!)/\(data.seats.booked!)\n", attr2Text: "Played", attr1Color: #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), attr2Color: #colorLiteral(red: 0.9137254902, green: 0.9254901961, blue: 0.9058823529, alpha: 1), attr1Font:10 , attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Bold)
