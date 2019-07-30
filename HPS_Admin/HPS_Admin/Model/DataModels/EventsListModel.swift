@@ -59,6 +59,7 @@ class EventsData{
     var eventStartAtNum : String!
     var eventStatus : String!
     var name : String!
+    var noOfBuyInsCreatedForTheEvent : Int!
     var seats : EventsDataSeat!
     var startedById : String!
     var startedByName : String!
@@ -102,6 +103,7 @@ class EventsData{
         eventStartAtNum = json.1["eventStartAtNum"].string ?? ""
         eventStatus = json.1["eventStatus"].string ?? ""
         name = json.1["name"].string ?? ""
+        noOfBuyInsCreatedForTheEvent = json.1["noOfBuyInsCreatedForTheEvent"].int ?? 0
         let seatsJson = json.1["seats"]
         if !seatsJson.isEmpty{
             seats = EventsDataSeat(fromJson: seatsJson)
@@ -123,7 +125,7 @@ class EventsDataAudit{
     var rakeAndTips : Int = 0
     var totalBuyIns : Int = 0
     var totalUsersBalance : Int = 0
-    var totalcashout : Int = 0
+    var totalCashout : Int = 0
     
     init(fromJson json: JSON!){
         if json.isEmpty{
@@ -134,7 +136,7 @@ class EventsDataAudit{
         rakeAndTips = json["rakeAndTips"].int ?? 0
         totalBuyIns = json["totalBuyIns"].int ?? 0
         totalUsersBalance = json["totalUsersBalance"].int ?? 0
-        totalcashout = json["totalcashout"].int ?? 0
+        totalCashout = json["totalCashout"].int ?? 0
     }
 }
 
@@ -151,21 +153,21 @@ class EventsDataBookingUserId{
 class EventsDataSeat{
     
     var available : Int!
-    var blocked : Int!
-    var booked : Int!
-    var total : Int!
-    var played : Int!
-    var playing : Int!
+    var blocked   : Int!
+    var booked    : Int!
+    var total     : Int!
+    var played    : Int!
+    var playing   : Int!
     
     init(fromJson json: JSON!){
         if json.isEmpty{
             return
         }
         available = json["available"].int ?? 0
-        blocked = json["blocked"].int ?? 0
-        booked = json["booked"].int ?? 0
-        total = json["total"].int ?? 0
-        played = json["played"].int ?? 0
-        playing = json["playing"].int ?? 0
+        blocked   = json["blocked"].int ?? 0
+        booked    = json["booked"].int ?? 0
+        total     = json["total"].int ?? 0
+        played    = json["played"].int ?? 0
+        playing   = json["playing"].int ?? 0
     }
 }

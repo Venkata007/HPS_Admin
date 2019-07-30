@@ -229,10 +229,15 @@
                                         <rect key="frame" x="117" y="38" width="51" height="31"/>
                                     </switch>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFb-XB-Jei">
-                                        <rect key="frame" x="183" y="24" width="100" height="50"/>
+                                        <rect key="frame" x="188" y="29" width="90" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="AHF-oe-cDq"/>
+                                            <constraint firstAttribute="width" constant="90" id="uZG-lQ-Ava"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
                                         <state key="normal" title="Book">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User" translatesAutoresizingMaskIntoConstraints="NO" id="oj3-ue-5xr">
@@ -259,13 +264,11 @@
                                 <constraints>
                                     <constraint firstItem="kC3-13-CF5" firstAttribute="centerX" secondItem="vHB-mU-obx" secondAttribute="centerX" id="0MO-gr-jGo"/>
                                     <constraint firstItem="w1B-Dp-wTg" firstAttribute="leading" secondItem="vHB-mU-obx" secondAttribute="leading" constant="10" id="0WY-YL-xtH"/>
-                                    <constraint firstItem="QFb-XB-Jei" firstAttribute="top" secondItem="2Nn-Yi-0Nj" secondAttribute="top" id="1ZY-X8-wz3"/>
                                     <constraint firstItem="C8H-25-MY5" firstAttribute="leading" secondItem="oj3-ue-5xr" secondAttribute="trailing" constant="8" id="2uV-eF-GIs"/>
                                     <constraint firstItem="kC3-13-CF5" firstAttribute="leading" secondItem="Ze7-da-h1h" secondAttribute="trailing" constant="10" id="3j9-bb-7XR"/>
                                     <constraint firstItem="Ze7-da-h1h" firstAttribute="centerY" secondItem="kC3-13-CF5" secondAttribute="centerY" id="5w7-wO-WPG"/>
                                     <constraint firstItem="6yc-qL-fJC" firstAttribute="centerY" secondItem="2Nn-Yi-0Nj" secondAttribute="centerY" id="694-YS-nkQ"/>
                                     <constraint firstItem="Kkx-08-fpY" firstAttribute="top" secondItem="tx8-ea-vi8" secondAttribute="bottom" constant="5" id="9VE-as-RSn"/>
-                                    <constraint firstItem="QFb-XB-Jei" firstAttribute="trailing" secondItem="2Nn-Yi-0Nj" secondAttribute="trailing" id="Aiv-Ir-pRZ"/>
                                     <constraint firstAttribute="trailing" secondItem="2Nn-Yi-0Nj" secondAttribute="trailing" id="FtI-ca-J5j"/>
                                     <constraint firstAttribute="trailing" secondItem="tx8-ea-vi8" secondAttribute="trailing" constant="10" id="G71-iF-Dbf"/>
                                     <constraint firstItem="tx8-ea-vi8" firstAttribute="leading" secondItem="vHB-mU-obx" secondAttribute="leading" constant="10" id="KvI-6g-n7l"/>
@@ -273,12 +276,12 @@
                                     <constraint firstItem="C8H-25-MY5" firstAttribute="centerY" secondItem="oj3-ue-5xr" secondAttribute="centerY" id="N7j-Cy-k8D"/>
                                     <constraint firstItem="tx8-ea-vi8" firstAttribute="top" secondItem="2Nn-Yi-0Nj" secondAttribute="bottom" constant="10" id="Obe-yt-CrE"/>
                                     <constraint firstAttribute="trailing" secondItem="Kkx-08-fpY" secondAttribute="trailing" constant="10" id="RHc-rV-wgo"/>
-                                    <constraint firstItem="QFb-XB-Jei" firstAttribute="leading" secondItem="2Nn-Yi-0Nj" secondAttribute="leading" id="STP-At-oKc"/>
                                     <constraint firstItem="Kkx-08-fpY" firstAttribute="leading" secondItem="vHB-mU-obx" secondAttribute="leading" constant="10" id="VlS-Xe-dg0"/>
                                     <constraint firstItem="6yc-qL-fJC" firstAttribute="centerX" secondItem="2Nn-Yi-0Nj" secondAttribute="centerX" constant="5" id="cyK-RJ-Sch"/>
                                     <constraint firstItem="2Nn-Yi-0Nj" firstAttribute="leading" secondItem="w1B-Dp-wTg" secondAttribute="trailing" constant="10" id="gUw-qJ-rJv"/>
-                                    <constraint firstItem="QFb-XB-Jei" firstAttribute="bottom" secondItem="2Nn-Yi-0Nj" secondAttribute="bottom" id="hbv-1a-O3u"/>
                                     <constraint firstItem="oj3-ue-5xr" firstAttribute="top" secondItem="vHB-mU-obx" secondAttribute="top" constant="8" id="kI3-S9-DBr"/>
+                                    <constraint firstItem="QFb-XB-Jei" firstAttribute="centerY" secondItem="2Nn-Yi-0Nj" secondAttribute="centerY" id="nMi-I8-gFL"/>
+                                    <constraint firstItem="QFb-XB-Jei" firstAttribute="centerX" secondItem="2Nn-Yi-0Nj" secondAttribute="centerX" id="nQP-ei-rrt"/>
                                     <constraint firstAttribute="bottom" secondItem="Kkx-08-fpY" secondAttribute="bottom" constant="5" id="vH4-Wr-ZyJ"/>
                                 </constraints>
                             </view>
@@ -329,6 +332,7 @@
                 <outlet property="lbl3" destination="8l8-0T-80x" id="vab-xG-M2N"/>
                 <outlet property="lbl4" destination="w1B-Dp-wTg" id="arN-G3-0r5"/>
                 <outlet property="noOFUsersLbl" destination="C8H-25-MY5" id="MBP-4C-ft5"/>
+                <outlet property="ribbonImageView" destination="2Nn-Yi-0Nj" id="sKG-6V-aVU"/>
                 <outlet property="statusImgView" destination="IxG-u2-lIT" id="jxm-62-gK4"/>
                 <outlet property="switch" destination="kC3-13-CF5" id="6eL-Sw-RCd"/>
                 <outlet property="timeLbl" destination="8Bo-OZ-2db" id="THZ-4B-u9H"/>

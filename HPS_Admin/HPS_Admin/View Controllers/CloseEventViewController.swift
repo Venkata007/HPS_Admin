@@ -33,10 +33,10 @@ class CloseEventViewController: UIViewController {
         TheGlobalPoolManager.cornerAndBorder(self.closeEventBtn, cornerRadius: 5, borderWidth: 0, borderColor: .clear)
         if let data = self.selectedEvent{
             self.totalButInsLbl.text = data.audit.totalBuyIns.toString
-            self.totalCashOutLbl.text = data.audit.totalcashout.toString
+            self.totalCashOutLbl.text = data.audit.totalCashout.toString
             let rakesAndTips  = self.rakesAndTipsTF.text?.toInt() ?? 0
             let otherExpenses = self.otherExpensesTF.text?.toInt() ?? 0
-            self.totalLbl.text = "\( data.audit.totalBuyIns - (data.audit.totalcashout + rakesAndTips + otherExpenses))"
+            self.totalLbl.text = "\( data.audit.totalBuyIns - (data.audit.totalCashout + rakesAndTips + otherExpenses))"
         }
     }
     //MARK:- Close Event Api
@@ -46,10 +46,10 @@ class CloseEventViewController: UIViewController {
                       ApiParams.ClosedOn:  TheGlobalPoolManager.getTodayString(),
                       ApiParams.ClosedById: ModelClassManager.adminLoginModel.data.id!,
                       ApiParams.ClosedByName: ModelClassManager.adminLoginModel.data.name!,
-                      ApiParams.RakeAndTips: self.rakesAndTipsTF.text!,
-                      ApiParams.OtherExpenses: self.otherExpensesTF.text!,
+                      ApiParams.RakeAndTips: self.rakesAndTipsTF.text!.toInt() ?? 0,
+                      ApiParams.OtherExpenses: self.otherExpensesTF.text!.toInt() ?? 0,
                       ApiParams.ConfirmStatus: ApiParams.ValidateAndConfirm,
-                      ApiParams.Adjustments : self.totalLbl.text!] as [String : Any]
+                      ApiParams.Adjustments : self.totalLbl.text!.toInt() ?? 0] as [String : Any]
         APIServices.patchUrlSession(urlString: ApiURls.CLOSE_EVENT, params: param as [String : AnyObject], header: HEADER) { (dataResponse, success) in
             TheGlobalPoolManager.hideProgess(self.view)
             if success{
@@ -108,9 +108,9 @@ extension CloseEventViewController : UITextFieldDelegate{
         let rakesAndTips  = textField == self.rakesAndTipsTF ? newString : (self.rakesAndTipsTF.text?.toInt() ?? 0)
         let otherExpenses = textField == self.otherExpensesTF ? newString : (self.otherExpensesTF.text?.toInt() ?? 0)
         if let data = self.selectedEvent{
-            let total = ( data.audit.totalBuyIns - (data.audit.totalcashout + rakesAndTips + otherExpenses))
+            let total = ( data.audit.totalBuyIns - (data.audit.totalCashout + rakesAndTips + otherExpenses))
             if total >= 0{
-                self.totalLbl.text = "\( data.audit.totalBuyIns - (data.audit.totalcashout + rakesAndTips + otherExpenses))"
+                self.totalLbl.text = "\(data.audit.totalBuyIns - (data.audit.totalCashout + rakesAndTips + otherExpenses))"
             }else{
                 return false
             }
