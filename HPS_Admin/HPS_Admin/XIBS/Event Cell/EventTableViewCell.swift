@@ -54,3 +54,4 @@ class EventTableViewCell: UITableViewCell {
         self.bookBtn.isHidden = !isBool
     }
 }
+

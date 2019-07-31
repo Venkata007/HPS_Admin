@@ -28,7 +28,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZF-g4-1Pe">
-                        <rect key="frame" x="20" y="5" width="280" height="89.5"/>
+                        <rect key="frame" x="25" y="5" width="285" height="89.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="4Ay-pS-Kuq">
                                 <rect key="frame" x="45" y="15" width="60" height="60"/>
@@ -38,13 +38,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vamsi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMk-6q-Etz">
-                                <rect key="frame" x="115" y="15" width="157" height="19"/>
+                                <rect key="frame" x="115" y="15" width="162" height="19"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9533565007" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4S-yZ-kTx">
-                                <rect key="frame" x="115" y="57" width="157" height="18"/>
+                                <rect key="frame" x="115" y="57" width="162" height="18"/>
                                 <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -74,15 +74,16 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="LZF-g4-1Pe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Lgj-LG-o8H"/>
+                    <constraint firstItem="LZF-g4-1Pe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="Lgj-LG-o8H"/>
                     <constraint firstAttribute="bottom" secondItem="LZF-g4-1Pe" secondAttribute="bottom" constant="5" id="P40-t1-6SN"/>
-                    <constraint firstAttribute="trailing" secondItem="LZF-g4-1Pe" secondAttribute="trailing" constant="20" id="U4C-yc-8XJ"/>
+                    <constraint firstAttribute="trailing" secondItem="LZF-g4-1Pe" secondAttribute="trailing" constant="10" id="U4C-yc-8XJ"/>
                     <constraint firstItem="LZF-g4-1Pe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Zbo-W2-f0d"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="checkBoxWidth" destination="crV-LS-UWc" id="YbV-HR-onu"/>
                 <outlet property="check_unchekImgView" destination="zIP-yG-kkF" id="Gzw-On-3Dg"/>
                 <outlet property="imgView" destination="4Ay-pS-Kuq" id="pp2-8l-Ujp"/>
                 <outlet property="nameLbl" destination="wMk-6q-Etz" id="iDu-OL-TO8"/>

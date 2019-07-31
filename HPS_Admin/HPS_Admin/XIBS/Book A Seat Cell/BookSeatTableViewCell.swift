@@ -15,6 +15,7 @@ class BookSeatTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var numberLbl: UILabel!
     @IBOutlet weak var check_unchekImgView: UIImageView!
+    @IBOutlet weak var checkBoxWidth: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

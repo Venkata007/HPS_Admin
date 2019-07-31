@@ -368,11 +368,11 @@
 				A354CADB22D705FF001CC94A /* AddEventViewController.swift */,
 				A354CADD22D70CB0001CC94A /* BookingHistoryVC.swift */,
 				A354CAE622D73FCE001CC94A /* BookASeatViewController.swift */,
+				A38C2A6922F0694E0069DDCA /* ConfirmViewContoller.swift */,
 				A3FD061222DC4C720049E061 /* CreateTableAdminVC.swift */,
 				A3F8BEAB22E5BF3A00593CE6 /* GetBuyInsViewController.swift */,
 				A3C218F422E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift */,
 				A33F99FF22E717B500D76E79 /* CloseEventViewController.swift */,
-				A38C2A6922F0694E0069DDCA /* ConfirmViewContoller.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

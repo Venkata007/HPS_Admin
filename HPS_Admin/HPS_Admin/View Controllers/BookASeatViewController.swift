@@ -30,8 +30,10 @@ class BookASeatViewController: UIViewController {
     @IBOutlet weak var bookStsLbl: UILabel!
     @IBOutlet weak var ribbonImageView: UIImageView!
     
-     var selectedUsers = [String]()
+    var selectedUsers = [String]()
     var selectedUsersNames = [String]()
+    var selectedUsersMobileNum = [String]()
+    var selectedUsersProfileUrls = [String]()
     var selectedEvent : EventsData!
     
     override func viewDidLoad() {
@@ -106,56 +108,21 @@ class BookASeatViewController: UIViewController {
             }
         }
     }
-    //MARK:- Book Seats Api
-    func bookSeatsApiHitting(){
-        TheGlobalPoolManager.showProgress(self.view, title:ToastMessages.Please_Wait)
-        let param = [ ApiParams.UserIds: self.selectedUsers,
-                      ApiParams.EventId: self.selectedEvent.eventId!,
-                      ApiParams.CreatedOn: TheGlobalPoolManager.getTodayString(),
-                      ApiParams.BookFromBlockedSeats: self.selectedEvent.seats.available == 0 ? true : false] as [String : Any]
-        APIServices.patchUrlSession(urlString: ApiURls.BOOK_SEATS, params: param as [String : AnyObject], header: HEADER) { (dataResponse,success) in
-            TheGlobalPoolManager.hideProgess(self.view)
-            if success{
-                if dataResponse.json.exists(){
-                    let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                    let status = dict.object(forKey: STATUS) as! String
-                    let message = dict.object(forKey: MESSAGE) as! String
-                    if status == Constants.SUCCESS{
-                        TheGlobalPoolManager.showAlertWith(message: message, singleAction: true, callback: { (success) in
-                            if success!{
-                                self.selectedEvent.seats.available = self.selectedEvent.seats.available - self.selectedUsers.count
-                                self.selectedEvent.seats.booked = self.selectedEvent.seats.booked + self.selectedUsers.count
-                                self.selectedEvent.seats.blocked = self.selectedEvent.seats.blocked
-                                NotificationCenter.default.post(name: Notification.Name("CloseClicked"), object: nil, userInfo: ["SelectedEvent":self.selectedEvent,"BookASeat":true])
-                                ez.topMostVC?.dismissVC(completion: nil)
-                            }
-                        })
-                    }else{
-                        TheGlobalPoolManager.showAlertWith(message: message, singleAction: true, callback: { (success) in
-                            if success!{}
-                        })
-                    }
-                }
-            }
-        }
-    }
     //MARK:- IB Action Outlets
     @IBAction func bookBtn(_ sender: UIButton) {
         if self.selectedUsers.count != 0{
-            let selectedUsers = self.selectedUsersNames.joined(separator: ",")
-            TheGlobalPoolManager.showAlertWith(title: "Selected Users", message: "\(selectedUsers)", singleAction: false, okTitle:"Continue") { (sucess) in
-                if sucess!{
-                    self.bookSeatsApiHitting()
-                }
+            if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.ConfirmViewContoller) as? ConfirmViewContoller{
+                viewCon.hidesBottomBarWhenPushed = true
+                viewCon.selectedEvent = self.selectedEvent
+                viewCon.selectedUsers = selectedUsers
+                viewCon.selectedUsersNames = selectedUsersNames
+                viewCon.selectedUsersMobileNum = selectedUsersMobileNum
+                viewCon.selectedUsersProfileUrls = selectedUsersProfileUrls
+                ez.topMostVC?.presentVC(viewCon)
             }
+        }else{
+            TheGlobalPoolManager.showToastView("Please select any one of the Users")
         }
-        /*
-        if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BookASeatViewController) as? BookASeatViewController{
-            viewCon.hidesBottomBarWhenPushed = true
-            viewCon.selectedEvent = self.selectedEvent
-            ez.topMostVC?.presentVC(viewCon)
-        }
-        */
     }
     @IBAction func backBtn(_ sender: UIButton) {
         ez.topMostVC?.dismissVC(completion: nil)
@@ -165,7 +132,7 @@ class BookASeatViewController: UIViewController {
             let selectedUsers = self.selectedUsersNames.joined(separator: ",")
             TheGlobalPoolManager.showAlertWith(title: "Selected Users", message: "\(selectedUsers)", singleAction: false, okTitle:"Continue") { (sucess) in
                 if sucess!{
-                    self.bookSeatsApiHitting()
+                    
                 }
             }
         }
@@ -184,7 +151,9 @@ extension BookASeatViewController : UITableViewDelegate,UITableViewDataSource{
         cell.imgView.sd_setImage(with: imgUrl as URL, placeholderImage: #imageLiteral(resourceName: "ProfilePlaceholder"), options: .cacheMemoryOnly, completed: nil)
         let selectedValue = selectedUsers.contains(data.userId!)
         let selectedName = selectedUsersNames.contains(data.name!)
-        if selectedValue && selectedName{
+        let seletedMobNum = selectedUsersMobileNum.contains(data.mobileNumber!)
+        let selectedProfileUrls = selectedUsersProfileUrls.contains(data.profilePicUrl!)
+        if selectedValue && selectedName && seletedMobNum && selectedProfileUrls{
             cell.cellSelected(true)
         }else{
             cell.cellSelected(false)
@@ -198,14 +167,22 @@ extension BookASeatViewController : UITableViewDelegate,UITableViewDataSource{
         let data =  ModelClassManager.usersListModel.approvedUsers[indexPath.row]
         let selectedValue = selectedUsers.contains(data.userId!)
         let selectedName = selectedUsersNames.contains(data.name!)
-        if !selectedValue && !selectedName {
+        let seletedMobNum = selectedUsersMobileNum.contains(data.mobileNumber!)
+        let selectedProfileUrls = selectedUsersProfileUrls.contains(data.profilePicUrl!)
+        if !selectedValue && !selectedName && !seletedMobNum && !selectedProfileUrls{
             selectedUsers.append(data.userId!)
             selectedUsersNames.append(data.name!)
+            selectedUsersMobileNum.append(data.mobileNumber!)
+            selectedUsersProfileUrls.append(data.profilePicUrl!)
         }else{
             let indx = selectedUsers.index(of: data.userId!)
             let indx1 = selectedUsersNames.index(of: data.name!)
+            let indx2 = selectedUsersMobileNum.index(of: data.mobileNumber!)
+            let indx3 = selectedUsersProfileUrls.index(of: data.profilePicUrl!)
             selectedUsers.remove(at: indx!)
             selectedUsersNames.remove(at: indx1!)
+            selectedUsersMobileNum.remove(at: indx2!)
+            selectedUsersProfileUrls.remove(at: indx3!)
         }
         tableView.reloadData()
         print(selectedUsers)
@@ -215,14 +192,23 @@ extension BookASeatViewController : UITableViewDelegate,UITableViewDataSource{
         let data =  ModelClassManager.usersListModel.approvedUsers[indexPath.row]
         let selectedValue = selectedUsers.contains(data.userId!)
         let selectedName = selectedUsersNames.contains(data.name!)
-        if selectedValue && selectedName {
+        let seletedMobNum = selectedUsersMobileNum.contains(data.mobileNumber!)
+        let selectedProfileUrls = selectedUsersProfileUrls.contains(data.profilePicUrl!)
+        if selectedValue && selectedName && seletedMobNum && selectedProfileUrls {
             let indx = selectedUsers.index(of: data.userId!)
             let indx1 = selectedUsersNames.index(of: data.name!)
+            let indx2 = selectedUsersMobileNum.index(of: data.mobileNumber!)
+            let indx3 = selectedUsersProfileUrls.index(of: data.profilePicUrl!)
             selectedUsers.remove(at: indx!)
             selectedUsersNames.remove(at: indx1!)
+            selectedUsersMobileNum.remove(at: indx2!)
+            selectedUsersProfileUrls.remove(at: indx3!)
         }
         tableView.reloadData()
         print(selectedUsers)
         print(selectedUsersNames)
     }
 }
+
+
+

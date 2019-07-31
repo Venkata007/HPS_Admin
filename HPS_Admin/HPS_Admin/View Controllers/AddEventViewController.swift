@@ -31,6 +31,8 @@ class AddEventViewController: UIViewController {
     }
     //MARK:- Update UI
     func updateUI(){
+        eventStatusSwitch.onImage = UIImage(named: "Switch_On")
+        eventStatusSwitch.offImage = UIImage(named: "Switch_Off")
         for view in viewsInView{
             TheGlobalPoolManager.cornerAndBorder(view, cornerRadius: 5, borderWidth: 1, borderColor: .borderColor)
             view.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : 5)
@@ -83,11 +85,11 @@ class AddEventViewController: UIViewController {
     }
     @IBAction func createEventBtn(_ sender: UIButton) {
         if validate(){
-            if ((self.enterHoursTF.text!.toInt()! > 0) && (self.enterHoursTF.text!.toInt()! <= 24)){
+            if ((self.enterHoursTF.text!.toInt()! > 3) && (self.enterHoursTF.text!.toInt()! <= 24)){
                 let endTime = TheGlobalPoolManager.adding(hours: self.enterHoursTF.text!.toInt()!)
                 self.createEventApiHitting(endTime)
             }else{
-                TheGlobalPoolManager.showToastView("Oops! Invalid Hours Provided")
+                TheGlobalPoolManager.showToastView("Minimum duration 3 hours required to create event")
             }
         }
     }

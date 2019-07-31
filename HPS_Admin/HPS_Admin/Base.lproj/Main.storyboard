@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="97E-Wv-8X2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="97E-Wv-8X2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -230,29 +230,15 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g4K-Zp-avb">
-                                        <rect key="frame" x="314" y="27" width="53" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4K-Zp-avb">
+                                        <rect key="frame" x="312" y="27" width="55" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="32i-Py-cSD"/>
                                         </constraints>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="+ ">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="24" name="Lato-Regular"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="Add">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" metaFont="system" size="18"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
+                                        <state key="normal" title="✚ Add">
+                                            <color key="titleColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="addEventBtn:" destination="omq-zJ-iZ1" eventType="touchUpInside" id="tea-Wt-pM5"/>
@@ -379,7 +365,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add User " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cmk-b0-jJL">
-                                        <rect key="frame" x="38" y="30.5" width="85.5" height="23"/>
+                                        <rect key="frame" x="38" y="30.5" width="83" height="23"/>
                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -421,7 +407,7 @@
                                         </variation>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3aA-WH-zZ7">
-                                        <rect key="frame" x="20" y="15.5" width="280" height="19"/>
+                                        <rect key="frame" x="20" y="15" width="280" height="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -451,7 +437,7 @@
                                 <rect key="frame" x="30" y="164" width="315" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rjr-Jb-Ehw">
-                                        <rect key="frame" x="20" y="-10" width="83" height="20"/>
+                                        <rect key="frame" x="20" y="-10" width="84" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="zOc-CW-l8V"/>
                                         </constraints>
@@ -463,7 +449,7 @@
                                         </variation>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New User Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vo9-KO-EGY">
-                                        <rect key="frame" x="20" y="15.5" width="280" height="19"/>
+                                        <rect key="frame" x="20" y="15" width="280" height="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -557,30 +543,15 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KYJ-Hr-XTJ">
-                                        <rect key="frame" x="314" y="27" width="53" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYJ-Hr-XTJ">
+                                        <rect key="frame" x="312" y="27" width="55" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="2Qi-KC-ePB"/>
                                         </constraints>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="+ ">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="24" name="Lato-Regular"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="Add">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="18" name="Lato-Regular"/>
-                                                        <font key="NSOriginalFont" size="18" name="Lato-Regular"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
+                                        <state key="normal" title="✚ Add">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="addUserBtn:" destination="9AT-af-Gyi" eventType="touchUpInside" id="a1h-1i-VQk"/>
@@ -3109,7 +3080,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Table Admin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szF-9f-4hP">
-                                        <rect key="frame" x="38" y="30.5" width="166.5" height="23"/>
+                                        <rect key="frame" x="38" y="30.5" width="164" height="23"/>
                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3151,7 +3122,7 @@
                                         </variation>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gn9-HL-P6Y">
-                                        <rect key="frame" x="20" y="15.5" width="280" height="19"/>
+                                        <rect key="frame" x="20" y="15" width="280" height="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -3181,7 +3152,7 @@
                                 <rect key="frame" x="30" y="164" width="315" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sci-Oq-9ru">
-                                        <rect key="frame" x="20" y="-10" width="83" height="20"/>
+                                        <rect key="frame" x="20" y="-10" width="84" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="mOG-NJ-yft"/>
                                         </constraints>
@@ -3193,7 +3164,7 @@
                                         </variation>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sfv-fB-cce">
-                                        <rect key="frame" x="20" y="15.5" width="280" height="19"/>
+                                        <rect key="frame" x="20" y="15" width="280" height="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -3246,7 +3217,7 @@
                                         </variation>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VZo-3L-DTY">
-                                        <rect key="frame" x="20" y="15.5" width="280" height="19"/>
+                                        <rect key="frame" x="20" y="15" width="280" height="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -3276,7 +3247,7 @@
                                 <rect key="frame" x="30" y="304" width="315" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtK-mZ-dRE">
-                                        <rect key="frame" x="20" y="-10" width="53.5" height="20"/>
+                                        <rect key="frame" x="20" y="-10" width="51.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="0yR-Bx-x1D"/>
                                         </constraints>
@@ -3288,7 +3259,7 @@
                                         </variation>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UPu-AQ-jHk">
-                                        <rect key="frame" x="20" y="15.5" width="280" height="19"/>
+                                        <rect key="frame" x="20" y="15" width="280" height="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -3394,8 +3365,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rp8-Qy-k8G">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book a Seat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iw-B5-sFO">
-                                        <rect key="frame" x="38" y="30.5" width="100.5" height="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Booking" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iw-B5-sFO">
+                                        <rect key="frame" x="38" y="30.5" width="143" height="23"/>
                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3409,7 +3380,7 @@
                                         <state key="normal" image="Back"/>
                                         <connections>
                                             <action selector="backBtn:" destination="Phi-HL-3LW" eventType="touchUpInside" id="CAm-fD-sck"/>
-                                            <action selector="backBtn:" destination="jeA-mY-z0O" eventType="touchUpInside" id="JCE-jV-uXQ"/>
+                                            <action selector="backBtn:" destination="jeA-mY-z0O" eventType="touchUpInside" id="M94-FU-7i2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -3432,9 +3403,6 @@
                                 <state key="normal" title="Book Seat(s)">
                                     <color key="titleColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="bookSeatsBtn:" destination="jeA-mY-z0O" eventType="touchUpInside" id="GUf-36-K0F"/>
-                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L1X-Jy-fXH">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
@@ -3649,11 +3617,11 @@
                                                         <constraint firstAttribute="width" constant="100" id="GSK-15-f5L"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
-                                                    <state key="normal" title="Book">
+                                                    <state key="normal" title="Confirm">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="bookBtn:" destination="jeA-mY-z0O" eventType="touchUpInside" id="jlG-da-l9X"/>
+                                                        <action selector="confirmBtn:" destination="jeA-mY-z0O" eventType="touchUpInside" id="kUT-tv-82P"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User" translatesAutoresizingMaskIntoConstraints="NO" id="kXw-Wk-MQt">
@@ -3719,14 +3687,20 @@
                                                             <state key="normal" title="Available Seats" image="Checkbox_Off">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="checkBtns:" destination="jeA-mY-z0O" eventType="touchUpInside" id="xWD-iy-cm6"/>
+                                                            </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWv-1D-Dnw">
+                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWv-1D-Dnw">
                                                             <rect key="frame" x="179.5" y="0.0" width="179.5" height="39"/>
                                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                             <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="Blocked Seats" image="Checkbox_Off">
                                                                 <color key="titleColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="checkBtns:" destination="jeA-mY-z0O" eventType="touchUpInside" id="FfX-Qe-Trb"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -3783,29 +3757,30 @@
                         <viewLayoutGuide key="safeArea" id="ROa-it-81I"/>
                     </view>
                     <connections>
-                        <outlet property="backBtn" destination="O88-Ep-Efm" id="fJK-UE-hdR"/>
-                        <outlet property="balanceLbl" destination="ag4-gc-oMp" id="YWN-nc-1Fi"/>
-                        <outlet property="bookBtn" destination="QUr-Y4-O1C" id="KgG-YO-nyS"/>
-                        <outlet property="bookSeatsBtn" destination="biP-z8-wDg" id="d7n-lx-6Or"/>
-                        <outlet property="bookStsLbl" destination="T3v-1M-Off" id="fG7-6f-cdA"/>
-                        <outlet property="coinsLbl" destination="w0s-LO-GJn" id="oPZ-gT-qd1"/>
-                        <outlet property="eventNameLbl" destination="EBn-hf-2bQ" id="Mvi-M1-vhp"/>
-                        <outlet property="headerView" destination="yg5-rg-lH8" id="bEB-9d-N9k"/>
-                        <outlet property="lbl1" destination="zUD-8p-Zol" id="J9p-Br-Ax0"/>
-                        <outlet property="lbl2" destination="D35-3V-n10" id="Vks-pn-jue"/>
-                        <outlet property="lbl3" destination="BA5-p7-mij" id="Ff2-K0-ux6"/>
-                        <outlet property="noOFUsersLbl" destination="b74-ef-Lo3" id="9f8-lE-i2t"/>
-                        <outlet property="ribbonImageView" destination="M8o-L5-fbf" id="ph5-Y0-q63"/>
-                        <outlet property="statusImgView" destination="964-a8-f59" id="Lfs-Ir-VpA"/>
-                        <outlet property="switch" destination="6Or-6O-3l0" id="c58-yf-A9n"/>
-                        <outlet property="tableView" destination="L1X-Jy-fXH" id="CNm-8k-cmQ"/>
-                        <outlet property="timeLbl" destination="bLn-fO-bX9" id="Cjt-9O-Lda"/>
-                        <outlet property="viewInView" destination="fRO-Rd-K9e" id="6VL-Dm-yqJ"/>
+                        <outlet property="ConfirmBtn" destination="QUr-Y4-O1C" id="kF4-Km-YYV"/>
+                        <outlet property="backBtn" destination="O88-Ep-Efm" id="Hzq-ec-ds0"/>
+                        <outlet property="balanceLbl" destination="ag4-gc-oMp" id="tor-OJ-Zc4"/>
+                        <outlet property="bookStsLbl" destination="T3v-1M-Off" id="ysd-1F-8GC"/>
+                        <outlet property="coinsLbl" destination="w0s-LO-GJn" id="gPw-LJ-e8P"/>
+                        <outlet property="eventNameLbl" destination="EBn-hf-2bQ" id="xKw-J4-03O"/>
+                        <outlet property="headerView" destination="yg5-rg-lH8" id="aak-dg-VNf"/>
+                        <outlet property="lbl1" destination="zUD-8p-Zol" id="x4p-z8-Mwz"/>
+                        <outlet property="lbl2" destination="D35-3V-n10" id="93s-Og-Cgo"/>
+                        <outlet property="lbl3" destination="BA5-p7-mij" id="G6a-Vl-BAK"/>
+                        <outlet property="noOFUsersLbl" destination="b74-ef-Lo3" id="KGR-42-9dh"/>
+                        <outlet property="ribbonImageView" destination="M8o-L5-fbf" id="zxt-Mo-LdX"/>
+                        <outlet property="statusImgView" destination="964-a8-f59" id="b2x-MC-9wZ"/>
+                        <outlet property="switch" destination="6Or-6O-3l0" id="ncI-zE-e3X"/>
+                        <outlet property="tableView" destination="L1X-Jy-fXH" id="m7a-1T-jpL"/>
+                        <outlet property="timeLbl" destination="bLn-fO-bX9" id="ySF-HM-Wvl"/>
+                        <outlet property="viewInView" destination="fRO-Rd-K9e" id="kRn-Iv-IIN"/>
+                        <outletCollection property="checkBtns" destination="LPd-zL-Ik8" collectionClass="NSMutableArray" id="A6F-2K-wfe"/>
+                        <outletCollection property="checkBtns" destination="wWv-1D-Dnw" collectionClass="NSMutableArray" id="YUf-4U-CfL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EkC-8K-ahf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5664.8000000000002" y="814.54272863568224"/>
+            <point key="canvasLocation" x="5738" y="815"/>
         </scene>
     </scenes>
     <resources>
