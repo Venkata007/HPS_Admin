@@ -86,7 +86,8 @@ class AddEventViewController: UIViewController {
     @IBAction func createEventBtn(_ sender: UIButton) {
         if validate(){
             if ((self.enterHoursTF.text!.toInt()! > 3) && (self.enterHoursTF.text!.toInt()! <= 24)){
-                let endTime = TheGlobalPoolManager.adding(hours: self.enterHoursTF.text!.toInt()!)
+                let startDate = TheGlobalPoolManager.getDateFromString(self.startTimeTF.text!)
+                let endTime = TheGlobalPoolManager.adding(hours: self.enterHoursTF.text!.toInt()!,startDate: startDate)
                 self.createEventApiHitting(endTime)
             }else{
                 TheGlobalPoolManager.showToastView("Minimum duration 3 hours required to create event")

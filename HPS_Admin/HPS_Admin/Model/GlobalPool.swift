@@ -168,7 +168,13 @@ class GlobalPool: NSObject {
             self.vc.presentVC(alertController)
         }
     }
-    
+    //MARK: - Get Date From String
+    func getDateFromString(_ dateString:String) -> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        let date = dateFormatter.date(from: dateString)
+        return date ?? Date()
+    }
     func getTodayString() -> String{
         let date = Date()
         let dateFormatter = DateFormatter()
@@ -176,10 +182,10 @@ class GlobalPool: NSObject {
         let date24 = dateFormatter.string(from: date)
         return date24
     }
-    func adding(hours: Int) -> String {
+    func adding(hours: Int, startDate:Date = Date()) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
-        let convertedDate: String = dateFormatter.string(from: Calendar.current.date(byAdding: .hour, value: hours, to: Date())!)
+        let convertedDate: String = dateFormatter.string(from: Calendar.current.date(byAdding: .hour, value: hours, to: startDate)!)
         return convertedDate
     }
     func getFormattedDate(string: String) -> String{
