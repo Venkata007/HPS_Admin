@@ -113,6 +113,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate{
         completionHandler()
     }
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        print("222",remoteMessage.appData)
     }
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         TheGlobalPoolManager.instanceIDTokenMessage  = fcmToken
