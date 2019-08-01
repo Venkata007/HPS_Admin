@@ -46,7 +46,8 @@ public  struct ViewControllerIDs {
     static let GetBuyInsViewController   = "GetBuyInsViewController"
     static let AddBuyInsAndCashOutVC     = "AddBuyInsAndCashOutVC"
     static let CloseEventViewController  = "CloseEventViewController"
-    static let ConfirmViewContoller         = "ConfirmViewContoller"
+    static let ConfirmViewContoller      = "ConfirmViewContoller"
+    static let LoginNavigationID         = "LoginNavigationID"
 }
 //MARK : - Device INFO
 public struct DeviceInfo {

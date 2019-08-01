@@ -47,9 +47,9 @@ class SettingsViewController: UIViewController {
     @objc func logoutMethod(_ btn : UIButton){
         TheGlobalPoolManager.showAlertWith(title: "Are you sure", message: "Do you want to Logout?", singleAction: false, okTitle:"Confirm") { (sucess) in
             if sucess!{
-                if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.LoginViewController) as? LoginViewController{
+                if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.LoginNavigationID) as? UINavigationController{
                     TheGlobalPoolManager.logout()
-                    self.navigationController?.pushViewController(viewCon, animated: true)
+                    self.presentVC(viewCon)
                 }
             }
         }
