@@ -14,6 +14,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var sections = ["","","","Table Admins",""]
     var tableAdminSections = ["","",""]
+    @IBOutlet weak var updatePasswordBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +31,20 @@ class SettingsViewController: UIViewController {
     }
     //MARK:- Update UI
     func updateUI(){
+        self.updatePasswordBtn.setImage(#imageLiteral(resourceName: "UpdatePassword").withColor(.white), for: .normal)
         tableView.tableFooterView = UIView()
         ModelClassManager.adminProfileApiHitting(self, progress: true, completionHandler: { (success, response) -> (Void) in
             self.tableView.delegate = self
             self.tableView.dataSource = self
             self.tableView.reloadData()
         })
+    }
+    //MARK:- IB Action Outlets
+    @IBAction func updatePasswordBtn(_ sender: UIButton) {
+        if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.ChangePasswordVC) as? ChangePasswordVC{
+            viewCon.hidesBottomBarWhenPushed = true
+            ez.topMostVC?.presentVC(viewCon)
+        }
     }
     //MARK:- Create Table Admin VC
     @objc func pushingToCreateTabelAdminVC(_ sender : UIButton){
@@ -47,10 +56,7 @@ class SettingsViewController: UIViewController {
     @objc func logoutMethod(_ btn : UIButton){
         TheGlobalPoolManager.showAlertWith(title: "Are you sure", message: "Do you want to Logout?", singleAction: false, okTitle:"Confirm") { (sucess) in
             if sucess!{
-                if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.LoginNavigationID) as? UINavigationController{
-                    TheGlobalPoolManager.logout()
-                    self.presentVC(viewCon)
-                }
+                self.logoutApiHitting()
             }
         }
     }
@@ -372,6 +378,31 @@ extension SettingsViewController{
         TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Are you sure to delete Table Admin", singleAction: false, okTitle: "Yes", cancelTitle: "No") { (success) in
             if success!{
                 self.deleteTableAdminApiHitting(ModelClassManager.adminProfileModel.tableAdmins[btn.tag].tAdminId!)
+            }
+        }
+    }
+}
+extension SettingsViewController{
+    //MARK:- Logout Api Hitting
+    func logoutApiHitting(){
+        TheGlobalPoolManager.showProgress(self.view, title:ToastMessages.Please_Wait)
+        let param = [ ApiParams.ID: ModelClassManager.adminLoginModel.data.id!,
+                                ApiParams.UserType: ModelClassManager.adminLoginModel.data.type! ] as [String : Any]
+        APIServices.patchUrlSession(urlString: ApiURls.LOGOUT, params: param as [String : AnyObject], header: HEADER) { (dataResponse,success) in
+            TheGlobalPoolManager.hideProgess(self.view)
+            if dataResponse.json.exists(){
+                let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                let status = dict.object(forKey: "status") as! String
+                let message = dict.object(forKey: "message") as! String
+                if status == Constants.SUCCESS{
+                    TheGlobalPoolManager.showToastView(message)
+                    if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.LoginNavigationID) as? UINavigationController{
+                        TheGlobalPoolManager.logout()
+                        self.presentVC(viewCon)
+                    }
+                }else{
+                    TheGlobalPoolManager.showToastView(message)
+                }
             }
         }
     }

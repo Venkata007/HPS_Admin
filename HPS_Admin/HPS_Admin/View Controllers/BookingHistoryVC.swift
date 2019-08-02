@@ -8,6 +8,7 @@
 
 import UIKit
 import EZSwiftExtensions
+import PopOverMenu
 
 class BookingHistoryVC: UIViewController {
 
@@ -36,7 +37,10 @@ class BookingHistoryVC: UIViewController {
     @IBOutlet var popUpBtns: [UIButton]!
     @IBOutlet weak var statusBtn: UIButton!
     @IBOutlet weak var ribbonImageView: UIImageView!
+    @IBOutlet weak var menuBtn: UIButton!
     var selectedEvent : EventsData!
+    let popOverViewController = PopOverViewController.instantiate()
+    var menuItems = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +84,7 @@ class BookingHistoryVC: UIViewController {
     //MARK:- Update UI
     func updateUI(){
         self.popUpView.isHidden = true
+        self.editBtn.isHidden = true
         for lbl in popUpLbls{
             TheGlobalPoolManager.cornerAndBorder(lbl, cornerRadius: 5, borderWidth: 0, borderColor: .clear)
         }
@@ -99,9 +104,11 @@ class BookingHistoryVC: UIViewController {
             self.eventNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.name!)\n", attr2Text: data.eventId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
             self.coinsLbl.text = "\(data.eventRewardPoints!.toString)\n points"
             if data.seats.available! > 0 {
+                self.menuItems = ["Book","Unblock Seats","Block Seats","Delete"]
                 self.blockSeatsViewHeight.constant = 40
                 self.blockSeatsView.isHidden = false
             }else{
+                 self.menuItems = ["Book","Unblock Seats","Delete"]
                 self.blockSeatsViewHeight.constant = 0
                 self.blockSeatsView.isHidden = true
             }
@@ -212,6 +219,66 @@ class BookingHistoryVC: UIViewController {
         }
     }
     //MARK:- IB Action Outlets
+    @IBAction func menuBtn(_ sender: UIButton) {
+        //POP MENU
+        self.popOverViewController.set(titles: self.menuItems)
+        self.popOverViewController.set(separatorStyle: .singleLine)
+        self.popOverViewController.popoverPresentationController?.sourceView = sender
+        self.popOverViewController.popoverPresentationController?.sourceRect = sender.bounds
+        self.popOverViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        self.popOverViewController.preferredContentSize = CGSize(width: 140, height: self.menuItems.count * 45)
+        self.popOverViewController.presentationController?.delegate = self
+        ez.runThisInMainThread {
+            self.popOverViewController.completionHandler = { selectRow in
+                if let data = self.selectedEvent{
+                    if data.seats.available! > 0{
+                        if selectRow == 0{
+                            if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BookASeatViewController) as? BookASeatViewController{
+                                viewCon.hidesBottomBarWhenPushed = true
+                                viewCon.selectedEvent = self.selectedEvent
+                                ez.topMostVC?.presentVC(viewCon)
+                            }
+                        }else if selectRow == 1{
+                            self.blockUnblockPopUpView(false)
+                        }else if selectRow == 2{
+                            self.blockUnblockPopUpView(true)
+                        }else{
+                            TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Do you want to delete this event?", singleAction: false, okTitle: "Yes", cancelTitle: "Cancel") { (success) in
+                                if success!{
+                                    ModelClassManager.deleteEventApiHitting(self.selectedEvent.eventId, progress: true, viewCon: self, completionHandler: { (success, dict) -> (Void) in
+                                        if success{
+                                            self.dismiss(animated: true, completion: nil)
+                                        }
+                                    })
+                                }
+                            }
+                        }
+                    }else{
+                        if selectRow == 0{
+                            if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BookASeatViewController) as? BookASeatViewController{
+                                viewCon.hidesBottomBarWhenPushed = true
+                                viewCon.selectedEvent = self.selectedEvent
+                                ez.topMostVC?.presentVC(viewCon)
+                            }
+                        }else if selectRow == 1{
+                            self.blockUnblockPopUpView(false)
+                        }else{
+                            TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Do you want to delete this event?", singleAction: false, okTitle: "Yes", cancelTitle: "Cancel") { (success) in
+                                if success!{
+                                    ModelClassManager.deleteEventApiHitting(self.selectedEvent.eventId, progress: true, viewCon: self, completionHandler: { (success, dict) -> (Void) in
+                                        if success{
+                                            self.dismiss(animated: true, completion: nil)
+                                        }
+                                    })
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        self.present(self.popOverViewController, animated: true, completion: nil)
+    }
     @IBAction func bookBtn(_ sender: UIButton) {
         if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BookASeatViewController) as? BookASeatViewController{
             viewCon.hidesBottomBarWhenPushed = true
@@ -392,5 +459,13 @@ extension BookingHistoryVC{
                 }
             }
         }
+    }
+}
+extension BookingHistoryVC : UIAdaptivePresentationControllerDelegate{
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 }

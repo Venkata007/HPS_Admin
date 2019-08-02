@@ -191,16 +191,20 @@ class GlobalPool: NSObject {
     func getFormattedDate(string: String) -> String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm" //This formate is input formated .
-        let formateDate = dateFormatter.date(from:string)!
-        dateFormatter.dateFormat = "dd EEE MMMM\n hh:mm a" //Output Formated
-        return dateFormatter.string(from: formateDate)
+        if let formateDate = dateFormatter.date(from:string){
+            dateFormatter.dateFormat = "dd EEE MMMM\n hh:mm a" //Output Formated
+            return dateFormatter.string(from: formateDate)
+        }
+        return string
     }
     func getFormattedDate2(string: String) -> String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm" //This formate is input formated .
-        let formateDate = dateFormatter.date(from:string)!
-        dateFormatter.dateFormat = "dd MMM yy hh:mm a" //Output Formated
-        return dateFormatter.string(from: formateDate)
+        if let formateDate = dateFormatter.date(from:string){
+            dateFormatter.dateFormat = "dd MMM yy hh:mm a" //Output Formated
+            return dateFormatter.string(from: formateDate)
+        }
+        return string
     }
     //MARK: - Email Validation
     func isValidEmail(testStr:String) -> Bool {

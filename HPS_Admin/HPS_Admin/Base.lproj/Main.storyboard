@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="97E-Wv-8X2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="97E-Wv-8X2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -306,12 +306,26 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cT8-Fb-OXR">
+                                        <rect key="frame" x="337" y="27" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Eeb-7L-h14"/>
+                                            <constraint firstAttribute="width" constant="30" id="q2n-mj-gCs"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                                        <state key="normal" image="UpdatePassword"/>
+                                        <connections>
+                                            <action selector="updatePasswordBtn:" destination="6jF-CF-ebr" eventType="touchUpInside" id="fxL-nd-UCW"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59993043664383561" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="0VQ-3O-KS2"/>
                                     <constraint firstItem="waL-SD-v5I" firstAttribute="centerY" secondItem="ZMt-Mk-yu4" secondAttribute="centerY" constant="10" id="Vmy-zv-q0b"/>
+                                    <constraint firstAttribute="trailing" secondItem="cT8-Fb-OXR" secondAttribute="trailing" constant="8" id="ZOR-4z-z5f"/>
                                     <constraint firstItem="waL-SD-v5I" firstAttribute="centerX" secondItem="ZMt-Mk-yu4" secondAttribute="centerX" id="dzb-p0-P8R"/>
+                                    <constraint firstItem="cT8-Fb-OXR" firstAttribute="centerY" secondItem="waL-SD-v5I" secondAttribute="centerY" id="h2F-Zh-aMm"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6vI-2K-vtE">
@@ -344,6 +358,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="6vI-2K-vtE" id="QqL-PY-oeC"/>
+                        <outlet property="updatePasswordBtn" destination="cT8-Fb-OXR" id="rck-aW-DsJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6L3-pX-nVa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1014,11 +1029,12 @@
                                             <constraint firstAttribute="height" constant="22" id="3N0-bL-qr4"/>
                                             <constraint firstAttribute="width" secondItem="CQN-SF-dKG" secondAttribute="height" multiplier="1:1" id="TxF-Cy-Rbi"/>
                                         </constraints>
-                                        <state key="normal" image="Delete">
+                                        <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                                        <state key="normal" image="Menu">
                                             <color key="titleColor" red="0.94117647059999998" green="0.37254901959999998" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="deleteEvent:" destination="Phi-HL-3LW" eventType="touchUpInside" id="KXh-CH-vG3"/>
+                                            <action selector="menuBtn:" destination="Phi-HL-3LW" eventType="touchUpInside" id="Egh-Jf-X2j"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1520,6 +1536,7 @@
                         <outlet property="lbl1" destination="zXh-Uk-JVr" id="umt-6O-tQH"/>
                         <outlet property="lbl2" destination="DMr-6t-Gsd" id="srZ-sk-Mmr"/>
                         <outlet property="lbl3" destination="cXn-Vt-J5N" id="OFW-fU-L62"/>
+                        <outlet property="menuBtn" destination="CQN-SF-dKG" id="70K-on-l0a"/>
                         <outlet property="noOFUsersLbl" destination="ynf-15-qSb" id="mZT-jL-fnU"/>
                         <outlet property="popUpView" destination="7cV-0O-iyx" id="8mr-Pb-M8K"/>
                         <outlet property="ribbonImageView" destination="Aa4-vF-jjV" id="a65-OI-MUo"/>
@@ -3785,6 +3802,179 @@
             </objects>
             <point key="canvasLocation" x="5738" y="815"/>
         </scene>
+        <!--Change PasswordVC-->
+        <scene sceneID="yyh-NO-Npe">
+            <objects>
+                <viewController storyboardIdentifier="ChangePasswordVC" id="MAl-t3-QRR" customClass="ChangePasswordVC" customModule="HPS_User" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bKM-pO-OXw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bg" translatesAutoresizingMaskIntoConstraints="NO" id="BSQ-AP-kxn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsu-os-gPZ">
+                                <rect key="frame" x="30" y="93" width="315" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Old Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzC-8b-juq">
+                                        <rect key="frame" x="20" y="-10" width="74" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="xX1-Np-UZG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                        </variation>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mWw-HB-WpC">
+                                        <rect key="frame" x="20" y="15" width="280" height="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
+                                        </variation>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="mWw-HB-WpC" secondAttribute="trailing" constant="15" id="QrR-fN-Icg"/>
+                                    <constraint firstItem="mWw-HB-WpC" firstAttribute="leading" secondItem="xsu-os-gPZ" secondAttribute="leading" constant="20" id="cew-n7-Gpn"/>
+                                    <constraint firstItem="gzC-8b-juq" firstAttribute="leading" secondItem="xsu-os-gPZ" secondAttribute="leading" constant="20" id="gDQ-Yi-gV4"/>
+                                    <constraint firstItem="gzC-8b-juq" firstAttribute="top" secondItem="xsu-os-gPZ" secondAttribute="top" constant="-10" id="kYF-cB-2ZA"/>
+                                    <constraint firstAttribute="height" constant="50" id="roK-sZ-azZ">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="60"/>
+                                    </constraint>
+                                    <constraint firstItem="mWw-HB-WpC" firstAttribute="centerY" secondItem="xsu-os-gPZ" secondAttribute="centerY" id="yns-Zc-rJq"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="siT-5I-q6R">
+                                <rect key="frame" x="30" y="163" width="315" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYf-kp-E5T">
+                                        <rect key="frame" x="20" y="-10" width="79.5" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="HEo-ja-xVW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                        </variation>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X0U-LC-gdM">
+                                        <rect key="frame" x="20" y="15" width="280" height="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
+                                        </variation>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="X0U-LC-gdM" firstAttribute="centerY" secondItem="siT-5I-q6R" secondAttribute="centerY" id="08m-BJ-w5N"/>
+                                    <constraint firstAttribute="trailing" secondItem="X0U-LC-gdM" secondAttribute="trailing" constant="15" id="BwY-OU-fGE"/>
+                                    <constraint firstItem="iYf-kp-E5T" firstAttribute="leading" secondItem="siT-5I-q6R" secondAttribute="leading" constant="20" id="L74-dY-TcP"/>
+                                    <constraint firstItem="X0U-LC-gdM" firstAttribute="leading" secondItem="siT-5I-q6R" secondAttribute="leading" constant="20" id="fPK-rX-RZW"/>
+                                    <constraint firstItem="iYf-kp-E5T" firstAttribute="top" secondItem="siT-5I-q6R" secondAttribute="top" constant="-10" id="keW-jy-zvf"/>
+                                    <constraint firstAttribute="height" constant="50" id="mju-KM-Bki">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="60"/>
+                                    </constraint>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Due-p6-etD">
+                                <rect key="frame" x="30" y="233" width="315" height="50"/>
+                                <color key="backgroundColor" red="0.91992014649999998" green="0.97659760709999999" blue="0.98513370749999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
+                                <state key="normal" title="UPDATE">
+                                    <color key="titleColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateBtn:" destination="MAl-t3-QRR" eventType="touchUpInside" id="h8O-gc-grq"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="er3-k5-W5T">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itM-Is-8WT">
+                                        <rect key="frame" x="48" y="31" width="142" height="22"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63c-Bj-hlv">
+                                        <rect key="frame" x="8" y="27" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="e94-1M-tiy"/>
+                                            <constraint firstAttribute="height" constant="30" id="htb-hP-JFY"/>
+                                        </constraints>
+                                        <state key="normal" image="Back"/>
+                                        <connections>
+                                            <action selector="backBtn:" destination="MAl-t3-QRR" eventType="touchUpInside" id="IPk-zI-BTB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="itM-Is-8WT" secondAttribute="bottom" constant="10" id="Buq-0u-Wcw"/>
+                                    <constraint firstItem="itM-Is-8WT" firstAttribute="leading" secondItem="63c-Bj-hlv" secondAttribute="trailing" constant="10" id="Y6h-kh-lqz"/>
+                                    <constraint firstItem="63c-Bj-hlv" firstAttribute="leading" secondItem="er3-k5-W5T" secondAttribute="leading" constant="8" id="lgU-0C-957"/>
+                                    <constraint firstItem="itM-Is-8WT" firstAttribute="top" secondItem="er3-k5-W5T" secondAttribute="top" constant="31" id="miS-VE-ye5"/>
+                                    <constraint firstItem="63c-Bj-hlv" firstAttribute="centerY" secondItem="itM-Is-8WT" secondAttribute="centerY" id="oRg-pz-IFP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="er3-k5-W5T" firstAttribute="trailing" secondItem="BLp-CL-fcT" secondAttribute="trailing" id="2RT-rc-WhH"/>
+                            <constraint firstItem="BSQ-AP-kxn" firstAttribute="top" secondItem="bKM-pO-OXw" secondAttribute="top" id="5Zd-4Z-TXG"/>
+                            <constraint firstItem="siT-5I-q6R" firstAttribute="height" secondItem="xsu-os-gPZ" secondAttribute="height" id="BDi-Wq-jFW"/>
+                            <constraint firstItem="BSQ-AP-kxn" firstAttribute="trailing" secondItem="BLp-CL-fcT" secondAttribute="trailing" id="FoU-rv-I2y"/>
+                            <constraint firstItem="xsu-os-gPZ" firstAttribute="top" secondItem="er3-k5-W5T" secondAttribute="bottom" constant="30" id="JSr-0F-9gL"/>
+                            <constraint firstItem="er3-k5-W5T" firstAttribute="leading" secondItem="BLp-CL-fcT" secondAttribute="leading" id="KZt-gZ-TPa"/>
+                            <constraint firstItem="Due-p6-etD" firstAttribute="top" secondItem="siT-5I-q6R" secondAttribute="bottom" constant="20" id="MnU-Z3-vpB"/>
+                            <constraint firstItem="er3-k5-W5T" firstAttribute="top" secondItem="bKM-pO-OXw" secondAttribute="top" id="MwL-AE-4ZI"/>
+                            <constraint firstItem="Due-p6-etD" firstAttribute="centerX" secondItem="siT-5I-q6R" secondAttribute="centerX" id="N25-Pv-MnP"/>
+                            <constraint firstItem="BLp-CL-fcT" firstAttribute="trailing" secondItem="xsu-os-gPZ" secondAttribute="trailing" constant="30" id="OdR-pV-fKv"/>
+                            <constraint firstItem="xsu-os-gPZ" firstAttribute="leading" secondItem="BLp-CL-fcT" secondAttribute="leading" constant="30" id="SFK-3V-Y4X"/>
+                            <constraint firstItem="siT-5I-q6R" firstAttribute="centerX" secondItem="xsu-os-gPZ" secondAttribute="centerX" id="SzG-0K-h7c"/>
+                            <constraint firstItem="siT-5I-q6R" firstAttribute="width" secondItem="xsu-os-gPZ" secondAttribute="width" id="T35-rC-fm8"/>
+                            <constraint firstItem="Due-p6-etD" firstAttribute="height" secondItem="siT-5I-q6R" secondAttribute="height" id="Xp8-Ck-gmN"/>
+                            <constraint firstItem="BSQ-AP-kxn" firstAttribute="bottom" secondItem="BLp-CL-fcT" secondAttribute="bottom" id="jp2-8d-jBg"/>
+                            <constraint firstItem="siT-5I-q6R" firstAttribute="top" secondItem="xsu-os-gPZ" secondAttribute="bottom" constant="20" id="loe-gv-1hI"/>
+                            <constraint firstItem="Due-p6-etD" firstAttribute="width" secondItem="siT-5I-q6R" secondAttribute="width" id="s1k-WH-SkY"/>
+                            <constraint firstItem="BSQ-AP-kxn" firstAttribute="leading" secondItem="BLp-CL-fcT" secondAttribute="leading" id="up6-o7-DKH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BLp-CL-fcT"/>
+                    </view>
+                    <connections>
+                        <outlet property="backBtn" destination="63c-Bj-hlv" id="dE6-ic-Roo"/>
+                        <outlet property="newPasswordTF" destination="X0U-LC-gdM" id="s7p-vc-qEq"/>
+                        <outlet property="oldPasswordTF" destination="mWw-HB-WpC" id="3M9-AJ-lo9"/>
+                        <outlet property="updateBtn" destination="Due-p6-etD" id="vAl-3x-4w7"/>
+                        <outletCollection property="viewsInView" destination="xsu-os-gPZ" collectionClass="NSMutableArray" id="fHj-1O-XV1"/>
+                        <outletCollection property="viewsInView" destination="siT-5I-q6R" collectionClass="NSMutableArray" id="Eo5-OX-ZRK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f8A-xJ-RjN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2878" y="-554"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Available" width="25" height="25.5"/>
@@ -3796,13 +3986,14 @@
         <image name="Booked" width="25" height="25.5"/>
         <image name="Checkbox_Off" width="18" height="18"/>
         <image name="Coins" width="171" height="171"/>
-        <image name="Delete" width="171" height="171"/>
         <image name="Group 686" width="87" height="44.5"/>
+        <image name="Menu" width="171" height="171"/>
         <image name="Pencil" width="171" height="171"/>
         <image name="ProfilePlaceholder" width="76" height="76"/>
         <image name="Settings_active" width="24" height="24"/>
         <image name="Settings_deactive" width="24" height="24"/>
         <image name="Unblock" width="27" height="23"/>
+        <image name="UpdatePassword" width="1024" height="1024"/>
         <image name="Upload_Document" width="171" height="171"/>
         <image name="User" width="22.5" height="22.5"/>
         <image name="Users_active" width="28" height="28"/>

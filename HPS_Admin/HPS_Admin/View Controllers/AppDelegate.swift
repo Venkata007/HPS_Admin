@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate {
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
     var gcmNotificationIDKey = "gcm.notification.payload"
+    let KEY                               = "action"
+    let DATA                            = "data"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -102,14 +104,27 @@ extension AppDelegate : UNUserNotificationCenterDelegate{
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-        print(userInfo)
+        //print("111111 ======",userInfo)
+        if let key = userInfo[KEY] as? String{
+            if key == EVENT_BOOKING_UPDATED{
+                print("Event Booking Updated",userInfo[DATA] as! NSDictionary)
+            }else if key == EVENT_BOOKING_ADDED{
+                print("Event Booking Added",userInfo[DATA] as! NSDictionary)
+            }else if key == EVENT_UPDATED{
+                print("Event Updated",userInfo[DATA] as! NSDictionary)
+            }else if key == EVENT_ADDED{
+                print("Event Added",userInfo[DATA] as! NSDictionary)
+            }else if key == USER_UPDATED{
+                print("User Updated",userInfo[DATA] as! NSDictionary)
+            }
+        }
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-        print("222",userInfo)
+        print("222========",userInfo)
         completionHandler()
     }
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {

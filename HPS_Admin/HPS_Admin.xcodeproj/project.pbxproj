@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5ED0D33A3491CD1E3228A2F0 /* Pods_HPS_Admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41015D0DA9F3338A67806F48 /* Pods_HPS_Admin.framework */; };
+		A30193AA22F3FFD90083405C /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30193A922F3FFD80083405C /* ChangePasswordVC.swift */; };
 		A31EF39422D8AA650089D223 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31EF39222D8AA650089D223 /* PickerView.swift */; };
 		A31EF39522D8AA650089D223 /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A31EF39322D8AA650089D223 /* PickerView.xib */; };
 		A32981D222D35A7F0023EA9F /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32981D022D35A7F0023EA9F /* UsersCell.swift */; };
@@ -91,6 +92,7 @@
 /* Begin PBXFileReference section */
 		41015D0DA9F3338A67806F48 /* Pods_HPS_Admin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HPS_Admin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A05F3184415B2DD752397F9A /* Pods-HPS_Admin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HPS_Admin.release.xcconfig"; path = "Pods/Target Support Files/Pods-HPS_Admin/Pods-HPS_Admin.release.xcconfig"; sourceTree = "<group>"; };
+		A30193A922F3FFD80083405C /* ChangePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		A31EF39222D8AA650089D223 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		A31EF39322D8AA650089D223 /* PickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
 		A32981D022D35A7F0023EA9F /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				A3F8BEAB22E5BF3A00593CE6 /* GetBuyInsViewController.swift */,
 				A3C218F422E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift */,
 				A33F99FF22E717B500D76E79 /* CloseEventViewController.swift */,
+				A30193A922F3FFD80083405C /* ChangePasswordVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				A3C218F522E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift in Sources */,
 				A39AF69822CE0A340049F1B2 /* UIViewController+MJPopupViewController.m in Sources */,
 				A3FB977622DF177600CE802C /* GetAllBookingsModel.swift in Sources */,
+				A30193AA22F3FFD90083405C /* ChangePasswordVC.swift in Sources */,
 				A39AF69E22CE0A340049F1B2 /* ExtensionClass.swift in Sources */,
 				A3F8BEB422E5D33A00593CE6 /* BuyInsDetailCell.swift in Sources */,
 				A354CACB22D5EE01001CC94A /* RedeemView.swift in Sources */,

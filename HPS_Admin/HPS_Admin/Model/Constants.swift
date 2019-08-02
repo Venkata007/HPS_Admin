@@ -20,7 +20,11 @@ let CLOSED           = "closed"
 let OPEN             = "open"
 let STATUS           = "status"
 let MESSAGE          = "message"
-
+let EVENT_BOOKING_UPDATED = "event-booking-updated"
+let EVENT_BOOKING_ADDED = "event-booking-added"
+let EVENT_UPDATED = "event-updated"
+let EVENT_ADDED = "event-added"
+let USER_UPDATED = "user-updated"
 
 
 public struct Constants {
@@ -48,6 +52,7 @@ public  struct ViewControllerIDs {
     static let CloseEventViewController  = "CloseEventViewController"
     static let ConfirmViewContoller      = "ConfirmViewContoller"
     static let LoginNavigationID         = "LoginNavigationID"
+    static let ChangePasswordVC    = "ChangePasswordVC"
 }
 //MARK : - Device INFO
 public struct DeviceInfo {
@@ -79,6 +84,8 @@ public struct ApiURls{
     static let CLOSE_EVENT          = "\(SERVER_IP)/closeEvent"
     static let MODIFY_REWARD_POINTS = "\(SERVER_IP)/changeEventsRewardPointsPerHour"
     static let DELETE_EVENT         = "\(SERVER_IP)/deleteEvent"
+    static let LOGOUT                     = "\(SERVER_IP)/logout"
+    static let UPDATE_PASSWORD     = "\(SERVER_IP)/updatePassword"
 }
 // MARK : - Toast Messages
 public struct ToastMessages {
@@ -174,4 +181,5 @@ public struct ApiParams  {
     static let Adjustments                  = "adjustments"
     static let newEventsRewardPointsPerHour = "newEventsRewardPointsPerHour"
     static let ID                           = "id"
+    static let NewPassword = "newPassword"
 }
