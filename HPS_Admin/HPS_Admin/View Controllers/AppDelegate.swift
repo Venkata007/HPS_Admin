@@ -104,18 +104,28 @@ extension AppDelegate : UNUserNotificationCenterDelegate{
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-        //print("111111 ======",userInfo)
+        print("USER INFO ============",userInfo)
         if let key = userInfo[KEY] as? String{
             if key == EVENT_BOOKING_UPDATED{
-                print("Event Booking Updated",userInfo[DATA] as! NSDictionary)
+                if let data = (userInfo[DATA] as? String)?.toJSON()  as? [String : AnyObject]{
+                    print("Event Booking Updated",data)
+                }
             }else if key == EVENT_BOOKING_ADDED{
-                print("Event Booking Added",userInfo[DATA] as! NSDictionary)
+               if let data = (userInfo[DATA] as? String)?.toJSON()  as? [String : AnyObject]{
+                    print("Event Booking Added",data)
+                }
             }else if key == EVENT_UPDATED{
-                print("Event Updated",userInfo[DATA] as! NSDictionary)
+                if let data = (userInfo[DATA] as? String)?.toJSON()  as? [String : AnyObject]{
+                    print("Event Updated",data)
+                }
             }else if key == EVENT_ADDED{
-                print("Event Added",userInfo[DATA] as! NSDictionary)
+                if let data = (userInfo[DATA] as? String)?.toJSON()  as? [String : AnyObject]{
+                    print("Event Added",data)
+                }
             }else if key == USER_UPDATED{
-                print("User Updated",userInfo[DATA] as! NSDictionary)
+                if let data = (userInfo[DATA] as? String)?.toJSON()  as? [String : AnyObject]{
+                    print("User Added",data)
+                }
             }
         }
     }
