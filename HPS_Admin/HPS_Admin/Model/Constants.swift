@@ -25,6 +25,10 @@ let EVENT_BOOKING_ADDED   = "event-booking-added"
 let EVENT_UPDATED         = "event-updated"
 let EVENT_ADDED           = "event-added"
 let USER_UPDATED          = "user-updated"
+let EVENT_CREATED         = "created"
+let EVENT_RUNNING         = "running"
+let EVENT_FINISHED        = "finished"
+let EVENT_CLOSED          = "closed"
 
 
 public struct Constants {
