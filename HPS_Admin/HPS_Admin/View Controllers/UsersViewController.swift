@@ -20,7 +20,11 @@ class UsersViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.register(UINib(nibName: XIBNames.UsersCell, bundle: nil), forCellReuseIdentifier: XIBNames.UsersCell)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData(_:)) , name: NSNotification.Name(USER_UPDATED), object: nil)
         self.updateUI()
+    }
+    @objc func reloadData(_ userInfo:Notification){
+        self.tableView.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         ModelClassManager.getAllUsersApiHitting(self, progress: true) { (success, response) -> (Void) in

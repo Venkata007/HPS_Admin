@@ -53,6 +53,40 @@ class BookingHistoryVC: UIViewController {
         ez.runThisInMainThread {
             self.updateUI()
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData(_:)) , name: NSNotification.Name(EVENT_UPDATED), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData(_:)) , name: NSNotification.Name(EVENT_BOOKING_UPDATED), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData(_:)) , name: NSNotification.Name(EVENT_BOOKING_ADDED), object: nil)
+    }
+    @objc func reloadData(_ userInfo:Notification){
+        if userInfo.name.rawValue == EVENT_UPDATED{
+            let eventData = ModelClassManager.eventsListModel.events.filter({ (eventData) -> Bool in
+                return eventData.eventId == self.selectedEvent.eventId
+            })
+            
+            if eventData.count == 1{
+                self.selectedEvent = eventData[0]
+                self.updateCreatedEventStatus(data: self.selectedEvent)
+                if self.selectedEvent.bookingStatus == OPEN{
+                    self.switch.setOn(true, animated: false)
+                }else{
+                    self.switch.setOn(false, animated: false)
+                }
+            }
+        }else if userInfo.name.rawValue == EVENT_BOOKING_UPDATED{
+            if let data = userInfo.userInfo as? [String:AnyObject]{
+                if let indexRow = data["IndexPath"] as? Int{
+                    let indexPath = IndexPath(row: indexRow, section: 0)
+                    if let visibleCells = self.tableView.indexPathsForVisibleRows{
+                        if visibleCells.contains(indexPath){
+                            self.tableView.reloadRows(at: [indexPath], with: .none)
+                        }
+                    }
+                }
+            }
+        }else if userInfo.name.rawValue == EVENT_BOOKING_ADDED{
+            self.tableView.reloadData()
+        }
+        
     }
     @objc func methodOfReceivedNotification(notification: Notification){
         if let userInfo = notification.userInfo{

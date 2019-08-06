@@ -9,22 +9,22 @@
 import Foundation
 import UIKit
 
-let SERVER_IP        = "https://us-central1-home-poker-squad-hps.cloudfunctions.net"
-let Auth_Key         = "vYv6I6g2XoC3So3FcuullGwdJrFXss9V2lPJZ3r9"
+let SERVER_IP             = "https://us-central1-home-poker-squad-hps.cloudfunctions.net"
+let Auth_Key              = "vYv6I6g2XoC3So3FcuullGwdJrFXss9V2lPJZ3r9"
 
-let ADMIN_USER_INFO  = "admin_user_info"
-let TADMIN_USER_INFO = "tadmin_user_info"
-let ADMIN            = "admin"
-let TABLE_ADMIN      = "tableAdmin"
-let CLOSED           = "closed"
-let OPEN             = "open"
-let STATUS           = "status"
-let MESSAGE          = "message"
+let ADMIN_USER_INFO       = "admin_user_info"
+let TADMIN_USER_INFO      = "tadmin_user_info"
+let ADMIN                 = "admin"
+let TABLE_ADMIN           = "tableAdmin"
+let CLOSED                = "closed"
+let OPEN                  = "open"
+let STATUS                = "status"
+let MESSAGE               = "message"
 let EVENT_BOOKING_UPDATED = "event-booking-updated"
-let EVENT_BOOKING_ADDED = "event-booking-added"
-let EVENT_UPDATED = "event-updated"
-let EVENT_ADDED = "event-added"
-let USER_UPDATED = "user-updated"
+let EVENT_BOOKING_ADDED   = "event-booking-added"
+let EVENT_UPDATED         = "event-updated"
+let EVENT_ADDED           = "event-added"
+let USER_UPDATED          = "user-updated"
 
 
 public struct Constants {
@@ -64,7 +64,7 @@ public struct DeviceInfo {
 public struct ApiURls{
     static let LOGIN_USER           = "\(SERVER_IP)/login"
     static let GET_ALL_USERS        = "https://home-poker-squad-hps.firebaseio.com/usersTable/.json?auth=\(Auth_Key)"
-    static let GET_ALL_EVENTS       = "https://home-poker-squad-hps.firebaseio.com/eventsTable/.json?auth=\(Auth_Key)"
+    static let GET_ALL_EVENTS       = "https://home-poker-squad-hps.firebaseio.com/eventsTable/.json?auth=\(Auth_Key)&orderBy=%22eventStatusNum%22&startAt=1&endAt=3"
     static let CREATE_REFERAL       = "\(SERVER_IP)/createNewUserReferral"
     static let CREATE_EVENT         = "\(SERVER_IP)/createEvent"
     static let CREATE_TABLE_ADMIN   = "\(SERVER_IP)/createTAdmin"
@@ -84,8 +84,8 @@ public struct ApiURls{
     static let CLOSE_EVENT          = "\(SERVER_IP)/closeEvent"
     static let MODIFY_REWARD_POINTS = "\(SERVER_IP)/changeEventsRewardPointsPerHour"
     static let DELETE_EVENT         = "\(SERVER_IP)/deleteEvent"
-    static let LOGOUT                     = "\(SERVER_IP)/logout"
-    static let UPDATE_PASSWORD     = "\(SERVER_IP)/updatePassword"
+    static let LOGOUT               = "\(SERVER_IP)/logout"
+    static let UPDATE_PASSWORD      = "\(SERVER_IP)/updatePassword"
 }
 // MARK : - Toast Messages
 public struct ToastMessages {
@@ -181,5 +181,5 @@ public struct ApiParams  {
     static let Adjustments                  = "adjustments"
     static let newEventsRewardPointsPerHour = "newEventsRewardPointsPerHour"
     static let ID                           = "id"
-    static let NewPassword = "newPassword"
+    static let NewPassword                  = "newPassword"
 }

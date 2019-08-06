@@ -12,7 +12,6 @@ import SwiftyJSON
 class UsersListModel {
 
      // (created/registered/pending/approved/disapproved)
-    
     var success : Bool = false
     var users = [UsersData]()
     var registeredUsers = [UsersData]()
@@ -30,28 +29,34 @@ class UsersListModel {
                 for data in dataJson{
                     users.append(UsersData(fromJson: (data.key, data.value)))
                 }
-                users = users.sorted { (data1, data2) -> Bool in
-                    return data1.name < data2.name
-                }
-                registeredUsers = users.filter({ (userData) -> Bool in
-                    return userData.status == "registered"
-                })
-                pendingUsers = users.filter({ (userData) -> Bool in
-                    return userData.status == "pending"
-                })
-                newUsers = users.filter({ (userData) -> Bool in
-                    return userData.status == "created"
-                })
-                blockedUsers = users.filter({ (userData) -> Bool in
-                    return userData.status == "blocked"
-                })
-                approvedUsers = users.filter({ (userData) -> Bool in
-                    return userData.status == "approved"
-                })
+                self.sortData()
             }
         }
     }
+    
+    func sortData() {
+        users = users.sorted { (data1, data2) -> Bool in
+            return data1.name < data2.name
+        }
+        registeredUsers = users.filter({ (userData) -> Bool in
+            return userData.status == "registered"
+        })
+        pendingUsers = users.filter({ (userData) -> Bool in
+            return userData.status == "pending"
+        })
+        newUsers = users.filter({ (userData) -> Bool in
+            return userData.status == "created"
+        })
+        blockedUsers = users.filter({ (userData) -> Bool in
+            return userData.status == "blocked"
+        })
+        approvedUsers = users.filter({ (userData) -> Bool in
+            return userData.status == "approved"
+        })
+    }
 }
+
+
 
 class UsersData{
     

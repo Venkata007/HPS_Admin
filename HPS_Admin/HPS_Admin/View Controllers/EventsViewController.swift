@@ -14,7 +14,7 @@ class EventsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addEventBtn: UIButton!
-    
+    var switchChanged = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -24,8 +24,30 @@ class EventsViewController: UIViewController {
         ModelClassManager.adminProfileApiHitting(self, progress: false) { (success, response) -> (Void) in
             if success{}
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData(_:)) , name: NSNotification.Name(EVENT_UPDATED), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData(_:)) , name: NSNotification.Name(EVENT_ADDED), object: nil)
+        
+    }
+    @objc func reloadData(_ userInfo:Notification){
+        if userInfo.name.rawValue == EVENT_UPDATED{
+            if let data = userInfo.userInfo as? [String:AnyObject]{
+                if let indexRow = data["IndexPath"] as? Int{
+                    let indexPath = IndexPath(row: indexRow, section: 0)
+                    if !switchChanged{
+                        if let visibleCells = self.tableView.indexPathsForVisibleRows{
+                            if visibleCells.contains(indexPath){
+                                self.tableView.reloadRows(at: [indexPath], with: .none)
+                            }
+                        }
+                    }
+                }
+            }
+        }else if userInfo.name.rawValue == EVENT_ADDED{
+            self.tableView.reloadData()
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
+        switchChanged = false
         self.updateUI()
     }
     //MARK:- Update UI

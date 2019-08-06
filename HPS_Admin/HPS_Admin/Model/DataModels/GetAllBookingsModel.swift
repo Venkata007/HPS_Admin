@@ -60,7 +60,7 @@ class GetAllBookings{
     var userPlayedHrs : Int!
     
     init(fromJson json: (String,JSON)){
-        bookingId = json.0
+        bookingID = json.0
         balance = json.1["balance"].int ?? 0
         bookingId = json.1["bookingId"].string ?? ""
         if let dataJson = json.1["buyIns"].dictionary{

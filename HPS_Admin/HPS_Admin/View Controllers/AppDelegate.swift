@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate {
     var gcmNotificationIDKey = "gcm.notification.payload"
     let KEY                               = "action"
     let DATA                            = "data"
-
+    let notify = NotificationTriggerClass.sharedInstance
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
@@ -109,22 +109,27 @@ extension AppDelegate : UNUserNotificationCenterDelegate{
             if key == EVENT_BOOKING_UPDATED{
                 if let data = (userInfo[DATA] as? String)?.toJSON()  as? [String : AnyObject]{
                     print("Event Booking Updated",data)
+                    NotificationCenter.default.post(name: NSNotification.Name("NotificationTrigger\(EVENT_BOOKING_UPDATED)"), object: nil, userInfo: data)
                 }
             }else if key == EVENT_BOOKING_ADDED{
-               if let data = (userInfo[DATA] as? String)?.toJSON()  as? [String : AnyObject]{
+                if let data = (userInfo[DATA] as? String)?.toJSON()  as? [String : AnyObject]{
                     print("Event Booking Added",data)
+                    NotificationCenter.default.post(name: NSNotification.Name("NotificationTrigger\(EVENT_BOOKING_ADDED)"), object: nil, userInfo: data)
                 }
             }else if key == EVENT_UPDATED{
                 if let data = (userInfo[DATA] as? String)?.toJSON()  as? [String : AnyObject]{
                     print("Event Updated",data)
+                    NotificationCenter.default.post(name: NSNotification.Name("NotificationTrigger\(EVENT_UPDATED)"), object: nil, userInfo: data)
                 }
             }else if key == EVENT_ADDED{
                 if let data = (userInfo[DATA] as? String)?.toJSON()  as? [String : AnyObject]{
                     print("Event Added",data)
+                    NotificationCenter.default.post(name: NSNotification.Name("NotificationTrigger\(EVENT_ADDED)"), object: nil, userInfo: data)
                 }
             }else if key == USER_UPDATED{
                 if let data = (userInfo[DATA] as? String)?.toJSON()  as? [String : AnyObject]{
                     print("User Added",data)
+                    NotificationCenter.default.post(name: NSNotification.Name("NotificationTrigger\(USER_UPDATED)"), object: nil, userInfo: data)
                 }
             }
         }

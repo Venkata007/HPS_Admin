@@ -71,6 +71,7 @@
 		A3AB2AB222D747CA004F8D69 /* BookSeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AB2AB022D747CA004F8D69 /* BookSeatTableViewCell.swift */; };
 		A3AB2AB322D747CA004F8D69 /* BookSeatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3AB2AB122D747CA004F8D69 /* BookSeatTableViewCell.xib */; };
 		A3C218F522E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C218F422E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift */; };
+		A3DE77B322F45143005C3CDF /* NotificationTriggerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DE77B222F45143005C3CDF /* NotificationTriggerClass.swift */; };
 		A3F8BEA422E5719D00593CE6 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8BEA222E5719D00593CE6 /* LogoutCell.swift */; };
 		A3F8BEA522E5719D00593CE6 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3F8BEA322E5719D00593CE6 /* LogoutCell.xib */; };
 		A3F8BEA922E588C800593CE6 /* BlockUnblockPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8BEA722E588C800593CE6 /* BlockUnblockPopUp.swift */; };
@@ -164,6 +165,7 @@
 		A3AB2AB022D747CA004F8D69 /* BookSeatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSeatTableViewCell.swift; sourceTree = "<group>"; };
 		A3AB2AB122D747CA004F8D69 /* BookSeatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookSeatTableViewCell.xib; sourceTree = "<group>"; };
 		A3C218F422E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBuyInsAndCashOutVC.swift; sourceTree = "<group>"; };
+		A3DE77B222F45143005C3CDF /* NotificationTriggerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTriggerClass.swift; sourceTree = "<group>"; };
 		A3F8BEA222E5719D00593CE6 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		A3F8BEA322E5719D00593CE6 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
 		A3F8BEA722E588C800593CE6 /* BlockUnblockPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUnblockPopUp.swift; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 				A3FC1C9C22D87CC100719561 /* UsersListModel.swift */,
 				A3FD061422DD9E780049E061 /* AdminProfileModel.swift */,
 				A3FB977522DF177600CE802C /* GetAllBookingsModel.swift */,
+				A3DE77B222F45143005C3CDF /* NotificationTriggerClass.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				A33D767422D348E700F0A6DC /* EventsViewController.swift in Sources */,
 				A33F9A0022E717B500D76E79 /* CloseEventViewController.swift in Sources */,
 				A354CAD922D700D3001CC94A /* AdminProfileCell.swift in Sources */,
+				A3DE77B322F45143005C3CDF /* NotificationTriggerClass.swift in Sources */,
 				A39AF69922CE0A340049F1B2 /* MJPopupBackgroundView.m in Sources */,
 				A3C218F522E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift in Sources */,
 				A39AF69822CE0A340049F1B2 /* UIViewController+MJPopupViewController.m in Sources */,
