@@ -18,6 +18,7 @@ class SingleTonClass: NSObject {
     let imageCache = SDImageCache.shared()
     var adminLoginModel : AdminLoginModel!
     var eventsListModel : EventsListModel!
+    var completedEventsListModel : EventsListModel!
     var usersListModel : UsersListModel!
     var adminProfileModel : AdminProfileModel!
     var getAllBookingsModel : GetAllBookingsModel!
@@ -60,6 +61,36 @@ class SingleTonClass: NSObject {
                 }
             }else{
                 ModelClassManager.eventsListModel  = nil
+                completionHandler(false,nil)
+                TheGlobalPoolManager.showToastView(ToastMessages.No_Data_Available)
+            }
+        }
+    }
+    
+    //MARK:- Get All Events Api Hitting
+    func getAllCompletedEventsApiHitting(_ viewCon : UIViewController, progress:Bool, completionHandler : @escaping (_ granted:Bool, _ response:AnyObject?) -> (Void)){
+        if progress{
+            TheGlobalPoolManager.showProgress(viewCon.view, title:ToastMessages.Please_Wait)
+        }
+        APIServices.getUrlSession(urlString: ApiURls.GET_ALL_COMPLETED_EVENTS, params: [:], header: HEADER) { (dataResponse, success) in
+            TheGlobalPoolManager.hideProgess(viewCon.view)
+            if success{
+                if dataResponse.json.exists(){
+                    let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                    ModelClassManager.completedEventsListModel  = EventsListModel(fromJson: JSON(dict))
+                    if ModelClassManager.completedEventsListModel.success{
+                        completionHandler(true,dict as AnyObject)
+                    }else{
+                        completionHandler(true,dict as AnyObject)
+                        TheGlobalPoolManager.showToastView(ToastMessages.No_Data_Available)
+                    }
+                }else{
+                    ModelClassManager.completedEventsListModel  = nil
+                    completionHandler(false,nil)
+                    TheGlobalPoolManager.showToastView(ToastMessages.No_Data_Available)
+                }
+            }else{
+                ModelClassManager.completedEventsListModel  = nil
                 completionHandler(false,nil)
                 TheGlobalPoolManager.showToastView(ToastMessages.No_Data_Available)
             }

@@ -9,12 +9,15 @@
 import UIKit
 import EZSwiftExtensions
 import SwiftyJSON
-
+import PopOverMenu
 class EventsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addEventBtn: UIButton!
     var switchChanged = false
+    let popOverViewController = PopOverViewController.instantiate()
+    var menuItems = ["Add Event","Events History"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -108,10 +111,30 @@ class EventsViewController: UIViewController {
     }
     //MARK:- IB Action Outlets
     @IBAction func addEventBtn(_ sender: UIButton) {
-        if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.AddEventViewController) as? AddEventViewController{
-            viewCon.hidesBottomBarWhenPushed = true
-            ez.topMostVC?.presentVC(viewCon)
+        //POP MENU
+        self.popOverViewController.set(titles: self.menuItems)
+        self.popOverViewController.set(separatorStyle: .singleLine)
+        self.popOverViewController.popoverPresentationController?.sourceView = sender
+        self.popOverViewController.popoverPresentationController?.sourceRect = sender.bounds
+        self.popOverViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        self.popOverViewController.preferredContentSize = CGSize(width: 140, height: self.menuItems.count * 45)
+        self.popOverViewController.presentationController?.delegate = self
+        ez.runThisInMainThread {
+            self.popOverViewController.completionHandler = { selectRow in
+                if selectRow == 0{
+                    if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.AddEventViewController) as? AddEventViewController{
+                        viewCon.hidesBottomBarWhenPushed = true
+                        ez.topMostVC?.presentVC(viewCon)
+                    }
+                }else if selectRow == 1{
+                    if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.CompletedEventsViewController) as? CompletedEventsViewController{
+                        viewCon.hidesBottomBarWhenPushed = true
+                        ez.topMostVC?.presentVC(viewCon)
+                    }
+                }
+            }
         }
+        self.present(self.popOverViewController, animated: true, completion: nil)
     }
 }
 extension EventsViewController : UITableViewDelegate,UITableViewDataSource{
@@ -188,5 +211,13 @@ extension EventsViewController : UITableViewDelegate,UITableViewDataSource{
             ModelClassManager.getAllBookingsModel = nil
             ez.topMostVC?.presentVC(viewCon)
         }
+    }
+}
+extension EventsViewController : UIAdaptivePresentationControllerDelegate{
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 }

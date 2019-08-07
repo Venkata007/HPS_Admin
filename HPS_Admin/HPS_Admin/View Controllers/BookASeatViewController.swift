@@ -35,13 +35,11 @@ class BookASeatViewController: UIViewController {
     var selectedUsersMobileNum = [String]()
     var selectedUsersProfileUrls = [String]()
     var selectedEvent : EventsData!
-    
+    var allUsers = [UsersData]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.register(UINib(nibName: XIBNames.BookSeatTableViewCell, bundle: nil), forCellReuseIdentifier: XIBNames.BookSeatTableViewCell)
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.tableFooterView = UIView()
         ez.runThisInMainThread {
             self.updateUI()
@@ -54,6 +52,7 @@ class BookASeatViewController: UIViewController {
     }
     //MARK:- Update UI
     func updateUI(){
+        self.allUsers = []
         self.bookSeatsBtn.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : 5)
         ez.runThisInMainThread {
             TheGlobalPoolManager.cornerAndBorder(self.viewInView, cornerRadius: 0, borderWidth: 2, borderColor: #colorLiteral(red: 0.4745098039, green: 0.9803921569, blue: 1, alpha: 0.6032748288))
@@ -104,6 +103,15 @@ class BookASeatViewController: UIViewController {
         }
         ModelClassManager.getAllUsersApiHitting(self, progress: true) { (success, response) -> (Void) in
             if success{
+                if let usersList = ModelClassManager.usersListModel{
+                    self.allUsers = usersList.approvedUsers.filter({ (userDetail) -> Bool in
+                        return !self.selectedEvent.bookingUserIds.contains(where: { (userData) -> Bool in
+                            return userData.userID == userDetail.userId
+                        })
+                    })
+                }
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
                 self.tableView.reloadData()
             }
         }
@@ -140,10 +148,10 @@ class BookASeatViewController: UIViewController {
 }
 extension BookASeatViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return ModelClassManager.usersListModel == nil ? 0 : ModelClassManager.usersListModel.approvedUsers.count
+        return self.allUsers.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let data =  ModelClassManager.usersListModel.approvedUsers[indexPath.row]
+        let data =  self.allUsers[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.BookSeatTableViewCell) as! BookSeatTableViewCell
         cell.nameLbl.text = data.name!
         cell.numberLbl.text =  data.mobileNumber!
@@ -164,7 +172,7 @@ extension BookASeatViewController : UITableViewDelegate,UITableViewDataSource{
         return 100
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data =  ModelClassManager.usersListModel.approvedUsers[indexPath.row]
+        let data =  self.allUsers[indexPath.row]
         let selectedValue = selectedUsers.contains(data.userId!)
         let selectedName = selectedUsersNames.contains(data.name!)
         let seletedMobNum = selectedUsersMobileNum.contains(data.mobileNumber!)
@@ -189,7 +197,7 @@ extension BookASeatViewController : UITableViewDelegate,UITableViewDataSource{
         print(selectedUsersNames)
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let data =  ModelClassManager.usersListModel.approvedUsers[indexPath.row]
+        let data =  self.allUsers[indexPath.row]
         let selectedValue = selectedUsers.contains(data.userId!)
         let selectedName = selectedUsersNames.contains(data.name!)
         let seletedMobNum = selectedUsersMobileNum.contains(data.mobileNumber!)

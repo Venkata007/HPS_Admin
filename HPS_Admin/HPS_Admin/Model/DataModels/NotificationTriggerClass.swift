@@ -62,7 +62,9 @@ class NotificationTriggerClass: NSObject {
                         ModelClassManager.getAllBookingsModel.bookings.append(collection)
                     }
                 }else{
-                    ModelClassManager.getAllBookingsModel.bookings.append(collection)
+                    if let _ = ModelClassManager.getAllBookingsModel{
+                        ModelClassManager.getAllBookingsModel.bookings.append(collection)
+                    }
                 }
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: EVENT_BOOKING_ADDED), object: nil, userInfo: nil)
             }
@@ -123,6 +125,12 @@ class NotificationTriggerClass: NSObject {
                         return userDetail.userId == userCol.userId
                     }
                     if !isEventContains{
+                        ModelClassManager.usersListModel.users.append(userCol)
+                        ModelClassManager.usersListModel.sortData()
+                    }else{
+                        ModelClassManager.usersListModel.users.removeAll { (userData) -> Bool in
+                            return userData.userId == userCol.userId
+                        }
                         ModelClassManager.usersListModel.users.append(userCol)
                         ModelClassManager.usersListModel.sortData()
                     }

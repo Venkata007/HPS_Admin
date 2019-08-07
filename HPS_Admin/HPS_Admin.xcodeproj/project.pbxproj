@@ -49,6 +49,7 @@
 		A354CAE322D730C7001CC94A /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A354CAE122D730C7001CC94A /* SwitchTableViewCell.xib */; };
 		A354CAE522D73364001CC94A /* SliderToOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A354CAE422D73364001CC94A /* SliderToOpenView.swift */; };
 		A354CAE722D73FCE001CC94A /* BookASeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A354CAE622D73FCE001CC94A /* BookASeatViewController.swift */; };
+		A35B821A22F9801900F7BF83 /* CompletedEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35B821922F9801900F7BF83 /* CompletedEventsViewController.swift */; };
 		A38C2A6A22F0694E0069DDCA /* ConfirmViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38C2A6922F0694E0069DDCA /* ConfirmViewContoller.swift */; };
 		A39AF66922CE09A60049F1B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A39AF66722CE09A60049F1B2 /* Main.storyboard */; };
 		A39AF66B22CE09A60049F1B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A39AF66A22CE09A60049F1B2 /* Assets.xcassets */; };
@@ -135,6 +136,7 @@
 		A354CAE122D730C7001CC94A /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		A354CAE422D73364001CC94A /* SliderToOpenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderToOpenView.swift; sourceTree = "<group>"; };
 		A354CAE622D73FCE001CC94A /* BookASeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookASeatViewController.swift; sourceTree = "<group>"; };
+		A35B821922F9801900F7BF83 /* CompletedEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedEventsViewController.swift; sourceTree = "<group>"; };
 		A38C2A6922F0694E0069DDCA /* ConfirmViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewContoller.swift; sourceTree = "<group>"; };
 		A38C2A6B22F1CF8E0069DDCA /* HPS_Admin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HPS_Admin.entitlements; sourceTree = "<group>"; };
 		A39AF66022CE09A60049F1B2 /* HPS_Admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HPS_Admin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -380,6 +382,7 @@
 				A3C218F422E6DB7E009C00FA /* AddBuyInsAndCashOutVC.swift */,
 				A33F99FF22E717B500D76E79 /* CloseEventViewController.swift */,
 				A30193A922F3FFD80083405C /* ChangePasswordVC.swift */,
+				A35B821922F9801900F7BF83 /* CompletedEventsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				A354CAD422D622B1001CC94A /* AddTAdminCell.swift in Sources */,
 				A3FB977322DEE46A00CE802C /* UsersListCell.swift in Sources */,
 				A39AF69C22CE0A340049F1B2 /* APIServices.swift in Sources */,
+				A35B821A22F9801900F7BF83 /* CompletedEventsViewController.swift in Sources */,
 				A33D767222D3489B00F0A6DC /* UsersViewController.swift in Sources */,
 				A39AF69D22CE0A340049F1B2 /* SingleTonClass.swift in Sources */,
 				A39AF69622CE0A340049F1B2 /* Toast.swift in Sources */,

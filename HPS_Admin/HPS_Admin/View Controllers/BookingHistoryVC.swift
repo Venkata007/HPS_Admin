@@ -185,6 +185,7 @@ class BookingHistoryVC: UIViewController {
                 self.statusBtn.isHidden = true
                 self.bookStsLbl.isHidden = true
                 self.switch.isHidden = true
+                self.menuBtn.isHidden = true
                 self.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "\(TheGlobalPoolManager.formatNumber(data.audit.totalUsersBalance))", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
                 self.isBookingButtonHigh(false)
                 self.statusImgView.image = #imageLiteral(resourceName: "closed")
