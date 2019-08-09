@@ -39,19 +39,19 @@ enum AppCheck : String{
     
     var SERVER_IP : String{
         switch self {
-        case .Production: return "https://us-central1-home-poker-squad-hps.cloudfunctions.net"
+        case .Production: return "https://us-central1-hps-poker-game.cloudfunctions.net"
         case .Development: return "https://us-central1-home-poker-squad-hps.cloudfunctions.net"
         }
     }
     var Auth_Key : String{
         switch self {
-        case .Production: return "vYv6I6g2XoC3So3FcuullGwdJrFXss9V2lPJZ3r9"
+        case .Production: return "Ha7k6SyjDLCZq8pkvBMKPQu4xOGSsPo6vRwOTPTE"
         case .Development: return "vYv6I6g2XoC3So3FcuullGwdJrFXss9V2lPJZ3r9"
         }
     }
     var FireBase_Api_Base_URL : String{
         switch self {
-        case .Production: return "https://home-poker-squad-hps.firebaseio.com"
+        case .Production: return "https://hps-poker-game.firebaseio.com"
         case .Development: return "https://home-poker-squad-hps.firebaseio.com"
         }
     }
