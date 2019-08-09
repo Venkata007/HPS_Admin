@@ -10,14 +10,15 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1)
         UITabBar.appearance().unselectedItemTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        UITabBar.appearance().barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        UITabBar.appearance().isTranslucent = true
+        UITabBar.appearance().barTintColor = .black
+        UITabBar.appearance().backgroundColor = .black
+        //UITabBar.appearance().isTranslucent = true
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont.appFont(.Bold, size: UIDevice.isPhone() ? 10:15)], for: .normal)
 
-        self.tabBar.layer.shadowOffset = CGSize(width: 0, height: -2)
-        self.tabBar.layer.shadowRadius = 2
-        self.tabBar.layer.shadowColor = #colorLiteral(red: 0.3294117647, green: 0.3294117647, blue: 0.3294117647, alpha: 1)
-        self.tabBar.layer.shadowOpacity = 0.3
+//        self.tabBar.layer.shadowOffset = CGSize(width: 0, height: -2)
+//        self.tabBar.layer.shadowRadius = 2
+//        self.tabBar.layer.shadowColor = #colorLiteral(red: 0.3294117647, green: 0.3294117647, blue: 0.3294117647, alpha: 1)
+//        self.tabBar.layer.shadowOpacity = 0.3
         delegate = self
     }
     
@@ -81,6 +82,7 @@ class TabBarController: UITabBarController {
         
         button.addTarget(self, action: #selector(centerButtonAction(_:)), for: .touchUpInside)
         centerButton = button
+        
         updateCenterButton()
     }
 
@@ -116,10 +118,11 @@ class TabBarController: UITabBarController {
         }
         
         if let centerButton = centerButton {
+            centerButton.backgroundColor = .black
+            centerButton.layer.cornerRadius = centerButton.h / 2
             centerButton.setBackgroundImage(buttonImage, for: UIControlState())
         }
     }
-
 }
 
 private typealias TabBarControllerDelegate = TabBarController
