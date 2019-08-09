@@ -30,6 +30,12 @@ class UsersViewController: UIViewController {
         ModelClassManager.getAllUsersApiHitting(self, progress: true) { (success, response) -> (Void) in
             self.tableView.delegate = self
             self.tableView.dataSource = self
+            if ModelClassManager.usersListModel == nil{
+                self.tableView.isHidden = true
+                TheGlobalPoolManager.showAlertWith(message: "No Users Available", singleAction: true, callback: { (success) in
+                    if success!{}
+                })
+            }
             self.tableView.reloadData()
         }
     }

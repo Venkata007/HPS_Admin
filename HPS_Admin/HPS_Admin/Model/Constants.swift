@@ -217,4 +217,5 @@ public struct ApiParams  {
     static let newEventsRewardPointsPerHour = "newEventsRewardPointsPerHour"
     static let ID                           = "id"
     static let NewPassword                  = "newPassword"
+    static let Date = "date"
 }

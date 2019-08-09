@@ -65,10 +65,32 @@ class EventsViewController: UIViewController {
         ModelClassManager.getAllEventsApiHitting(self, progress: true) { (success, response) -> (Void) in
             if self.segmentControl.selectedSegmentIndex == 0{
                 self.tableViewData = ModelClassManager.eventsListModel.createdEvents
+                if self.tableViewData.count == 0{
+                    self.noEventsStsLbl.isHidden = false
+                    self.tableView.isHidden = true
+                    self.noEventsStsLbl.text = "No New Events"
+                }else{
+                    self.noEventsStsLbl.isHidden = true
+                    self.tableView.isHidden = false
+                }
             }else  if self.segmentControl.selectedSegmentIndex == 1{
                 self.tableViewData = ModelClassManager.eventsListModel.runningEvents
+                if self.tableViewData.count == 0{
+                    self.noEventsStsLbl.isHidden = false
+                    self.noEventsStsLbl.text = "No Running Events"
+                }else{
+                    self.noEventsStsLbl.isHidden = true
+                    self.tableView.isHidden = false
+                }
             }else  if self.segmentControl.selectedSegmentIndex == 2{
                 self.tableViewData = ModelClassManager.eventsListModel.finishedEvents
+                if self.tableViewData.count == 0{
+                    self.noEventsStsLbl.isHidden = false
+                    self.noEventsStsLbl.text = "No Finished Events"
+                }else{
+                    self.noEventsStsLbl.isHidden = true
+                    self.tableView.isHidden = false
+                }
             }
             self.tableView.reloadData()
         }
@@ -130,7 +152,7 @@ class EventsViewController: UIViewController {
             if self.tableViewData.count == 0{
                 self.noEventsStsLbl.isHidden = false
                 self.tableView.isHidden = true
-                self.noEventsStsLbl.text = "No new events"
+                self.noEventsStsLbl.text = "No New Events"
             }else{
                 self.noEventsStsLbl.isHidden = true
                 self.tableView.isHidden = false
@@ -140,7 +162,7 @@ class EventsViewController: UIViewController {
             self.tableViewData = ModelClassManager.eventsListModel.runningEvents
             if self.tableViewData.count == 0{
                 self.noEventsStsLbl.isHidden = false
-                self.noEventsStsLbl.text = "No running events"
+                self.noEventsStsLbl.text = "No Running Events"
             }else{
                 self.noEventsStsLbl.isHidden = true
                 self.tableView.isHidden = false
@@ -150,7 +172,7 @@ class EventsViewController: UIViewController {
             self.tableViewData = ModelClassManager.eventsListModel.finishedEvents
             if self.tableViewData.count == 0{
                 self.noEventsStsLbl.isHidden = false
-                self.noEventsStsLbl.text = "No finished events"
+                self.noEventsStsLbl.text = "No Finished Events"
             }else{
                 self.noEventsStsLbl.isHidden = true
                 self.tableView.isHidden = false

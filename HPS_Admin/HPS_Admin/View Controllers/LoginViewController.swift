@@ -52,7 +52,8 @@ class LoginViewController: UIViewController {
         let param = [ ApiParams.MobileNumber: self.userNameTF.text!,
                       ApiParams.Password: self.passwordTF.text!,
                       ApiParams.UserType: userType,
-                      ApiParams.DeviceId: TheGlobalPoolManager.instanceIDTokenMessage] as [String : Any]
+                      ApiParams.DeviceId: TheGlobalPoolManager.instanceIDTokenMessage,
+                      ApiParams.Date : "09-08-2019"] as [String : Any]
         APIServices.patchUrlSession(urlString: ApiURls.LOGIN_USER, params: param as [String : AnyObject], header: HEADER) { (dataResponse, success) in
             TheGlobalPoolManager.hideProgess(self.view)
             if success{
