@@ -9,24 +9,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HPS_Admin/Model/DataModels/EventsListModel.swift"
-            timestampString = "586775451.011534"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "EventsData"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "HPS_Admin/Model/DataModels/SingleTonClass.swift"
-            timestampString = "587024804.102807"
+            timestampString = "587035118.223505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -41,13 +25,13 @@
                   symbolName = "HPS_Admin.SingleTonClass.getAllEventsApiHitting(_: __C.UIViewController, progress: Swift.Bool, completionHandler: (Swift.Bool, Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "HPS_Admin"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hexadots/HPS_Admin/HPS_Admin/HPS_Admin/Model/DataModels/SingleTonClass.swift"
-                  timestampString = "586850652.679637"
+                  urlString = "file:///Vamsi/My%20Projects/HPS_Admin/HPS_Admin/HPS_Admin/Model/DataModels/SingleTonClass.swift"
+                  timestampString = "587034946.0667861"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "45"
                   endingLineNumber = "45"
-                  offsetFromSymbolStart = "508">
+                  offsetFromSymbolStart = "358">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -56,13 +40,13 @@
                   symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;, Swift.Bool) -&gt; () in HPS_Admin.SingleTonClass.getAllEventsApiHitting(_: __C.UIViewController, progress: Swift.Bool, completionHandler: (Swift.Bool, Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "HPS_Admin"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hexadots/HPS_Admin/HPS_Admin/HPS_Admin/Model/DataModels/SingleTonClass.swift"
-                  timestampString = "586850652.682799"
+                  urlString = "file:///Vamsi/My%20Projects/HPS_Admin/HPS_Admin/HPS_Admin/Model/DataModels/SingleTonClass.swift"
+                  timestampString = "587034946.068459"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "46"
                   endingLineNumber = "46"
-                  offsetFromSymbolStart = "200">
+                  offsetFromSymbolStart = "81">
                </Location>
             </Locations>
          </BreakpointContent>

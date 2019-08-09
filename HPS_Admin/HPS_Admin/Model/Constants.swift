@@ -6,11 +6,14 @@
 //  Copyright © 2016 Admin. All rights reserved.
 //
 
+/*
+Home Pocker App Bundle IDS :
+Admin :
+* Development : com.app.HPS-Admin
+* Production : com.ios.HPS-Admin
+*/
 import Foundation
 import UIKit
-
-let SERVER_IP             = "https://us-central1-home-poker-squad-hps.cloudfunctions.net"
-let Auth_Key              = "vYv6I6g2XoC3So3FcuullGwdJrFXss9V2lPJZ3r9"
 
 let ADMIN_USER_INFO       = "admin_user_info"
 let TADMIN_USER_INFO      = "tadmin_user_info"
@@ -30,6 +33,32 @@ let EVENT_RUNNING         = "running"
 let EVENT_FINISHED        = "finished"
 let EVENT_CLOSED          = "closed"
 
+enum AppCheck : String{
+    case Production
+    case Development
+    
+    var SERVER_IP : String{
+        switch self {
+        case .Production: return "https://us-central1-home-poker-squad-hps.cloudfunctions.net"
+        case .Development: return "https://us-central1-home-poker-squad-hps.cloudfunctions.net"
+        }
+    }
+    var Auth_Key : String{
+        switch self {
+        case .Production: return "vYv6I6g2XoC3So3FcuullGwdJrFXss9V2lPJZ3r9"
+        case .Development: return "vYv6I6g2XoC3So3FcuullGwdJrFXss9V2lPJZ3r9"
+        }
+    }
+    var FireBase_Api_Base_URL : String{
+        switch self {
+        case .Production: return "https://home-poker-squad-hps.firebaseio.com"
+        case .Development: return "https://home-poker-squad-hps.firebaseio.com"
+        }
+    }
+}
+let SERVER_IP             = TheGlobalPoolManager.appCheck.SERVER_IP
+let Auth_Key              = TheGlobalPoolManager.appCheck.Auth_Key
+let FireBase_Url         = TheGlobalPoolManager.appCheck.FireBase_Api_Base_URL
 
 public struct Constants {
     static let AppName                = "HPS_Admin"
@@ -68,16 +97,16 @@ public struct DeviceInfo {
 //MARK : - All Apis
 public struct ApiURls{
     static let LOGIN_USER           = "\(SERVER_IP)/login"
-    static let GET_ALL_USERS        = "https://home-poker-squad-hps.firebaseio.com/usersTable/.json?auth=\(Auth_Key)"
-    static let GET_ALL_EVENTS       = "https://home-poker-squad-hps.firebaseio.com/eventsTable/.json?auth=\(Auth_Key)&orderBy=%22eventStatusNum%22&startAt=1&endAt=3"
-    static let GET_ALL_COMPLETED_EVENTS       = "https://home-poker-squad-hps.firebaseio.com/eventsTable/.json?auth=\(Auth_Key)&orderBy=%22eventStatusNum%22&startAt=4&endAt=4"
+    static let GET_ALL_USERS        = "\(FireBase_Url)/usersTable/.json?auth=\(Auth_Key)"
+    static let GET_ALL_EVENTS       = "\(FireBase_Url)/eventsTable/.json?auth=\(Auth_Key)&orderBy=%22eventStatusNum%22&startAt=1&endAt=3"
+    static let GET_ALL_COMPLETED_EVENTS       = "\(FireBase_Url)/eventsTable/.json?auth=\(Auth_Key)&orderBy=%22eventStatusNum%22&startAt=4&endAt=4"
     static let CREATE_REFERAL       = "\(SERVER_IP)/createNewUserReferral"
     static let CREATE_EVENT         = "\(SERVER_IP)/createEvent"
     static let CREATE_TABLE_ADMIN   = "\(SERVER_IP)/createTAdmin"
     static let DELETE_TABLE_ADMIN   = "\(SERVER_IP)/deleteTAdmin"
     static let ADMIN_PROFILE_API    = "\(SERVER_IP)/admin"
     static let EVENT_STATUS_API     = "\(SERVER_IP)/changeEventBookingStatus"
-    static let GET_ALL_BOOKINGS     = "https://home-poker-squad-hps.firebaseio.com/bookingsTable/.json?auth=\(Auth_Key)"
+    static let GET_ALL_BOOKINGS     = "\(FireBase_Url)/bookingsTable/.json?auth=\(Auth_Key)"
     static let BOOK_SEATS           = "\(SERVER_IP)/bookSeats"
     static let CHANGE_USER_STATUS   = "\(SERVER_IP)/changeUserStatus"
     static let REDEEM_REWARD_POINTS = "\(SERVER_IP)/redeemRewardPoints"

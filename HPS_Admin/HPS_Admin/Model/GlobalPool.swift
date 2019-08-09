@@ -27,9 +27,22 @@ class GlobalPool: NSObject {
     var vc:UIViewController{return ez.topMostVC!}
     var isAlertDisplaying = false
     var selectedUserType : String!
+    var appCheck:AppCheck!
+    var appMode = ""
     
     override init() {
         super.init()
+        self.checkApp()
+    }
+    //MARK : - Checking App.
+    func checkApp(){
+        let bundleID = (Bundle.main.bundleIdentifier)!
+        if bundleID == "com.app.HPS-Admin"{
+            appMode = "Development"
+        }else if bundleID == "com.ios.HPS-Admin"{
+            appMode = "Production"
+        }
+        appCheck = AppCheck(rawValue: appMode)
     }
     func showToastView(_ title: String) {
         Toast.init(text: title, duration: 2.0).show()

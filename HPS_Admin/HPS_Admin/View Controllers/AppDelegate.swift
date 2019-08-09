@@ -50,10 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate {
         }
         self.SetInitialViewController()
         if let tabBarController = window?.rootViewController as? TabBarController {
-            tabBarController.selectedIndex = 1
             DispatchQueue.main.async {
                 if let unselectedImage = UIImage(named: "Events_deactive"), let selectedImage = UIImage(named: "Events_active") {
                     tabBarController.addCenterButton(unselectedImage: unselectedImage, selectedImage: selectedImage)
+                    ez.runThisAfterDelay(seconds: 0.1, after: {
+                        tabBarController.selectedIndex = 1
+                    })
                 }
             }
         }

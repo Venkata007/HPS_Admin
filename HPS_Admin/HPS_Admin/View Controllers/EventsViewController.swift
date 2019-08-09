@@ -12,11 +12,15 @@ import SwiftyJSON
 import PopOverMenu
 class EventsViewController: UIViewController {
 
+    @IBOutlet weak var noEventsStsLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addEventBtn: UIButton!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
     var switchChanged = false
     let popOverViewController = PopOverViewController.instantiate()
     var menuItems = ["Add Event","Events History"]
+    var tableViewData = [EventsData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +28,15 @@ class EventsViewController: UIViewController {
         tableView.register(UINib(nibName: XIBNames.EventTableViewCell, bundle: nil), forCellReuseIdentifier: XIBNames.EventTableViewCell)
         tableView.delegate = self
         tableView.dataSource = self
+        let font: [AnyHashable : Any] = [NSAttributedStringKey.font : UIFont.appFont(.Medium, size: 16)]
+        self.segmentControl.setTitleTextAttributes(font, for: .normal)
+        tableView.tableFooterView = UIView()
+        self.noEventsStsLbl.isHidden = true
         ModelClassManager.adminProfileApiHitting(self, progress: false) { (success, response) -> (Void) in
             if success{}
         }
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData(_:)) , name: NSNotification.Name(EVENT_UPDATED), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData(_:)) , name: NSNotification.Name(EVENT_ADDED), object: nil)
-        
     }
     @objc func reloadData(_ userInfo:Notification){
         if userInfo.name.rawValue == EVENT_UPDATED{
@@ -55,8 +62,14 @@ class EventsViewController: UIViewController {
     }
     //MARK:- Update UI
     func updateUI(){
-        tableView.tableFooterView = UIView()
         ModelClassManager.getAllEventsApiHitting(self, progress: true) { (success, response) -> (Void) in
+            if self.segmentControl.selectedSegmentIndex == 0{
+                self.tableViewData = ModelClassManager.eventsListModel.createdEvents
+            }else  if self.segmentControl.selectedSegmentIndex == 1{
+                self.tableViewData = ModelClassManager.eventsListModel.runningEvents
+            }else  if self.segmentControl.selectedSegmentIndex == 2{
+                self.tableViewData = ModelClassManager.eventsListModel.finishedEvents
+            }
             self.tableView.reloadData()
         }
     }
@@ -110,6 +123,43 @@ class EventsViewController: UIViewController {
         }
     }
     //MARK:- IB Action Outlets
+    @IBAction func segmentControl(_ sender: UISegmentedControl) {
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            self.tableViewData = ModelClassManager.eventsListModel.createdEvents
+            if self.tableViewData.count == 0{
+                self.noEventsStsLbl.isHidden = false
+                self.tableView.isHidden = true
+                self.noEventsStsLbl.text = "No new events"
+            }else{
+                self.noEventsStsLbl.isHidden = true
+                self.tableView.isHidden = false
+            }
+            self.tableView.reloadData()
+        case 1:
+            self.tableViewData = ModelClassManager.eventsListModel.runningEvents
+            if self.tableViewData.count == 0{
+                self.noEventsStsLbl.isHidden = false
+                self.noEventsStsLbl.text = "No running events"
+            }else{
+                self.noEventsStsLbl.isHidden = true
+                self.tableView.isHidden = false
+            }
+            self.tableView.reloadData()
+        case 2:
+            self.tableViewData = ModelClassManager.eventsListModel.finishedEvents
+            if self.tableViewData.count == 0{
+                self.noEventsStsLbl.isHidden = false
+                self.noEventsStsLbl.text = "No finished events"
+            }else{
+                self.noEventsStsLbl.isHidden = true
+                self.tableView.isHidden = false
+            }
+            self.tableView.reloadData()
+        default:
+            break
+        }
+    }
     @IBAction func addEventBtn(_ sender: UIButton) {
         //POP MENU
         self.popOverViewController.set(titles: self.menuItems)
@@ -139,10 +189,10 @@ class EventsViewController: UIViewController {
 }
 extension EventsViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return ModelClassManager.eventsListModel == nil ? 0 : ModelClassManager.eventsListModel.events.count
+        return ModelClassManager.eventsListModel == nil ? 0 : self.tableViewData.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let data = ModelClassManager.eventsListModel.events[indexPath.row]
+        let data = self.tableViewData[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.EventTableViewCell) as! EventTableViewCell
         cell.eventNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.name!)\n", attr2Text: data.eventId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
         cell.coinsLbl.text = "\(data.eventRewardPoints!.toString)\n points"
@@ -207,7 +257,7 @@ extension EventsViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BookingHistoryVC) as? BookingHistoryVC{
             viewCon.hidesBottomBarWhenPushed = true
-            viewCon.selectedEvent = ModelClassManager.eventsListModel.events[indexPath.row]
+            viewCon.selectedEvent = self.tableViewData[indexPath.row]
             ModelClassManager.getAllBookingsModel = nil
             ez.topMostVC?.presentVC(viewCon)
         }
