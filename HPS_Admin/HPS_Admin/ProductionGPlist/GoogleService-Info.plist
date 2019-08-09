@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>78725227736-7n81631fotmskutbp0dkrm9siu5gb16u.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.78725227736-7n81631fotmskutbp0dkrm9siu5gb16u</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCKXv8sarBUSKriop1mfCHgtR8VI7Yoln8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>78725227736</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ios.HPS-Admin</string>
+	<key>PROJECT_ID</key>
+	<string>hps-poker-game</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hps-poker-game.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:78725227736:ios:b3acb405b370e659</string>
+	<key>DATABASE_URL</key>
+	<string>https://hps-poker-game.firebaseio.com</string>
+</dict>
+</plist>
