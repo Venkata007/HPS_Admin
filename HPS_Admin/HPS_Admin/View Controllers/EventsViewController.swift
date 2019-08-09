@@ -110,11 +110,12 @@ class EventsViewController: UIViewController {
         }
     }
     func updateBookingStatus(_ senderTag:Int){
-        let data = ModelClassManager.eventsListModel.events[senderTag]
+        let data = self.tableViewData[senderTag]
         if data.bookingStatus == OPEN{
             ModelClassManager.changeEventStatuslApiHitting(data.eventId!, progress: true, bookingStatus: CLOSED, viewCon: self) { (success, response) -> (Void) in
                 if success{
-                    ModelClassManager.eventsListModel.events[senderTag].bookingStatus = CLOSED
+                    ModelClassManager.eventsListModel.createdEvents[senderTag].bookingStatus = CLOSED
+                    self.tableViewData[senderTag].bookingStatus = CLOSED
                     self.tableView.reloadRows(at: [IndexPath(row: senderTag, section: 0)], with: .none)
                     /*
                      ModelClassManager.getAllEventsApiHitting(self, progress: false) { (success, response) -> (Void) in
@@ -126,7 +127,8 @@ class EventsViewController: UIViewController {
         }else{
             ModelClassManager.changeEventStatuslApiHitting(data.eventId!, progress: true, bookingStatus: OPEN, viewCon: self) { (success, response) -> (Void) in
                 if success{
-                    ModelClassManager.eventsListModel.events[senderTag].bookingStatus = OPEN
+                    ModelClassManager.eventsListModel.createdEvents[senderTag].bookingStatus = OPEN
+                    self.tableViewData[senderTag].bookingStatus = OPEN
                     self.tableView.reloadRows(at: [IndexPath(row: senderTag, section: 0)], with: .none)
                     /*
                      ModelClassManager.getAllEventsApiHitting(self, progress: false) { (success, response) -> (Void) in
