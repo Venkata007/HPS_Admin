@@ -226,7 +226,7 @@ class SingleTonClass: NSObject {
         if progress{
             TheGlobalPoolManager.showProgress(viewCon.view, title:ToastMessages.Please_Wait)
         }
-        let param = [ ApiParams.AdminType: ModelClassManager.adminLoginModel.data.id!,
+        let param = [ ApiParams.AdminType: ModelClassManager.adminLoginModel.data.type!,
                       ApiParams.MobileNumber: ModelClassManager.adminLoginModel.data.id!] as [String : Any]
         APIServices.patchUrlSession(urlString: ApiURls.ADMIN_PROFILE_API, params: param as [String : AnyObject], header: HEADER) { (dataResponse,success) in
             TheGlobalPoolManager.hideProgess(viewCon.view)

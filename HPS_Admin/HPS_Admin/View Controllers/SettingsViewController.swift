@@ -13,7 +13,7 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var sections = ["","","","Table Admins",""]
-    var tableAdminSections = ["","",""]
+    var tableAdminSections = ["","","",""]
     @IBOutlet weak var updatePasswordBtn: UIButton!
     
     override func viewDidLoad() {

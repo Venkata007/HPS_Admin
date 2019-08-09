@@ -29,23 +29,27 @@ class EventsListModel{
                 events = events.sorted { (data1, data2) -> Bool in
                     return data1.startsAtNum < data2.startsAtNum
                 }
-                createdEvents = events.filter({ (eventDetail) -> Bool in
-                    return eventDetail.eventStatus == EVENT_CREATED
-                }).sorted(by: { (data1, data2) -> Bool in
-                    return data1.startsAtNum < data2.startsAtNum
-                })
-                runningEvents = events.filter({ (eventDetail) -> Bool in
-                    return eventDetail.eventStatus == EVENT_RUNNING
-                }).sorted(by: { (data1, data2) -> Bool in
-                    return data1.startsAtNum < data2.startsAtNum
-                })
-                finishedEvents = events.filter({ (eventDetail) -> Bool in
-                    return eventDetail.eventStatus == EVENT_FINISHED
-                }).sorted(by: { (data1, data2) -> Bool in
-                    return data1.startsAtNum < data2.startsAtNum
-                })
+                self.sorted()
             }
         }
+    }
+    
+    func sorted(){
+        createdEvents = events.filter({ (eventDetail) -> Bool in
+            return eventDetail.eventStatus == EVENT_CREATED
+        }).sorted(by: { (data1, data2) -> Bool in
+            return data1.startsAtNum < data2.startsAtNum
+        })
+        runningEvents = events.filter({ (eventDetail) -> Bool in
+            return eventDetail.eventStatus == EVENT_RUNNING
+        }).sorted(by: { (data1, data2) -> Bool in
+            return data1.startsAtNum < data2.startsAtNum
+        })
+        finishedEvents = events.filter({ (eventDetail) -> Bool in
+            return eventDetail.eventStatus == EVENT_FINISHED
+        }).sorted(by: { (data1, data2) -> Bool in
+            return data1.startsAtNum < data2.startsAtNum
+        })
     }
 }
 

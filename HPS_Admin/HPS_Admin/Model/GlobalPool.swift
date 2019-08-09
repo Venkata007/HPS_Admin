@@ -205,7 +205,7 @@ class GlobalPool: NSObject {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm" //This formate is input formated .
         if let formateDate = dateFormatter.date(from:string){
-            dateFormatter.dateFormat = "dd EEE MMMM\n hh:mm a" //Output Formated
+            dateFormatter.dateFormat = "EEE dd MMM\n hh:mm a" //Output Formated
             return dateFormatter.string(from: formateDate)
         }
         return string

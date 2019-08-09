@@ -87,7 +87,7 @@ class ConfirmViewContoller: UIViewController {
                 }
             }
             self.eventNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.name!)\n", attr2Text: data.eventId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
-            self.coinsLbl.text = "\(data.eventRewardPoints!.toString)\n points"
+            self.coinsLbl.text = " \(data.eventRewardPoints!.toString)"
             self.noOFUsersLbl.text = "\(data.seats.booked!.toString) users"
             self.bookStsLbl.isHidden = true
             self.switch.isHidden = true

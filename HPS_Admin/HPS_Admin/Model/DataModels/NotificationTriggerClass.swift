@@ -107,7 +107,9 @@ class NotificationTriggerClass: NSObject {
                         ModelClassManager.eventsListModel.events.append(eventCol)
                     }
                 }else{
+                    ModelClassManager.eventsListModel = EventsListModel(fromJson: JSON(""))
                     ModelClassManager.eventsListModel.events.append(eventCol)
+                    ModelClassManager.eventsListModel.sorted()
                 }
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: EVENT_ADDED), object: nil, userInfo: nil)
             }
@@ -135,6 +137,8 @@ class NotificationTriggerClass: NSObject {
                         ModelClassManager.usersListModel.sortData()
                     }
                 }else{
+                    ModelClassManager.usersListModel = UsersListModel(fromJson: JSON(""))
+                    ModelClassManager.usersListModel.success = true
                     ModelClassManager.usersListModel.users.append(userCol)
                     ModelClassManager.usersListModel.sortData()
                 }

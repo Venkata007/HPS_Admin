@@ -21,8 +21,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.userNameTF.text = "admin"
-        self.passwordTF.text = "admin@123"
+//        self.userNameTF.text = "admin"
+//        self.passwordTF.text = "admin@123"
         self.updateUI()
     }
     //MARK:- Update UI

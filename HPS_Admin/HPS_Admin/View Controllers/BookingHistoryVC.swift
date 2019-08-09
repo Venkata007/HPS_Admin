@@ -136,7 +136,7 @@ class BookingHistoryVC: UIViewController {
         }
         if let data  = selectedEvent{
             self.eventNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.name!)\n", attr2Text: data.eventId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
-            self.coinsLbl.text = "\(data.eventRewardPoints!.toString)\n points"
+            self.coinsLbl.text = " \(data.eventRewardPoints!.toString)"
             if data.seats.available! > 0 {
                 self.menuItems = ["Book","Unblock Seats","Block Seats","Delete"]
                 self.blockSeatsViewHeight.constant = 40
@@ -407,7 +407,7 @@ extension BookingHistoryVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.UsersListCell) as! UsersListCell
         let data = ModelClassManager.getAllBookingsModel.bookings[indexPath.row]
-        cell.rewardPointsLbl.text = "\(data.userEventRewardPoints!.toString)\n points"
+        cell.rewardPointsLbl.text = " \(data.userEventRewardPoints!.toString)"
         cell.bookingIDLbl.text = data.bookingId!
         cell.userNameLbl.text = data.userName!
         cell.statusImgView.image = TheGlobalPoolManager.getUserStatusImageBasedOnStatus(data.status)
