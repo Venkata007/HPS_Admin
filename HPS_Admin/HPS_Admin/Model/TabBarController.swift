@@ -10,7 +10,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1)
         UITabBar.appearance().unselectedItemTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        UITabBar.appearance().barTintColor = .black
+        //UITabBar.appearance().barTintColor = .black
         UITabBar.appearance().backgroundColor = .black
         //UITabBar.appearance().isTranslucent = true
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont.appFont(.Bold, size: UIDevice.isPhone() ? 10:15)], for: .normal)

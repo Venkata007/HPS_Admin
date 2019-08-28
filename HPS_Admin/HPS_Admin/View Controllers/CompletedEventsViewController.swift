@@ -46,7 +46,7 @@ extension CompletedEventsViewController : UITableViewDelegate,UITableViewDataSou
         let data = ModelClassManager.completedEventsListModel.events[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.EventTableViewCell) as! EventTableViewCell
         cell.eventNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.name!)\n", attr2Text: data.eventId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
-        cell.coinsLbl.text = "\(data.eventRewardPoints!.toString)\n points"
+        cell.coinsLbl.text = " \(data.eventRewardPoints!.toString)"
         cell.noOFUsersLbl.text = "\(data.seats.booked!.toString) users"
         switch data.eventStatus! {
         case EVENT_CLOSED:

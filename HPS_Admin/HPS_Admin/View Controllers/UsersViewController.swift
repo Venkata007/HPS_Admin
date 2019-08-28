@@ -61,10 +61,10 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        headerView.backgroundColor = #colorLiteral(red: 0.9199201465, green: 0.9765976071, blue: 0.9851337075, alpha: 1)
+        headerView.backgroundColor = .clear
         let headerLabel = UILabel(frame: CGRect(x: 10, y: 0, width:self.tableView.frame.size.width, height: 30))
-        headerLabel.font = UIFont.appFont(.Bold, size: 18)
-        headerLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        headerLabel.font = UIFont.appFont(.Bold, size: 20)
+        headerLabel.textColor = .white
         headerLabel.text = self.sections[section]
         headerView.addSubview(headerLabel)
         return headerView
@@ -82,6 +82,29 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource{
             return data?.newUsers.count == 0 ? 0 : 30
         case 4:
             return data?.blockedUsers.count == 0 ? 0 : 30
+        default:
+            break
+        }
+        return 0
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .clear
+        return headerView
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        let data = ModelClassManager.usersListModel
+        switch section {
+        case 0:
+            return data?.approvedUsers.count == 0 ? 0 : 10
+        case 1:
+            return data?.registeredUsers.count == 0 ? 0 : 10
+        case 2:
+            return data?.pendingUsers.count == 0 ? 0 : 10
+        case 3:
+            return data?.newUsers.count == 0 ? 0 : 10
+        case 4:
+            return data?.blockedUsers.count == 0 ? 0 : 10
         default:
             break
         }

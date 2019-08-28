@@ -52,7 +52,7 @@ class GetBuyInsViewController: UIViewController {
         }
         if let data  = selectedEvent{
             self.eventNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.name!)\n", attr2Text: data.eventId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
-            self.coinsLbl.text = "\(data.eventRewardPoints!.toString)\n points"
+            self.coinsLbl.text = " \(data.eventRewardPoints!.toString)"
             self.noOFUsersLbl.text = "\(data.seats.booked!.toString) users"
             if data.eventStatus! == "running"{
                 if self.selectedUser.status == "confirmed"{
@@ -177,7 +177,7 @@ extension GetBuyInsViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let data = self.selectedUser!
         let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.BuyInsCell) as! BuyInsCell
-        cell.rewardPointsLbl.text = "\(data.userEventRewardPoints!.toString)\n points"
+        cell.rewardPointsLbl.text = " \(data.userEventRewardPoints!.toString)"
         cell.bookingIDLbl.text = "\(data.userName!)\n \(data.bookingId!)"
         if data.status == "confirmed"{
             cell.dateLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.userJoinsAt!)
